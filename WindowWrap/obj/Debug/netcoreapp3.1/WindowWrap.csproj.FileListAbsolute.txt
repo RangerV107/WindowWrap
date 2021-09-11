@@ -18,3 +18,15 @@ C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\Window
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\MainWindow.g.cs
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\MainWindow.baml
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\HandyControl.dll
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\ca-ES\HandyControl.resources.dll
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\en\HandyControl.resources.dll
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\fa\HandyControl.resources.dll
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\fr\HandyControl.resources.dll
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\ko-KR\HandyControl.resources.dll
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\pl\HandyControl.resources.dll
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\pt-BR\HandyControl.resources.dll
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\ru\HandyControl.resources.dll
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\tr\HandyControl.resources.dll
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\App.baml
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\WindowWrap.csproj.CopyComplete

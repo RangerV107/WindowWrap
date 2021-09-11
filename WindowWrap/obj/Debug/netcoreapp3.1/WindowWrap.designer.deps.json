@@ -5,7 +5,53 @@
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "HandyControl/3.2.0": {
+        "runtime": {
+          "lib/netcoreapp3.1/HandyControl.dll": {
+            "assemblyVersion": "3.2.0.0",
+            "fileVersion": "3.2.0.0"
+          }
+        },
+        "resources": {
+          "lib/netcoreapp3.1/ca-ES/HandyControl.resources.dll": {
+            "locale": "ca-ES"
+          },
+          "lib/netcoreapp3.1/en/HandyControl.resources.dll": {
+            "locale": "en"
+          },
+          "lib/netcoreapp3.1/fa/HandyControl.resources.dll": {
+            "locale": "fa"
+          },
+          "lib/netcoreapp3.1/fr/HandyControl.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netcoreapp3.1/ko-KR/HandyControl.resources.dll": {
+            "locale": "ko-KR"
+          },
+          "lib/netcoreapp3.1/pl/HandyControl.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netcoreapp3.1/pt-BR/HandyControl.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netcoreapp3.1/ru/HandyControl.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netcoreapp3.1/tr/HandyControl.resources.dll": {
+            "locale": "tr"
+          }
+        }
+      }
+    }
   },
-  "libraries": {}
+  "libraries": {
+    "HandyControl/3.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0uN4zMV+2Tj9Bvx3PeEBd0gem0Zj3m2pgHfVDL7N+9Vtorm2TDEJ3Z6c3JTSrPiFeXy17/ydNvPauzuX6LGU+g==",
+      "path": "handycontrol/3.2.0",
+      "hashPath": "handycontrol.3.2.0.nupkg.sha512"
+    }
+  }
 }

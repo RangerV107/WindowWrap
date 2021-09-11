@@ -6,12 +6,36 @@
         xmlns:local="clr-namespace:WindowWrap"
         xmlns:viewmodel="clr-namespace:WindowWrap.ViewModel"
         xmlns:cmds="clr-namespace:WindowWrap.Infrastructure.Commands"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="450" Width="800">
+        Title="{Binding Title}" Height="450" Width="800"
+        hc:Theme.Skin="Dark">
     <Window.DataContext>
         <viewmodel:MainWindowViewModel/>
     </Window.DataContext>
-    <DockPanel LastChildFill="True">
+
+    <DockPanel LastChildFill="False" Background="#151515">
+        <Menu DockPanel.Dock="Top" >
+            <MenuItem Header="File">
+                <MenuItem Header="Exit" Command="{Binding AppCloseCommand}"/>
+            </MenuItem>
+            <MenuItem Header="About"/>
+        </Menu>
+        <Button Content="Button" Width="Auto"/>
+        <hc:Shield Content="Shield" Width="100"/>
+
+
+
+    </DockPanel>
+
+
+
+
+
+
+
+
+    <!--<DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top" Background="Gray">
             <MenuItem Header="File">
                 <MenuItem Header="Exit" Command="{Binding AppCloseCommand}"/>
@@ -45,5 +69,5 @@
                           Background="Black"/>
         </Grid>
 
-    </DockPanel>
+    </DockPanel>-->
 </Window>
