@@ -1,0 +1,12 @@
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager\bin\Debug\OpenControls.Wpf.DockManager.Themes.VS2019.dll
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager\bin\Debug\OpenControls.Wpf.DockManager.Themes.VS2019.pdb
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager.Themes.VS2019\obj\Debug\OpenControls.Wpf.DockManager.Themes.VS2019.csprojAssemblyReference.cache
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager.Themes.VS2019\obj\Debug\Dictionary.baml
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager.Themes.VS2019\obj\Debug\OpenControls.Wpf.DockManager.Themes.VS2019_MarkupCompile.cache
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager.Themes.VS2019\obj\Debug\OpenControls.Wpf.DockManager.Themes.VS2019.g.resources
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager.Themes.VS2019\obj\Debug\OpenControls.Wpf.DockManager.Themes.VS2019.Properties.Resources.resources
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager.Themes.VS2019\obj\Debug\OpenControls.Wpf.DockManager.Themes.VS2019.csproj.GenerateResource.cache
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager.Themes.VS2019\obj\Debug\OpenControls.Wpf.DockManager.Themes.VS2019.csproj.CoreCompileInputs.cache
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager.Themes.VS2019\obj\Debug\OpenControls.Wpf.DockManager.Themes.VS2019.csproj.CopyComplete
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager.Themes.VS2019\obj\Debug\OpenControls.Wpf.DockManager.Themes.VS2019.dll
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager.Themes.VS2019\obj\Debug\OpenControls.Wpf.DockManager.Themes.VS2019.pdb

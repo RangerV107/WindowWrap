@@ -1,0 +1,16 @@
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.Utilities\bin\Debug\OpenControls.Wpf.Utilities.dll
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.Utilities\bin\Debug\OpenControls.Wpf.Utilities.pdb
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.Utilities\obj\Debug\View\ChooseStringView.baml
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.Utilities\obj\Debug\View\InputTextView.baml
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.Utilities\obj\Debug\View\ChooseStringView.g.cs
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.Utilities\obj\Debug\View\InputTextView.g.cs
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.Utilities\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.Utilities\obj\Debug\OpenControls.Wpf.Utilities_MarkupCompile.cache
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.Utilities\obj\Debug\OpenControls.Wpf.Utilities_MarkupCompile.lref
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.Utilities\obj\Debug\View\Dictionary.baml
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.Utilities\obj\Debug\OpenControls.Wpf.Utilities.g.resources
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.Utilities\obj\Debug\OpenControls.Wpf.Utilities.Properties.Resources.resources
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.Utilities\obj\Debug\OpenControls.Wpf.Utilities.csproj.GenerateResource.cache
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.Utilities\obj\Debug\OpenControls.Wpf.Utilities.csproj.CoreCompileInputs.cache
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.Utilities\obj\Debug\OpenControls.Wpf.Utilities.dll
+C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.Utilities\obj\Debug\OpenControls.Wpf.Utilities.pdb
