@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManagerDemoViews\obj\Debug\
+C:\Users\Vanny\source\repos\WindowWrap\OpenControls.Wpf.DockManagerDemoViews\obj\Debug\
 OpenControls.Wpf.DockManagerDemoViews
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 81529117791
 
 21-1114541182
-14-339677184
+14-858174950
 View\DocumentOneView.xaml;View\DocumentThreeView.xaml;View\DocumentTwoView.xaml;View\ToolFiveView.xaml;View\ToolFourView.xaml;View\ToolOneView.xaml;View\ToolThreeView.xaml;View\ToolTwoView.xaml;
 
 False

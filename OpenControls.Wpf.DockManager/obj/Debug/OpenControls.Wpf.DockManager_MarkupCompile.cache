@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager\obj\Debug\
+C:\Users\Vanny\source\repos\WindowWrap\OpenControls.Wpf.DockManager\obj\Debug\
 OpenControls.Wpf.DockManager
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 6-1720451675
 
 53-1188950369
-151784203960
+15-959793834
 Controls\ToolListBox.xaml;Dictionary.xaml;FloatingPane.xaml;SideLocationPane.xaml;UnpinnedToolPane.xaml;WindowLocationPane.xaml;
 
 False

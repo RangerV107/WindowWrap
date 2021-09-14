@@ -5,25 +5,181 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowWrap"
         xmlns:viewmodel="clr-namespace:WindowWrap.ViewModel"
+        
+        xmlns:view="clr-namespace:ExampleDockManagerViews.View;assembly=OpenControls.Wpf.DockManagerDemoViews"
+        xmlns:viewModel="clr-namespace:ExampleDockManagerViews.ViewModel;assembly=OpenControls.Wpf.DockManagerDemoViews"
+        xmlns:dockManager="clr-namespace:OpenControls.Wpf.DockManager;assembly=OpenControls.Wpf.DockManager"
+        xmlns:themes="clr-namespace:OpenControls.Wpf.DockManager.Themes;assembly=OpenControls.Wpf.DockManager.Themes.VS2019"
+        
         xmlns:cmds="clr-namespace:WindowWrap.Infrastructure.Commands"
         xmlns:hc="https://handyorg.github.io/handycontrol"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="450" Width="800"
-        hc:Theme.Skin="Dark">
+        Loaded="Window_Loaded"
+        Closing="Window_Closing"
+        Title="{Binding Title}" Height="450" Width="800">
     <Window.DataContext>
         <viewmodel:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style x:Key="styleGridSplitter" TargetType="GridSplitter">
+                <Setter Property="Background" Value="Gainsboro"/>
+                <Setter Property="BorderThickness" Value="1"/>
+            </Style>
+            <Style x:Key="styleHorizontalGridSplitter" TargetType="GridSplitter" BasedOn="{StaticResource styleGridSplitter}">
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="Height" Value="4"/>
+            </Style>
+            <Style x:Key="styleVerticalGridSplitter" TargetType="GridSplitter" BasedOn="{StaticResource styleGridSplitter}">
+                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                <Setter Property="Width" Value="4"/>
+            </Style>
+            <Style x:Key="StyleTitleBarButton" TargetType="Button">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid Margin="0,0,0,0">
+                                <Border Name="_border" Background="Transparent" Padding="6,0,6,2" BorderThickness="1" BorderBrush="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentPresenter/>
+                                </Border>
+                            </Grid>
 
-    <DockPanel LastChildFill="False" Background="#151515">
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="_border" Property="Background" Value="Gainsboro" />
+                                    <Setter TargetName="_border" Property="BorderBrush" Value="Gray" />
+                                    <Setter TargetName="_border" Property="BorderThickness" Value="1" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/OpenControls.Wpf.DockManager;component/Dictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+
+
+
+    <!--<Border x:Name="MainWindowBorder" BorderBrush="LightCoral" BorderThickness="0">
+        <Grid x:Name="parentContainer" Background="#ccd5f0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height ="Auto"/>
+                <RowDefinition Height ="*"/>
+            </Grid.RowDefinitions>
+
+            --><!--Window chrome--><!--
+            
+
+            
+            <dockManager:LayoutManager x:Name="_layoutManager" Grid.Row="1" Grid.Column="0" DocumentsSource="{Binding Documents}" ToolsSource="{Binding Tools}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#5d6b99" >
+                <dockManager:LayoutManager.Theme>
+                    <themes:VS2019Theme/>
+                </dockManager:LayoutManager.Theme>
+                <dockManager:LayoutManager.DocumentTemplates>
+                    <DataTemplate DataType="{x:Type viewModel:DocumentOneViewModel}">
+                        <view:DocumentOneView x:Name="_documentOneView"/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:DocumentTwoViewModel}">
+                        <view:DocumentTwoView x:Name="_documentTwoView"/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:DocumentThreeViewModel}">
+                        <view:DocumentThreeView x:Name="_documentThreeView"/>
+                    </DataTemplate>
+                </dockManager:LayoutManager.DocumentTemplates>
+                <dockManager:LayoutManager.ToolTemplates>
+                    <DataTemplate DataType="{x:Type viewModel:ToolOneViewModel}">
+                        <view:ToolOneView x:Name="_toolOneView"/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:ToolTwoViewModel}">
+                        <view:ToolTwoView x:Name="_toolTwoView"/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:ToolThreeViewModel}">
+                        <view:ToolThreeView x:Name="_toolThreeView"/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:ToolFourViewModel}">
+                        <view:ToolFourView x:Name="_toolFourView"/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:ToolFiveViewModel}">
+                        <view:ToolFiveView x:Name="_toolFiveView"/>
+                    </DataTemplate>
+                </dockManager:LayoutManager.ToolTemplates>
+            </dockManager:LayoutManager>
+        </Grid>
+    </Border>-->
+
+
+
+
+
+
+
+    <DockPanel Background="#EEEEEE">
+
+
         <Menu DockPanel.Dock="Top" >
             <MenuItem Header="File">
                 <MenuItem Header="Exit" Command="{Binding AppCloseCommand}"/>
             </MenuItem>
-            <MenuItem Header="About"/>
+            <MenuItem Header="Documents" Click="_buttonDocuments_Click"/>
+            <MenuItem Header="Tools" Click="_buttonTools_Click"/>
+            <MenuItem Header="Layout" Click="_buttonWindow_Click"/>
         </Menu>
-        <Button Content="Button" Width="Auto"/>
-        <hc:Shield Content="Shield" Width="100"/>
 
+        
+        <Grid x:Name="parentContainer">
+            
+
+            <dockManager:LayoutManager 
+                x:Name="_layoutManager" Grid.Row="0" Grid.Column="0" 
+                DocumentsSource="{Binding Documents}" 
+                ToolsSource="{Binding Tools}" 
+                VerticalAlignment="Stretch" 
+                HorizontalAlignment="Stretch" Background="#EEEEEE" >
+                
+                <dockManager:LayoutManager.Theme>
+                    <themes:VS2019Theme/>
+                </dockManager:LayoutManager.Theme>
+                <dockManager:LayoutManager.DocumentTemplates>
+                    <DataTemplate DataType="{x:Type viewModel:DocumentOneViewModel}">
+                        <view:DocumentOneView x:Name="_documentOneView"/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:DocumentTwoViewModel}">
+                        <view:DocumentTwoView x:Name="_documentTwoView"/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:DocumentThreeViewModel}">
+                        <view:DocumentThreeView x:Name="_documentThreeView"/>
+                    </DataTemplate>
+                </dockManager:LayoutManager.DocumentTemplates>
+                <dockManager:LayoutManager.ToolTemplates>
+                    <DataTemplate DataType="{x:Type viewModel:ToolOneViewModel}">
+                        <view:ToolOneView x:Name="_toolOneView"/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:ToolTwoViewModel}">
+                        <view:ToolTwoView x:Name="_toolTwoView"/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:ToolThreeViewModel}">
+                        <view:ToolThreeView x:Name="_toolThreeView"/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:ToolFourViewModel}">
+                        <view:ToolFourView x:Name="_toolFourView"/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:ToolFiveViewModel}">
+                        <view:ToolFiveView x:Name="_toolFiveView"/>
+                    </DataTemplate>
+                </dockManager:LayoutManager.ToolTemplates>
+            </dockManager:LayoutManager>
+
+        </Grid>
+
+        
 
 
     </DockPanel>

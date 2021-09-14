@@ -10,3 +10,15 @@ C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager
 C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager.Themes.Modern\obj\Debug\OpenControls.Wpf.DockManager.Themes.Modern.csproj.CopyComplete
 C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager.Themes.Modern\obj\Debug\OpenControls.Wpf.DockManager.Themes.Modern.dll
 C:\Users\Vanny\source\repos\OpenControls.Wpf-master\OpenControls.Wpf.DockManager.Themes.Modern\obj\Debug\OpenControls.Wpf.DockManager.Themes.Modern.pdb
+C:\Users\Vanny\source\repos\WindowWrap\OpenControls.Wpf.DockManager\bin\Debug\OpenControls.Wpf.DockManager.Themes.Modern.dll
+C:\Users\Vanny\source\repos\WindowWrap\OpenControls.Wpf.DockManager\bin\Debug\OpenControls.Wpf.DockManager.Themes.Modern.pdb
+C:\Users\Vanny\source\repos\WindowWrap\OpenControls.Wpf.DockManager.Themes.Modern\obj\Debug\OpenControls.Wpf.DockManager.Themes.Modern.csprojAssemblyReference.cache
+C:\Users\Vanny\source\repos\WindowWrap\OpenControls.Wpf.DockManager.Themes.Modern\obj\Debug\Dictionary.baml
+C:\Users\Vanny\source\repos\WindowWrap\OpenControls.Wpf.DockManager.Themes.Modern\obj\Debug\OpenControls.Wpf.DockManager.Themes.Modern_MarkupCompile.cache
+C:\Users\Vanny\source\repos\WindowWrap\OpenControls.Wpf.DockManager.Themes.Modern\obj\Debug\OpenControls.Wpf.DockManager.Themes.Modern.g.resources
+C:\Users\Vanny\source\repos\WindowWrap\OpenControls.Wpf.DockManager.Themes.Modern\obj\Debug\OpenControls.Wpf.DockManager.Themes.Modern.Properties.Resources.resources
+C:\Users\Vanny\source\repos\WindowWrap\OpenControls.Wpf.DockManager.Themes.Modern\obj\Debug\OpenControls.Wpf.DockManager.Themes.Modern.csproj.GenerateResource.cache
+C:\Users\Vanny\source\repos\WindowWrap\OpenControls.Wpf.DockManager.Themes.Modern\obj\Debug\OpenControls.Wpf.DockManager.Themes.Modern.csproj.CoreCompileInputs.cache
+C:\Users\Vanny\source\repos\WindowWrap\OpenControls.Wpf.DockManager.Themes.Modern\obj\Debug\OpenControls.Wpf.DockManager.Themes.Modern.csproj.CopyComplete
+C:\Users\Vanny\source\repos\WindowWrap\OpenControls.Wpf.DockManager.Themes.Modern\obj\Debug\OpenControls.Wpf.DockManager.Themes.Modern.dll
+C:\Users\Vanny\source\repos\WindowWrap\OpenControls.Wpf.DockManager.Themes.Modern\obj\Debug\OpenControls.Wpf.DockManager.Themes.Modern.pdb
