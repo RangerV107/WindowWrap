@@ -143,7 +143,7 @@ namespace OpenControls.Wpf.DockManager
             IDockPaneManager.ValidateDockPanes(_root, viewModelUrlDictionary, typeof(DocumentPaneGroup));
         }
 
-        #region dependency properties 
+        #region dependency properties
 
         #region Theme
 

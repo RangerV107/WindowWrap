@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Win32;
+using WindowWrap.ViewModel;
 
 namespace WindowWrap
 {
@@ -14,10 +15,11 @@ namespace WindowWrap
         {
             InitializeComponent();
 
-            DataContext = new ExampleDockManagerViews.ViewModel.MainViewModel();
+            //DataContext = new ExampleDockManagerViews.ViewModel.MainViewModel();
         }
 
-        private string _keyPath = System.Environment.Is64BitOperatingSystem ? @"SOFTWARE\Wow6432Node\OpenControls\WpfDockManagerDemo" : @"SOFTWARE\OpenControls\WpfDockManagerDemo";
+        private string _keyPath = System.Environment.Is64BitOperatingSystem ? 
+            @"SOFTWARE\Wow6432Node\OpenControls\WpfDockManagerDemo" : @"SOFTWARE\OpenControls\WpfDockManagerDemo";
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -77,7 +79,8 @@ namespace WindowWrap
             try
             {
                 _layoutManager.LoadLayoutFromFile(path);
-                ExampleDockManagerViews.ViewModel.MainViewModel mainViewModel = DataContext as ExampleDockManagerViews.ViewModel.MainViewModel;
+                //ExampleDockManagerViews.ViewModel.MainViewModel mainViewModel = DataContext as ExampleDockManagerViews.ViewModel.MainViewModel;
+                MainWindowViewModel mainViewModel = DataContext as MainWindowViewModel;
                 mainViewModel.LayoutLoaded = true;
             }
             catch (Exception exception)
@@ -176,48 +179,50 @@ namespace WindowWrap
 
         private void _buttonTools_Click(object sender, RoutedEventArgs e)
         {
-            ExampleDockManagerViews.ViewModel.MainViewModel mainViewModel = DataContext as ExampleDockManagerViews.ViewModel.MainViewModel;
+            //ExampleDockManagerViews.ViewModel.MainViewModel mainViewModel = DataContext as ExampleDockManagerViews.ViewModel.MainViewModel;
+            MainWindowViewModel mainViewModel = DataContext as MainWindowViewModel;
             System.Diagnostics.Trace.Assert(mainViewModel != null);
 
             ContextMenu contextMenu = new ContextMenu();
             MenuItem menuItem = null;
-            
+
             menuItem = new MenuItem();
             menuItem.Header = "Tool One";
             menuItem.IsChecked = mainViewModel.ToolOneVisible;
             menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolOneVisible = !mainViewModel.ToolOneVisible; }, delegate { return true; });
             contextMenu.Items.Add(menuItem);
 
-            menuItem = new MenuItem();
-            menuItem.Header = "Tool Two";
-            menuItem.IsChecked = mainViewModel.ToolTwoVisible;
-            menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolTwoVisible = !mainViewModel.ToolTwoVisible; }, delegate { return true; });
-            contextMenu.Items.Add(menuItem);
+            //menuItem = new MenuItem();
+            //menuItem.Header = "Tool Two";
+            //menuItem.IsChecked = mainViewModel.ToolTwoVisible;
+            //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolTwoVisible = !mainViewModel.ToolTwoVisible; }, delegate { return true; });
+            //contextMenu.Items.Add(menuItem);
 
-            menuItem = new MenuItem();
-            menuItem.Header = "Tool Three";
-            menuItem.IsChecked = mainViewModel.ToolThreeVisible;
-            menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolThreeVisible = !mainViewModel.ToolThreeVisible; }, delegate { return true; });
-            contextMenu.Items.Add(menuItem);
+            //menuItem = new MenuItem();
+            //menuItem.Header = "Tool Three";
+            //menuItem.IsChecked = mainViewModel.ToolThreeVisible;
+            //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolThreeVisible = !mainViewModel.ToolThreeVisible; }, delegate { return true; });
+            //contextMenu.Items.Add(menuItem);
 
-            menuItem = new MenuItem();
-            menuItem.Header = "Tool Four";
-            menuItem.IsChecked = mainViewModel.ToolFourVisible;
-            menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolFourVisible = !mainViewModel.ToolFourVisible; }, delegate { return true; });
-            contextMenu.Items.Add(menuItem);
+            //menuItem = new MenuItem();
+            //menuItem.Header = "Tool Four";
+            //menuItem.IsChecked = mainViewModel.ToolFourVisible;
+            //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolFourVisible = !mainViewModel.ToolFourVisible; }, delegate { return true; });
+            //contextMenu.Items.Add(menuItem);
 
-            menuItem = new MenuItem();
-            menuItem.Header = "Tool Five";
-            menuItem.IsChecked = mainViewModel.ToolFiveVisible;
-            menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolFiveVisible = !mainViewModel.ToolFiveVisible; }, delegate { return true; });
-            contextMenu.Items.Add(menuItem);
+            //menuItem = new MenuItem();
+            //menuItem.Header = "Tool Five";
+            //menuItem.IsChecked = mainViewModel.ToolFiveVisible;
+            //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolFiveVisible = !mainViewModel.ToolFiveVisible; }, delegate { return true; });
+            //contextMenu.Items.Add(menuItem);
 
             contextMenu.IsOpen = true;
         }
 
         private void _buttonDocuments_Click(object sender, RoutedEventArgs e)
         {
-            ExampleDockManagerViews.ViewModel.MainViewModel mainViewModel = DataContext as ExampleDockManagerViews.ViewModel.MainViewModel;
+            //ExampleDockManagerViews.ViewModel.MainViewModel mainViewModel = DataContext as ExampleDockManagerViews.ViewModel.MainViewModel;
+            MainWindowViewModel mainViewModel = DataContext as MainWindowViewModel;
             System.Diagnostics.Trace.Assert(mainViewModel != null);
 
             ContextMenu contextMenu = new ContextMenu();
@@ -229,29 +234,29 @@ namespace WindowWrap
             menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.DocumentOneVisible = !mainViewModel.DocumentOneVisible; }, delegate { return true; });
             contextMenu.Items.Add(menuItem);
 
-            menuItem = new MenuItem();
-            menuItem.Header = mainViewModel.DocumentTwo.URL;
-            menuItem.IsChecked = mainViewModel.DocumentTwoVisible;
-            menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.DocumentTwoVisible = !mainViewModel.DocumentTwoVisible; }, delegate { return true; });
-            contextMenu.Items.Add(menuItem);
+            //menuItem = new MenuItem();
+            //menuItem.Header = mainViewModel.DocumentTwo.URL;
+            //menuItem.IsChecked = mainViewModel.DocumentTwoVisible;
+            //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.DocumentTwoVisible = !mainViewModel.DocumentTwoVisible; }, delegate { return true; });
+            //contextMenu.Items.Add(menuItem);
 
-            menuItem = new MenuItem();
-            menuItem.Header = mainViewModel.DocumentThree.URL;
-            menuItem.IsChecked = mainViewModel.DocumentThreeVisible;
-            menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.DocumentThreeVisible = !mainViewModel.DocumentThreeVisible; }, delegate { return true; });
-            contextMenu.Items.Add(menuItem);
+            //menuItem = new MenuItem();
+            //menuItem.Header = mainViewModel.DocumentThree.URL;
+            //menuItem.IsChecked = mainViewModel.DocumentThreeVisible;
+            //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.DocumentThreeVisible = !mainViewModel.DocumentThreeVisible; }, delegate { return true; });
+            //contextMenu.Items.Add(menuItem);
 
-            menuItem = new MenuItem();
-            menuItem.Header = mainViewModel.DocumentFour.URL;
-            menuItem.IsChecked = mainViewModel.DocumentFourVisible;
-            menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.DocumentFourVisible = !mainViewModel.DocumentFourVisible; }, delegate { return true; });
-            contextMenu.Items.Add(menuItem);
+            //menuItem = new MenuItem();
+            //menuItem.Header = mainViewModel.DocumentFour.URL;
+            //menuItem.IsChecked = mainViewModel.DocumentFourVisible;
+            //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.DocumentFourVisible = !mainViewModel.DocumentFourVisible; }, delegate { return true; });
+            //contextMenu.Items.Add(menuItem);
 
-            menuItem = new MenuItem();
-            menuItem.Header = mainViewModel.DocumentFive.URL;
-            menuItem.IsChecked = mainViewModel.DocumentFiveVisible;
-            menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.DocumentFiveVisible = !mainViewModel.DocumentFiveVisible; }, delegate { return true; });
-            contextMenu.Items.Add(menuItem);
+            //menuItem = new MenuItem();
+            //menuItem.Header = mainViewModel.DocumentFive.URL;
+            //menuItem.IsChecked = mainViewModel.DocumentFiveVisible;
+            //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.DocumentFiveVisible = !mainViewModel.DocumentFiveVisible; }, delegate { return true; });
+            //contextMenu.Items.Add(menuItem);
 
             contextMenu.IsOpen = true;
         }
