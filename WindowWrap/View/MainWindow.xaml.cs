@@ -181,7 +181,7 @@ namespace WindowWrap
 
             ContextMenu contextMenu = new ContextMenu();
             MenuItem menuItem = null;
-
+            
             menuItem = new MenuItem();
             menuItem.Header = "Tool One";
             menuItem.IsChecked = mainViewModel.ToolOneVisible;

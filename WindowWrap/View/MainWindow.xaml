@@ -9,7 +9,7 @@
         xmlns:view="clr-namespace:ExampleDockManagerViews.View;assembly=OpenControls.Wpf.DockManagerDemoViews"
         xmlns:viewModel="clr-namespace:ExampleDockManagerViews.ViewModel;assembly=OpenControls.Wpf.DockManagerDemoViews"
         xmlns:dockManager="clr-namespace:OpenControls.Wpf.DockManager;assembly=OpenControls.Wpf.DockManager"
-        xmlns:themes="clr-namespace:OpenControls.Wpf.DockManager.Themes;assembly=OpenControls.Wpf.DockManager.Themes.VS2019"
+        xmlns:themes="clr-namespace:OpenControls.Wpf.DockManager.Themes;assembly=WindowWrap.DockManager.Themes.Dafault"
         
         xmlns:cmds="clr-namespace:WindowWrap.Infrastructure.Commands"
         xmlns:hc="https://handyorg.github.io/handycontrol"
@@ -145,7 +145,7 @@
                 HorizontalAlignment="Stretch" Background="#EEEEEE" >
                 
                 <dockManager:LayoutManager.Theme>
-                    <themes:VS2019Theme/>
+                    <themes:DefaultTheme/>
                 </dockManager:LayoutManager.Theme>
                 <dockManager:LayoutManager.DocumentTemplates>
                     <DataTemplate DataType="{x:Type viewModel:DocumentOneViewModel}">

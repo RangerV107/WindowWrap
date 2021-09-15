@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using WindowWrap.Infrastructure.Commands;
 using WindowWrap.ViewModel.Base;
@@ -39,6 +36,12 @@ namespace WindowWrap.ViewModel
                 OnAppCloseCommandExecuted, CanAppCloseCommandExecute);
             #endregion
         }
+
+
+
+
+
+
 
 
     }

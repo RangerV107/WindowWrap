@@ -1,0 +1,9 @@
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap.DockManager.Views\bin\Debug\netcoreapp3.1\WindowWrap.DockManager.Views.deps.json
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap.DockManager.Views\bin\Debug\netcoreapp3.1\WindowWrap.DockManager.Views.dll
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap.DockManager.Views\bin\Debug\netcoreapp3.1\WindowWrap.DockManager.Views.pdb
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap.DockManager.Views\obj\Debug\netcoreapp3.1\WindowWrap.DockManager.Views.csprojAssemblyReference.cache
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap.DockManager.Views\obj\Debug\netcoreapp3.1\WindowWrap.DockManager.Views.AssemblyInfoInputs.cache
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap.DockManager.Views\obj\Debug\netcoreapp3.1\WindowWrap.DockManager.Views.AssemblyInfo.cs
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap.DockManager.Views\obj\Debug\netcoreapp3.1\WindowWrap.DockManager.Views.csproj.CoreCompileInputs.cache
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap.DockManager.Views\obj\Debug\netcoreapp3.1\WindowWrap.DockManager.Views.dll
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap.DockManager.Views\obj\Debug\netcoreapp3.1\WindowWrap.DockManager.Views.pdb

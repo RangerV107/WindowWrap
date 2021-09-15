@@ -1,7 +1,6 @@
-using OpenControls.Wpf.DockManager.Themes;
 using System;
 
-namespace WindowWrap.DockManager.Themes.Dafault
+namespace OpenControls.Wpf.DockManager.Themes
 {
     public class DefaultTheme : Theme
     {

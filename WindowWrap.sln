@@ -9,19 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DockManager", "DockManager"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenControls.Wpf.DockManager", "OpenControls.Wpf.DockManager\OpenControls.Wpf.DockManager.csproj", "{C4D43E50-84B0-47FF-888E-7C8351368BD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenControls.Wpf.DockManager.Themes.Modern", "OpenControls.Wpf.DockManager.Themes.Modern\OpenControls.Wpf.DockManager.Themes.Modern.csproj", "{E2FCBC58-6CA9-4EA6-852E-EBB43E596F19}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenControls.Wpf.DockManager.Themes.VS2019", "OpenControls.Wpf.DockManager.Themes.VS2019\OpenControls.Wpf.DockManager.Themes.VS2019.csproj", "{968C6AFE-1E13-4F9D-B8FC-28B2A2168C9D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenControls.Wpf.DockManagerDemo", "OpenControls.Wpf.DockManagerDemo\OpenControls.Wpf.DockManagerDemo.csproj", "{9843B6E4-5B93-46FA-96B8-05E423118E9F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenControls.Wpf.DockManagerDemoViews", "OpenControls.Wpf.DockManagerDemoViews\OpenControls.Wpf.DockManagerDemoViews.csproj", "{F83C1BA1-ABCC-40BE-A01F-B3055CEEC229}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenControls.Wpf.TabHeaderControl", "OpenControls.Wpf.TabHeaderControl\OpenControls.Wpf.TabHeaderControl.csproj", "{8E8A4B99-7396-4CE2-81B1-53B2DA0827FB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenControls.Wpf.Utilities", "OpenControls.Wpf.Utilities\OpenControls.Wpf.Utilities.csproj", "{117F1160-81BF-42CD-B48C-E73BEC059B30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowWrap.DockManager.Themes.Dafault", "WindowWrap.DockManager.Themes.Dafault\WindowWrap.DockManager.Themes.Dafault.csproj", "{9BF421D8-6802-4A58-A50F-5E99CDC1E016}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowWrap.DockManager.Themes.Dafault", "WindowWrap.DockManager.Themes.Dafault\WindowWrap.DockManager.Themes.Dafault.csproj", "{9BF421D8-6802-4A58-A50F-5E99CDC1E016}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DockManagerCustom", "DockManagerCustom", "{3A4E842E-3081-4227-8006-C53FBE8A13D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowWrap.DockManager.Views", "WindowWrap.DockManager.Views\WindowWrap.DockManager.Views.csproj", "{90354656-0090-44D2-8401-0BCC975B89FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,18 +35,6 @@ Global
 		{C4D43E50-84B0-47FF-888E-7C8351368BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4D43E50-84B0-47FF-888E-7C8351368BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4D43E50-84B0-47FF-888E-7C8351368BD6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E2FCBC58-6CA9-4EA6-852E-EBB43E596F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2FCBC58-6CA9-4EA6-852E-EBB43E596F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2FCBC58-6CA9-4EA6-852E-EBB43E596F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2FCBC58-6CA9-4EA6-852E-EBB43E596F19}.Release|Any CPU.Build.0 = Release|Any CPU
-		{968C6AFE-1E13-4F9D-B8FC-28B2A2168C9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{968C6AFE-1E13-4F9D-B8FC-28B2A2168C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{968C6AFE-1E13-4F9D-B8FC-28B2A2168C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{968C6AFE-1E13-4F9D-B8FC-28B2A2168C9D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9843B6E4-5B93-46FA-96B8-05E423118E9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9843B6E4-5B93-46FA-96B8-05E423118E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9843B6E4-5B93-46FA-96B8-05E423118E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9843B6E4-5B93-46FA-96B8-05E423118E9F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F83C1BA1-ABCC-40BE-A01F-B3055CEEC229}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F83C1BA1-ABCC-40BE-A01F-B3055CEEC229}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F83C1BA1-ABCC-40BE-A01F-B3055CEEC229}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -65,19 +51,21 @@ Global
 		{9BF421D8-6802-4A58-A50F-5E99CDC1E016}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BF421D8-6802-4A58-A50F-5E99CDC1E016}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BF421D8-6802-4A58-A50F-5E99CDC1E016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90354656-0090-44D2-8401-0BCC975B89FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90354656-0090-44D2-8401-0BCC975B89FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90354656-0090-44D2-8401-0BCC975B89FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90354656-0090-44D2-8401-0BCC975B89FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C4D43E50-84B0-47FF-888E-7C8351368BD6} = {403BA3EE-EE3A-4E8E-9700-906FB50D5322}
-		{E2FCBC58-6CA9-4EA6-852E-EBB43E596F19} = {403BA3EE-EE3A-4E8E-9700-906FB50D5322}
-		{968C6AFE-1E13-4F9D-B8FC-28B2A2168C9D} = {403BA3EE-EE3A-4E8E-9700-906FB50D5322}
-		{9843B6E4-5B93-46FA-96B8-05E423118E9F} = {403BA3EE-EE3A-4E8E-9700-906FB50D5322}
-		{F83C1BA1-ABCC-40BE-A01F-B3055CEEC229} = {403BA3EE-EE3A-4E8E-9700-906FB50D5322}
+		{F83C1BA1-ABCC-40BE-A01F-B3055CEEC229} = {3A4E842E-3081-4227-8006-C53FBE8A13D3}
 		{8E8A4B99-7396-4CE2-81B1-53B2DA0827FB} = {403BA3EE-EE3A-4E8E-9700-906FB50D5322}
 		{117F1160-81BF-42CD-B48C-E73BEC059B30} = {403BA3EE-EE3A-4E8E-9700-906FB50D5322}
-		{9BF421D8-6802-4A58-A50F-5E99CDC1E016} = {403BA3EE-EE3A-4E8E-9700-906FB50D5322}
+		{9BF421D8-6802-4A58-A50F-5E99CDC1E016} = {3A4E842E-3081-4227-8006-C53FBE8A13D3}
+		{90354656-0090-44D2-8401-0BCC975B89FC} = {3A4E842E-3081-4227-8006-C53FBE8A13D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C198F321-CA12-4CCB-8758-4FCB821C793D}

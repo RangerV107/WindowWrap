@@ -53,47 +53,6 @@
           "bin/placeholder/OpenControls.Wpf.DockManager.dll": {}
         }
       },
-      "OpenControls.Wpf.DockManager.Themes.Modern/1.0.0": {
-        "type": "project",
-        "dependencies": {
-          "OpenControls.Wpf.DockManager": "1.0.0",
-          "OpenControls.Wpf.TabHeaderControl": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/OpenControls.Wpf.DockManager.Themes.Modern.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/OpenControls.Wpf.DockManager.Themes.Modern.dll": {}
-        }
-      },
-      "OpenControls.Wpf.DockManager.Themes.VS2019/1.0.0": {
-        "type": "project",
-        "dependencies": {
-          "OpenControls.Wpf.DockManager": "1.0.0",
-          "OpenControls.Wpf.TabHeaderControl": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/OpenControls.Wpf.DockManager.Themes.VS2019.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/OpenControls.Wpf.DockManager.Themes.VS2019.dll": {}
-        }
-      },
-      "OpenControls.Wpf.DockManagerDemo/1.0.0": {
-        "type": "project",
-        "dependencies": {
-          "OpenControls.Wpf.DockManager": "1.0.0",
-          "OpenControls.Wpf.DockManager.Themes.VS2019": "1.0.0",
-          "OpenControls.Wpf.DockManagerDemoViews": "1.0.0",
-          "OpenControls.Wpf.Utilities": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/OpenControls.Wpf.DockManagerDemo.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/OpenControls.Wpf.DockManagerDemo.dll": {}
-        }
-      },
       "OpenControls.Wpf.DockManagerDemoViews/1.0.0": {
         "type": "project",
         "dependencies": {
@@ -139,6 +98,19 @@
         },
         "runtime": {
           "bin/placeholder/WindowWrap.DockManager.Themes.Dafault.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "WindowWrap.DockManager.Views/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/WindowWrap.DockManager.Views.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WindowWrap.DockManager.Views.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
@@ -325,21 +297,6 @@
       "path": "../OpenControls.Wpf.DockManager/OpenControls.Wpf.DockManager.csproj",
       "msbuildProject": "../OpenControls.Wpf.DockManager/OpenControls.Wpf.DockManager.csproj"
     },
-    "OpenControls.Wpf.DockManager.Themes.Modern/1.0.0": {
-      "type": "project",
-      "path": "../OpenControls.Wpf.DockManager.Themes.Modern/OpenControls.Wpf.DockManager.Themes.Modern.csproj",
-      "msbuildProject": "../OpenControls.Wpf.DockManager.Themes.Modern/OpenControls.Wpf.DockManager.Themes.Modern.csproj"
-    },
-    "OpenControls.Wpf.DockManager.Themes.VS2019/1.0.0": {
-      "type": "project",
-      "path": "../OpenControls.Wpf.DockManager.Themes.VS2019/OpenControls.Wpf.DockManager.Themes.VS2019.csproj",
-      "msbuildProject": "../OpenControls.Wpf.DockManager.Themes.VS2019/OpenControls.Wpf.DockManager.Themes.VS2019.csproj"
-    },
-    "OpenControls.Wpf.DockManagerDemo/1.0.0": {
-      "type": "project",
-      "path": "../OpenControls.Wpf.DockManagerDemo/OpenControls.Wpf.DockManagerDemo.csproj",
-      "msbuildProject": "../OpenControls.Wpf.DockManagerDemo/OpenControls.Wpf.DockManagerDemo.csproj"
-    },
     "OpenControls.Wpf.DockManagerDemoViews/1.0.0": {
       "type": "project",
       "path": "../OpenControls.Wpf.DockManagerDemoViews/OpenControls.Wpf.DockManagerDemoViews.csproj",
@@ -359,17 +316,20 @@
       "type": "project",
       "path": "../WindowWrap.DockManager.Themes.Dafault/WindowWrap.DockManager.Themes.Dafault.csproj",
       "msbuildProject": "../WindowWrap.DockManager.Themes.Dafault/WindowWrap.DockManager.Themes.Dafault.csproj"
+    },
+    "WindowWrap.DockManager.Views/1.0.0": {
+      "type": "project",
+      "path": "../WindowWrap.DockManager.Views/WindowWrap.DockManager.Views.csproj",
+      "msbuildProject": "../WindowWrap.DockManager.Views/WindowWrap.DockManager.Views.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "HandyControl >= 3.2.0",
       "OpenControls.Wpf.DockManager >= 1.0.0",
-      "OpenControls.Wpf.DockManager.Themes.Modern >= 1.0.0",
-      "OpenControls.Wpf.DockManager.Themes.VS2019 >= 1.0.0",
-      "OpenControls.Wpf.DockManagerDemo >= 1.0.0",
       "OpenControls.Wpf.DockManagerDemoViews >= 1.0.0",
-      "WindowWrap.DockManager.Themes.Dafault >= 1.0.0"
+      "WindowWrap.DockManager.Themes.Dafault >= 1.0.0",
+      "WindowWrap.DockManager.Views >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -399,23 +359,17 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManager.Themes.Modern\\OpenControls.Wpf.DockManager.Themes.Modern.csproj": {
-              "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManager.Themes.Modern\\OpenControls.Wpf.DockManager.Themes.Modern.csproj"
-            },
-            "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManager.Themes.VS2019\\OpenControls.Wpf.DockManager.Themes.VS2019.csproj": {
-              "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManager.Themes.VS2019\\OpenControls.Wpf.DockManager.Themes.VS2019.csproj"
-            },
             "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManagerDemoViews\\OpenControls.Wpf.DockManagerDemoViews.csproj": {
               "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManagerDemoViews\\OpenControls.Wpf.DockManagerDemoViews.csproj"
-            },
-            "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManagerDemo\\OpenControls.Wpf.DockManagerDemo.csproj": {
-              "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManagerDemo\\OpenControls.Wpf.DockManagerDemo.csproj"
             },
             "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManager\\OpenControls.Wpf.DockManager.csproj": {
               "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManager\\OpenControls.Wpf.DockManager.csproj"
             },
             "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\WindowWrap.DockManager.Themes.Dafault\\WindowWrap.DockManager.Themes.Dafault.csproj": {
               "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\WindowWrap.DockManager.Themes.Dafault\\WindowWrap.DockManager.Themes.Dafault.csproj"
+            },
+            "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\WindowWrap.DockManager.Views\\WindowWrap.DockManager.Views.csproj": {
+              "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\WindowWrap.DockManager.Views\\WindowWrap.DockManager.Views.csproj"
             }
           }
         }

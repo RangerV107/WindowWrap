@@ -16,26 +16,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OpenControls.Wpf.DockManager.Themes.Modern\OpenControls.Wpf.DockManager.Themes.Modern.csproj">
-      <Private>true</Private>
-      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
-    </ProjectReference>
-    <ProjectReference Include="..\OpenControls.Wpf.DockManager.Themes.VS2019\OpenControls.Wpf.DockManager.Themes.VS2019.csproj">
-      <Private>true</Private>
-      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
-    </ProjectReference>
     <ProjectReference Include="..\OpenControls.Wpf.DockManagerDemoViews\OpenControls.Wpf.DockManagerDemoViews.csproj">
       <Private>true</Private>
       <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
-    </ProjectReference>
-    <ProjectReference Include="..\OpenControls.Wpf.DockManagerDemo\OpenControls.Wpf.DockManagerDemo.csproj">
-      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
-      <Private>true</Private>
     </ProjectReference>
     <ProjectReference Include="..\OpenControls.Wpf.DockManager\OpenControls.Wpf.DockManager.csproj">
       <Private>true</Private>
       <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
     </ProjectReference>
+    <ProjectReference Include="..\WindowWrap.DockManager.Themes.Dafault\WindowWrap.DockManager.Themes.Dafault.csproj" />
+    <ProjectReference Include="..\WindowWrap.DockManager.Views\WindowWrap.DockManager.Views.csproj" />
   </ItemGroup>
 
 </Project>

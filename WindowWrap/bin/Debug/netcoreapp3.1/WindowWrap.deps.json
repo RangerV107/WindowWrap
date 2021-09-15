@@ -10,10 +10,9 @@
         "dependencies": {
           "HandyControl": "3.2.0",
           "OpenControls.Wpf.DockManager": "1.0.0",
-          "OpenControls.Wpf.DockManager.Themes.Modern": "1.0.0",
-          "OpenControls.Wpf.DockManager.Themes.VS2019": "1.0.0",
-          "OpenControls.Wpf.DockManagerDemo": "1.0.0",
-          "OpenControls.Wpf.DockManagerDemoViews": "1.0.0"
+          "OpenControls.Wpf.DockManagerDemoViews": "1.0.0",
+          "WindowWrap.DockManager.Themes.Dafault": "1.0.0",
+          "WindowWrap.DockManager.Views": "1.0.0"
         },
         "runtime": {
           "WindowWrap.dll": {}
@@ -65,35 +64,6 @@
           "OpenControls.Wpf.DockManager.dll": {}
         }
       },
-      "OpenControls.Wpf.DockManager.Themes.Modern/1.0.0": {
-        "dependencies": {
-          "OpenControls.Wpf.DockManager": "1.0.0",
-          "OpenControls.Wpf.TabHeaderControl": "1.0.0"
-        },
-        "runtime": {
-          "OpenControls.Wpf.DockManager.Themes.Modern.dll": {}
-        }
-      },
-      "OpenControls.Wpf.DockManager.Themes.VS2019/1.0.0": {
-        "dependencies": {
-          "OpenControls.Wpf.DockManager": "1.0.0",
-          "OpenControls.Wpf.TabHeaderControl": "1.0.0"
-        },
-        "runtime": {
-          "OpenControls.Wpf.DockManager.Themes.VS2019.dll": {}
-        }
-      },
-      "OpenControls.Wpf.DockManagerDemo/1.0.0": {
-        "dependencies": {
-          "OpenControls.Wpf.DockManager": "1.0.0",
-          "OpenControls.Wpf.DockManager.Themes.VS2019": "1.0.0",
-          "OpenControls.Wpf.DockManagerDemoViews": "1.0.0",
-          "OpenControls.Wpf.Utilities": "1.0.0"
-        },
-        "runtime": {
-          "OpenControls.Wpf.DockManagerDemo.exe": {}
-        }
-      },
       "OpenControls.Wpf.DockManagerDemoViews/1.0.0": {
         "dependencies": {
           "OpenControls.Wpf.DockManager": "1.0.0"
@@ -113,6 +83,20 @@
       "OpenControls.Wpf.Utilities/1.0.0": {
         "runtime": {
           "OpenControls.Wpf.Utilities.dll": {}
+        }
+      },
+      "WindowWrap.DockManager.Themes.Dafault/1.0.0": {
+        "dependencies": {
+          "OpenControls.Wpf.DockManager": "1.0.0",
+          "OpenControls.Wpf.TabHeaderControl": "1.0.0"
+        },
+        "runtime": {
+          "WindowWrap.DockManager.Themes.Dafault.dll": {}
+        }
+      },
+      "WindowWrap.DockManager.Views/1.0.0": {
+        "runtime": {
+          "WindowWrap.DockManager.Views.dll": {}
         }
       }
     }
@@ -135,21 +119,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "OpenControls.Wpf.DockManager.Themes.Modern/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "OpenControls.Wpf.DockManager.Themes.VS2019/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "OpenControls.Wpf.DockManagerDemo/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "OpenControls.Wpf.DockManagerDemoViews/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -161,6 +130,16 @@
       "sha512": ""
     },
     "OpenControls.Wpf.Utilities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WindowWrap.DockManager.Themes.Dafault/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WindowWrap.DockManager.Views/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
