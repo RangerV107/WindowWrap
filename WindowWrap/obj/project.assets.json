@@ -126,6 +126,23 @@
         "runtime": {
           "bin/placeholder/OpenControls.Wpf.Utilities.dll": {}
         }
+      },
+      "WindowWrap.DockManager.Themes.Dafault/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "OpenControls.Wpf.DockManager": "1.0.0",
+          "OpenControls.Wpf.TabHeaderControl": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/WindowWrap.DockManager.Themes.Dafault.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WindowWrap.DockManager.Themes.Dafault.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
       }
     }
   },
@@ -337,6 +354,11 @@
       "type": "project",
       "path": "../OpenControls.Wpf.Utilities/OpenControls.Wpf.Utilities.csproj",
       "msbuildProject": "../OpenControls.Wpf.Utilities/OpenControls.Wpf.Utilities.csproj"
+    },
+    "WindowWrap.DockManager.Themes.Dafault/1.0.0": {
+      "type": "project",
+      "path": "../WindowWrap.DockManager.Themes.Dafault/WindowWrap.DockManager.Themes.Dafault.csproj",
+      "msbuildProject": "../WindowWrap.DockManager.Themes.Dafault/WindowWrap.DockManager.Themes.Dafault.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -346,7 +368,8 @@
       "OpenControls.Wpf.DockManager.Themes.Modern >= 1.0.0",
       "OpenControls.Wpf.DockManager.Themes.VS2019 >= 1.0.0",
       "OpenControls.Wpf.DockManagerDemo >= 1.0.0",
-      "OpenControls.Wpf.DockManagerDemoViews >= 1.0.0"
+      "OpenControls.Wpf.DockManagerDemoViews >= 1.0.0",
+      "WindowWrap.DockManager.Themes.Dafault >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -390,6 +413,9 @@
             },
             "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManager\\OpenControls.Wpf.DockManager.csproj": {
               "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManager\\OpenControls.Wpf.DockManager.csproj"
+            },
+            "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\WindowWrap.DockManager.Themes.Dafault\\WindowWrap.DockManager.Themes.Dafault.csproj": {
+              "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\WindowWrap.DockManager.Themes.Dafault\\WindowWrap.DockManager.Themes.Dafault.csproj"
             }
           }
         }
