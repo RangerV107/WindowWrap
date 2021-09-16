@@ -4,12 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowWrap"
-        xmlns:viewmodel="clr-namespace:WindowWrap.ViewModel"
         
-        xmlns:view="clr-namespace:ExampleDockManagerViews.View;assembly=OpenControls.Wpf.DockManagerDemoViews"
-        xmlns:viewModel="clr-namespace:ExampleDockManagerViews.ViewModel;assembly=OpenControls.Wpf.DockManagerDemoViews"
-        xmlns:dockManager="clr-namespace:OpenControls.Wpf.DockManager;assembly=OpenControls.Wpf.DockManager"
-        xmlns:themes="clr-namespace:OpenControls.Wpf.DockManager.Themes;assembly=WindowWrap.DockManager.Themes.Dafault"
+        xmlns:view="clr-namespace:WindowWrap.View"
+        xmlns:viewModel="clr-namespace:WindowWrap.ViewModel"
+        
+        xmlns:dm_view="clr-namespace:ExampleDockManagerViews.View;assembly=OpenControls.Wpf.DockManagerDemoViews"
+        xmlns:dm_viewModel="clr-namespace:ExampleDockManagerViews.ViewModel;assembly=OpenControls.Wpf.DockManagerDemoViews"
+        xmlns:dm_dockManager="clr-namespace:OpenControls.Wpf.DockManager;assembly=OpenControls.Wpf.DockManager"
+        xmlns:dm_themes="clr-namespace:OpenControls.Wpf.DockManager.Themes;assembly=WindowWrap.DockManager.Themes.Dafault"
         
         xmlns:cmds="clr-namespace:WindowWrap.Infrastructure.Commands"
         xmlns:hc="https://handyorg.github.io/handycontrol"
@@ -69,38 +71,41 @@
                 <MenuItem Header="Exit" Command="{Binding AppCloseCommand}"/>
             </MenuItem>
             <MenuItem Header="Documents" Click="_buttonDocuments_Click"/>
-            <MenuItem Header="Tools" Click="_buttonTools_Click"/>
-            <MenuItem Header="Layout" Click="_buttonWindow_Click"/>
+            <!--<MenuItem Header="Tools" Click="_buttonTools_Click"/>
+            <MenuItem Header="Layout" Click="_buttonWindow_Click"/> -->
         </Menu>
 
         <Grid x:Name="parentContainer">
 
-            <dockManager:LayoutManager
+            <dm_dockManager:LayoutManager
                 x:Name="_layoutManager" Grid.Row="0" Grid.Column="0" 
                 DocumentsSource="{Binding Documents}" 
                 ToolsSource="{Binding Tools}" 
                 VerticalAlignment="Stretch" 
                 HorizontalAlignment="Stretch" Background="#EEEEEE" >
 
-                <dockManager:LayoutManager.Theme>
-                    <themes:DefaultTheme/>
-                </dockManager:LayoutManager.Theme>
-                <dockManager:LayoutManager.DocumentTemplates>
-                    <DataTemplate DataType="{x:Type viewModel:DocumentOneViewModel}">
-                        <view:DocumentOneView x:Name="_documentOneView"/>
+                <dm_dockManager:LayoutManager.Theme>
+                    <dm_themes:DefaultTheme/>
+                </dm_dockManager:LayoutManager.Theme>
+                <dm_dockManager:LayoutManager.DocumentTemplates>
+                    <DataTemplate DataType="{x:Type dm_viewModel:DocumentOneViewModel}">
+                        <dm_view:DocumentOneView x:Name="_documentOneView"/>
                     </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModel:DocumentTwoViewModel}">
-                        <view:DocumentTwoView x:Name="_documentTwoView"/>
+                    <DataTemplate DataType="{x:Type dm_viewModel:DocumentTwoViewModel}">
+                        <dm_view:DocumentTwoView x:Name="_documentTwoView"/>
                     </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModel:DocumentThreeViewModel}">
+                    <DataTemplate DataType="{x:Type viewModel:WindowViewModel}">
+                        <view:WindowView x:Name="_window1View"/>
+                    </DataTemplate>
+                    <!--<DataTemplate DataType="{x:Type viewModel:DocumentThreeViewModel}">
                         <view:DocumentThreeView x:Name="_documentThreeView"/>
+                    </DataTemplate>-->
+                </dm_dockManager:LayoutManager.DocumentTemplates>
+                <dm_dockManager:LayoutManager.ToolTemplates>
+                    <DataTemplate DataType="{x:Type dm_viewModel:ToolOneViewModel}">
+                        <dm_view:ToolOneView x:Name="_toolOneView"/>
                     </DataTemplate>
-                </dockManager:LayoutManager.DocumentTemplates>
-                <dockManager:LayoutManager.ToolTemplates>
-                    <DataTemplate DataType="{x:Type viewModel:ToolOneViewModel}">
-                        <view:ToolOneView x:Name="_toolOneView"/>
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModel:ToolTwoViewModel}">
+                    <!--<DataTemplate DataType="{x:Type viewModel:ToolTwoViewModel}">
                         <view:ToolTwoView x:Name="_toolTwoView"/>
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type viewModel:ToolThreeViewModel}">
@@ -111,9 +116,9 @@
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type viewModel:ToolFiveViewModel}">
                         <view:ToolFiveView x:Name="_toolFiveView"/>
-                    </DataTemplate>
-                </dockManager:LayoutManager.ToolTemplates>
-            </dockManager:LayoutManager>
+                    </DataTemplate>-->
+                </dm_dockManager:LayoutManager.ToolTemplates>
+            </dm_dockManager:LayoutManager>
         </Grid>
 
 

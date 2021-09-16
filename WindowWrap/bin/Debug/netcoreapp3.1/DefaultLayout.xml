@@ -1,0 +1,22 @@
+<LayoutManager>
+  <SplitterPane Guid="9684562b-6b3c-48d3-a3b3-68f06eb203ed" Orientation="Horizontal" Width="1813" Height="1078">
+    <DocumentPanel Guid="a9e2bd5f-c145-4568-b845-50fa72112196" Width="1813" Height="536">
+      <SplitterPane Guid="5f31ed85-6ad9-4e2d-a296-5a381f46a882" Orientation="Vertical" Width="1813" Height="536">
+        <DocumentPaneGroup Guid="d657a360-a4a0-4f8f-8033-28541070da79" Width="904" Height="536">
+          <Document Title="File-1.txt" ContentId="_documentOneView" Url="C:\Data\File-1.txt" />
+        </DocumentPaneGroup>
+        <DocumentPaneGroup Guid="8f7294bd-2125-45b9-b613-f9fb8794d745" Width="903" Height="536">
+          <Document Title="File-2.txt" ContentId="_documentOneView" Url="C:\Data\File-2.txt" />
+          <Document Title="Window 1" ContentId="_window1View" Url="C:\Data\Window.txt" />
+        </DocumentPaneGroup>
+      </SplitterPane>
+    </DocumentPanel>
+    <ToolPaneGroup Guid="ae6c7ca3-433e-45d8-9563-b3a6fe9f2897" Width="1813" Height="536">
+      <Tool Title="Tool One View Model" ContentId="_toolOneView" />
+    </ToolPaneGroup>
+  </SplitterPane>
+  <LeftSide />
+  <TopSide />
+  <RightSide />
+  <BottomSide />
+</LayoutManager>

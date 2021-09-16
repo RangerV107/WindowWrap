@@ -16,6 +16,7 @@ namespace WindowWrap
             InitializeComponent();
 
             //DataContext = new ExampleDockManagerViews.ViewModel.MainViewModel();
+            
         }
 
         private string _keyPath = System.Environment.Is64BitOperatingSystem ? 
@@ -53,6 +54,8 @@ namespace WindowWrap
             }
 
             _layoutManager.Initialise();
+            //LoadLayout("DefaultLayout.xml");
+            LoadDefaultLayout();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -70,6 +73,7 @@ namespace WindowWrap
 
             if (_layoutManager != null)
             {
+                SaveDefaultLayout();
                 _layoutManager.Shutdown();
             }
         }
@@ -139,6 +143,18 @@ namespace WindowWrap
             }
         }
 
+        private void SaveDefaultLayout()
+        {
+            try
+            {
+                _layoutManager.SaveLayoutToFile("DefaultLayout.xml");
+            }
+            catch (Exception exception)
+            {
+                System.Windows.Forms.MessageBox.Show("Unable to save layout: " + exception.Message);
+            }
+        }
+
         private void LoadDefaultLayout()
         {
             try
@@ -151,73 +167,73 @@ namespace WindowWrap
             }
         }
 
-        private void _buttonWindow_Click(object sender, RoutedEventArgs e)
-        {
-            ContextMenu contextMenu = new ContextMenu();
-            MenuItem menuItem = null;
+        //private void _buttonWindow_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ContextMenu contextMenu = new ContextMenu();
+        //    MenuItem menuItem = null;
 
-            menuItem = new MenuItem();
-            menuItem.Header = "Load Default Layout";
-            menuItem.IsChecked = false;
-            menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { LoadDefaultLayout(); }, delegate { return true; });
-            contextMenu.Items.Add(menuItem);
+        //    menuItem = new MenuItem();
+        //    menuItem.Header = "Load Default Layout";
+        //    menuItem.IsChecked = false;
+        //    menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { LoadDefaultLayout(); }, delegate { return true; });
+        //    contextMenu.Items.Add(menuItem);
 
-            menuItem = new MenuItem();
-            menuItem.Header = "Load Layout";
-            menuItem.IsChecked = false;
-            menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { LoadLayout(); }, delegate { return true; });
-            contextMenu.Items.Add(menuItem);
+        //    menuItem = new MenuItem();
+        //    menuItem.Header = "Load Layout";
+        //    menuItem.IsChecked = false;
+        //    menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { LoadLayout(); }, delegate { return true; });
+        //    contextMenu.Items.Add(menuItem);
 
-            menuItem = new MenuItem();
-            menuItem.Header = "Save Layout";
-            menuItem.IsChecked = false;
-            menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { SaveLayout(); }, delegate { return true; });
-            contextMenu.Items.Add(menuItem);
+        //    menuItem = new MenuItem();
+        //    menuItem.Header = "Save Layout";
+        //    menuItem.IsChecked = false;
+        //    menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { SaveLayout(); }, delegate { return true; });
+        //    contextMenu.Items.Add(menuItem);
 
-            contextMenu.IsOpen = true;
-        }
+        //    contextMenu.IsOpen = true;
+        //}
 
-        private void _buttonTools_Click(object sender, RoutedEventArgs e)
-        {
-            //ExampleDockManagerViews.ViewModel.MainViewModel mainViewModel = DataContext as ExampleDockManagerViews.ViewModel.MainViewModel;
-            MainWindowViewModel mainViewModel = DataContext as MainWindowViewModel;
-            System.Diagnostics.Trace.Assert(mainViewModel != null);
+        //private void _buttonTools_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //ExampleDockManagerViews.ViewModel.MainViewModel mainViewModel = DataContext as ExampleDockManagerViews.ViewModel.MainViewModel;
+        //    MainWindowViewModel mainViewModel = DataContext as MainWindowViewModel;
+        //    System.Diagnostics.Trace.Assert(mainViewModel != null);
 
-            ContextMenu contextMenu = new ContextMenu();
-            MenuItem menuItem = null;
+        //    ContextMenu contextMenu = new ContextMenu();
+        //    MenuItem menuItem = null;
 
-            menuItem = new MenuItem();
-            menuItem.Header = "Tool One";
-            menuItem.IsChecked = mainViewModel.ToolOneVisible;
-            menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolOneVisible = !mainViewModel.ToolOneVisible; }, delegate { return true; });
-            contextMenu.Items.Add(menuItem);
+        //    menuItem = new MenuItem();
+        //    menuItem.Header = "Tool One";
+        //    menuItem.IsChecked = mainViewModel.ToolOneVisible;
+        //    menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolOneVisible = !mainViewModel.ToolOneVisible; }, delegate { return true; });
+        //    contextMenu.Items.Add(menuItem);
 
-            //menuItem = new MenuItem();
-            //menuItem.Header = "Tool Two";
-            //menuItem.IsChecked = mainViewModel.ToolTwoVisible;
-            //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolTwoVisible = !mainViewModel.ToolTwoVisible; }, delegate { return true; });
-            //contextMenu.Items.Add(menuItem);
+        //    //menuItem = new MenuItem();
+        //    //menuItem.Header = "Tool Two";
+        //    //menuItem.IsChecked = mainViewModel.ToolTwoVisible;
+        //    //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolTwoVisible = !mainViewModel.ToolTwoVisible; }, delegate { return true; });
+        //    //contextMenu.Items.Add(menuItem);
 
-            //menuItem = new MenuItem();
-            //menuItem.Header = "Tool Three";
-            //menuItem.IsChecked = mainViewModel.ToolThreeVisible;
-            //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolThreeVisible = !mainViewModel.ToolThreeVisible; }, delegate { return true; });
-            //contextMenu.Items.Add(menuItem);
+        //    //menuItem = new MenuItem();
+        //    //menuItem.Header = "Tool Three";
+        //    //menuItem.IsChecked = mainViewModel.ToolThreeVisible;
+        //    //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolThreeVisible = !mainViewModel.ToolThreeVisible; }, delegate { return true; });
+        //    //contextMenu.Items.Add(menuItem);
 
-            //menuItem = new MenuItem();
-            //menuItem.Header = "Tool Four";
-            //menuItem.IsChecked = mainViewModel.ToolFourVisible;
-            //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolFourVisible = !mainViewModel.ToolFourVisible; }, delegate { return true; });
-            //contextMenu.Items.Add(menuItem);
+        //    //menuItem = new MenuItem();
+        //    //menuItem.Header = "Tool Four";
+        //    //menuItem.IsChecked = mainViewModel.ToolFourVisible;
+        //    //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolFourVisible = !mainViewModel.ToolFourVisible; }, delegate { return true; });
+        //    //contextMenu.Items.Add(menuItem);
 
-            //menuItem = new MenuItem();
-            //menuItem.Header = "Tool Five";
-            //menuItem.IsChecked = mainViewModel.ToolFiveVisible;
-            //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolFiveVisible = !mainViewModel.ToolFiveVisible; }, delegate { return true; });
-            //contextMenu.Items.Add(menuItem);
+        //    //menuItem = new MenuItem();
+        //    //menuItem.Header = "Tool Five";
+        //    //menuItem.IsChecked = mainViewModel.ToolFiveVisible;
+        //    //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.ToolFiveVisible = !mainViewModel.ToolFiveVisible; }, delegate { return true; });
+        //    //contextMenu.Items.Add(menuItem);
 
-            contextMenu.IsOpen = true;
-        }
+        //    contextMenu.IsOpen = true;
+        //}
 
         private void _buttonDocuments_Click(object sender, RoutedEventArgs e)
         {
@@ -234,11 +250,23 @@ namespace WindowWrap
             menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.DocumentOneVisible = !mainViewModel.DocumentOneVisible; }, delegate { return true; });
             contextMenu.Items.Add(menuItem);
 
-            //menuItem = new MenuItem();
-            //menuItem.Header = mainViewModel.DocumentTwo.URL;
-            //menuItem.IsChecked = mainViewModel.DocumentTwoVisible;
-            //menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.DocumentTwoVisible = !mainViewModel.DocumentTwoVisible; }, delegate { return true; });
-            //contextMenu.Items.Add(menuItem);
+            menuItem = new MenuItem();
+            menuItem.Header = mainViewModel.DocumentTwo.URL;
+            menuItem.IsChecked = mainViewModel.DocumentTwoVisible;
+            menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate { mainViewModel.DocumentTwoVisible = !mainViewModel.DocumentTwoVisible; }, delegate { return true; });
+            contextMenu.Items.Add(menuItem);
+
+            menuItem = new MenuItem();
+            menuItem.Header = mainViewModel.Window1.URL;
+            menuItem.IsChecked = mainViewModel.Window1Visible;
+            menuItem.Command = new OpenControls.Wpf.Utilities.Command(delegate 
+            { 
+                mainViewModel.Window1Visible = !mainViewModel.Window1Visible; 
+            }, delegate 
+            { 
+                return true; 
+            });
+            contextMenu.Items.Add(menuItem);
 
             //menuItem = new MenuItem();
             //menuItem.Header = mainViewModel.DocumentThree.URL;

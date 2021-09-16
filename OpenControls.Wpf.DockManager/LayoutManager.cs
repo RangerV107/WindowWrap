@@ -736,7 +736,6 @@ namespace OpenControls.Wpf.DockManager
             }
 
             Clear();
-
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(fileNameAndPath);
             return Load(xmlDocument);

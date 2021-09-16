@@ -8,6 +8,7 @@ using ExampleDockManagerViews.ViewModel;
 using Microsoft.Win32;
 using OpenControls.Wpf.DockManager;
 using WindowWrap.Infrastructure.Commands;
+using WindowWrap.View;
 using WindowWrap.ViewModel.Base;
 
 namespace WindowWrap.ViewModel
@@ -105,7 +106,8 @@ namespace WindowWrap.ViewModel
 
             Documents = new ObservableCollection<IViewModel>();
             Documents.Add(DocumentOne);
-            //Documents.Add(DocumentTwo);
+            Documents.Add(DocumentTwo);
+            Documents.Add(Window1);
             //Documents.Add(DocumentThree);
             //Documents.Add(DocumentFour);
             //Documents.Add(DocumentFive);
@@ -115,10 +117,12 @@ namespace WindowWrap.ViewModel
         }
 
         public readonly IViewModel DocumentOne = new DocumentOneViewModel() { URL = "C:\\Data\\File-1.txt", Title = "File-1.txt" };
-        //public readonly IViewModel DocumentTwo = new DocumentOneViewModel() { URL = "C:\\Data\\File-2.txt", Title = "File-2.txt" };
+        public readonly IViewModel DocumentTwo = new DocumentOneViewModel() { URL = "C:\\Data\\File-2.txt", Title = "File-2.txt" };
         //public readonly IViewModel DocumentThree = new DocumentTwoViewModel() { URL = "C:\\Data\\Folder\\File-3.txt", Title = "File-3.txt" };
         //public readonly IViewModel DocumentFour = new DocumentTwoViewModel() { URL = "D:\\Data\\Folder\\File-4.txt", Title = "File-4.txt" };
         //public readonly IViewModel DocumentFive = new DocumentTwoViewModel() { URL = "D:\\Data\\Folder\\File-5.txt", Title = "File-5.txt" };
+
+        public readonly IViewModel Window1 = new WindowViewModel() { URL = "C:\\Data\\Window.txt", Title = "Window 1" };
 
 
 
@@ -304,18 +308,34 @@ namespace WindowWrap.ViewModel
             }
         }
 
-        //public bool DocumentTwoVisible
-        //{
-        //    get
-        //    {
-        //        return IsDocumentVisible(DocumentTwo);
-        //    }
-        //    set
-        //    {
-        //        ShowDocument(value, DocumentTwo);
-        //        NotifyPropertyChanged("DocumentTwoVisible");
-        //    }
-        //}
+        private bool _documentTwoVisible;
+        public bool DocumentTwoVisible
+        {
+            get
+            {
+                return IsDocumentVisible(DocumentTwo);
+            }
+            set
+            {
+                ShowDocument(value, DocumentTwo);
+                //NotifyPropertyChanged("DocumentTwoVisible");
+                Set(ref _documentTwoVisible, value);
+            }
+        }
+
+        private bool _window1Visible;
+        public bool Window1Visible
+        {
+            get
+            {
+                return IsDocumentVisible(Window1);
+            }
+            set
+            {
+                ShowDocument(value, Window1);
+                Set(ref _window1Visible, value);
+            }
+        }
 
         //public bool DocumentThreeVisible
         //{

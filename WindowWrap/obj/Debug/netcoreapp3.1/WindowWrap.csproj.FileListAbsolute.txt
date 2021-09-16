@@ -41,3 +41,6 @@ C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\Window
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\WindowWrap.DockManager.Themes.Dafault.pdb
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\WindowWrap.DockManager.Views.dll
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\WindowWrap.DockManager.Views.pdb
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\WindowView.g.cs
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\WindowView.baml
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
