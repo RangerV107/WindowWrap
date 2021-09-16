@@ -1,11 +1,19 @@
-﻿namespace ExampleDockManagerViews.ViewModel
+﻿using OpenControls.Wpf.DockManager;
+using WindowWrap.ViewModel.Base;
+
+namespace WindowWrap.ViewModel
 {
-    public class DummyViewModel : OpenControls.Wpf.DockManager.IViewModel
+    class ToolViewModel : ViewModelBase, IViewModel
     {
+        public ToolViewModel()
+        {
+            Title = "Tool View Model";
+        }
+
         public string URL { get; set; }
         public string Title { get; set; }
-        public string Tooltip 
-        { 
+        public string Tooltip
+        {
             get
             {
                 return URL;

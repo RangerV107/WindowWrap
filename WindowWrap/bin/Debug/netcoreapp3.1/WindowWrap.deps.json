@@ -10,7 +10,6 @@
         "dependencies": {
           "HandyControl": "3.2.0",
           "OpenControls.Wpf.DockManager": "1.0.0",
-          "OpenControls.Wpf.DockManagerDemoViews": "1.0.0",
           "WindowWrap.DockManager.Themes.Dafault": "1.0.0",
           "WindowWrap.DockManager.Views": "1.0.0"
         },
@@ -64,14 +63,6 @@
           "OpenControls.Wpf.DockManager.dll": {}
         }
       },
-      "OpenControls.Wpf.DockManagerDemoViews/1.0.0": {
-        "dependencies": {
-          "OpenControls.Wpf.DockManager": "1.0.0"
-        },
-        "runtime": {
-          "OpenControls.Wpf.DockManagerDemoViews.dll": {}
-        }
-      },
       "OpenControls.Wpf.TabHeaderControl/1.0.0": {
         "dependencies": {
           "OpenControls.Wpf.Utilities": "1.0.0"
@@ -115,11 +106,6 @@
       "hashPath": "handycontrol.3.2.0.nupkg.sha512"
     },
     "OpenControls.Wpf.DockManager/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "OpenControls.Wpf.DockManagerDemoViews/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

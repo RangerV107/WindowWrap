@@ -30,10 +30,8 @@ C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\tr\Han
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\App.baml
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\WindowWrap.csproj.CopyComplete
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\OpenControls.Wpf.DockManager.dll
-C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\OpenControls.Wpf.DockManagerDemoViews.dll
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\OpenControls.Wpf.TabHeaderControl.dll
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\OpenControls.Wpf.Utilities.dll
-C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\OpenControls.Wpf.DockManagerDemoViews.pdb
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\OpenControls.Wpf.DockManager.pdb
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\OpenControls.Wpf.TabHeaderControl.pdb
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\OpenControls.Wpf.Utilities.pdb
@@ -44,3 +42,5 @@ C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\Window
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\WindowView.g.cs
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\WindowView.baml
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\ToolView.g.cs
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\ToolView.baml

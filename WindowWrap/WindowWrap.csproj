@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OpenControls.Wpf.DockManagerDemoViews\OpenControls.Wpf.DockManagerDemoViews.csproj">
-      <Private>true</Private>
-      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
-    </ProjectReference>
     <ProjectReference Include="..\OpenControls.Wpf.DockManager\OpenControls.Wpf.DockManager.csproj">
       <Private>true</Private>
       <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>

@@ -53,18 +53,6 @@
           "bin/placeholder/OpenControls.Wpf.DockManager.dll": {}
         }
       },
-      "OpenControls.Wpf.DockManagerDemoViews/1.0.0": {
-        "type": "project",
-        "dependencies": {
-          "OpenControls.Wpf.DockManager": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/OpenControls.Wpf.DockManagerDemoViews.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/OpenControls.Wpf.DockManagerDemoViews.dll": {}
-        }
-      },
       "OpenControls.Wpf.TabHeaderControl/1.0.0": {
         "type": "project",
         "dependencies": {
@@ -297,11 +285,6 @@
       "path": "../OpenControls.Wpf.DockManager/OpenControls.Wpf.DockManager.csproj",
       "msbuildProject": "../OpenControls.Wpf.DockManager/OpenControls.Wpf.DockManager.csproj"
     },
-    "OpenControls.Wpf.DockManagerDemoViews/1.0.0": {
-      "type": "project",
-      "path": "../OpenControls.Wpf.DockManagerDemoViews/OpenControls.Wpf.DockManagerDemoViews.csproj",
-      "msbuildProject": "../OpenControls.Wpf.DockManagerDemoViews/OpenControls.Wpf.DockManagerDemoViews.csproj"
-    },
     "OpenControls.Wpf.TabHeaderControl/1.0.0": {
       "type": "project",
       "path": "../OpenControls.Wpf.TabHeaderControl/OpenControls.Wpf.TabHeaderControl.csproj",
@@ -327,7 +310,6 @@
     ".NETCoreApp,Version=v3.1": [
       "HandyControl >= 3.2.0",
       "OpenControls.Wpf.DockManager >= 1.0.0",
-      "OpenControls.Wpf.DockManagerDemoViews >= 1.0.0",
       "WindowWrap.DockManager.Themes.Dafault >= 1.0.0",
       "WindowWrap.DockManager.Views >= 1.0.0"
     ]
@@ -359,9 +341,6 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManagerDemoViews\\OpenControls.Wpf.DockManagerDemoViews.csproj": {
-              "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManagerDemoViews\\OpenControls.Wpf.DockManagerDemoViews.csproj"
-            },
             "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManager\\OpenControls.Wpf.DockManager.csproj": {
               "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManager\\OpenControls.Wpf.DockManager.csproj"
             },

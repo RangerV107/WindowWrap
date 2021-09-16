@@ -1,13 +1,13 @@
 ﻿using System.Windows.Controls;
 
-namespace ExampleDockManagerViews.View
+namespace WindowWrap.View
 {
     /// <summary>
-    /// Interaction logic for DemoOneView.xaml
+    /// Логика взаимодействия для ToolView.xaml
     /// </summary>
-    public partial class DocumentTwoView : UserControl
+    public partial class ToolView : UserControl
     {
-        public DocumentTwoView()
+        public ToolView()
         {
             InitializeComponent();
         }
