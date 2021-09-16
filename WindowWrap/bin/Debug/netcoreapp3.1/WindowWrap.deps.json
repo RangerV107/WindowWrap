@@ -9,7 +9,9 @@
       "WindowWrap/1.0.0": {
         "dependencies": {
           "HandyControl": "3.2.0",
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.31",
           "OpenControls.Wpf.DockManager": "1.0.0",
+          "Utilities": "1.0.0",
           "WindowWrap.DockManager.Themes.Dafault": "1.0.0",
           "WindowWrap.DockManager.Views": "1.0.0"
         },
@@ -54,6 +56,14 @@
           }
         }
       },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.31": {
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Xaml.Behaviors.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.31.10800"
+          }
+        }
+      },
       "OpenControls.Wpf.DockManager/1.0.0": {
         "dependencies": {
           "OpenControls.Wpf.TabHeaderControl": "1.0.0",
@@ -74,6 +84,11 @@
       "OpenControls.Wpf.Utilities/1.0.0": {
         "runtime": {
           "OpenControls.Wpf.Utilities.dll": {}
+        }
+      },
+      "Utilities/1.0.0": {
+        "runtime": {
+          "Utilities.dll": {}
         }
       },
       "WindowWrap.DockManager.Themes.Dafault/1.0.0": {
@@ -105,6 +120,13 @@
       "path": "handycontrol/3.2.0",
       "hashPath": "handycontrol.3.2.0.nupkg.sha512"
     },
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.31": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LZpuf82ACZWldmfMuv3CTUMDh3o0xo0uHUaybR5HgqVLDBJJ9RZLykplQ/bTJd0/VDt3EhD4iDgUgbdIUAM+Kg==",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.31",
+      "hashPath": "microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512"
+    },
     "OpenControls.Wpf.DockManager/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -116,6 +138,11 @@
       "sha512": ""
     },
     "OpenControls.Wpf.Utilities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Utilities/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

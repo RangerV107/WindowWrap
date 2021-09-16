@@ -42,6 +42,14 @@
             "locale": "tr"
           }
         }
+      },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.31": {
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Xaml.Behaviors.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.31.10800"
+          }
+        }
       }
     }
   },
@@ -52,6 +60,13 @@
       "sha512": "sha512-0uN4zMV+2Tj9Bvx3PeEBd0gem0Zj3m2pgHfVDL7N+9Vtorm2TDEJ3Z6c3JTSrPiFeXy17/ydNvPauzuX6LGU+g==",
       "path": "handycontrol/3.2.0",
       "hashPath": "handycontrol.3.2.0.nupkg.sha512"
+    },
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.31": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LZpuf82ACZWldmfMuv3CTUMDh3o0xo0uHUaybR5HgqVLDBJJ9RZLykplQ/bTJd0/VDt3EhD4iDgUgbdIUAM+Kg==",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.31",
+      "hashPath": "microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512"
     }
   }
 }

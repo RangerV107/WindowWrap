@@ -1,13 +1,18 @@
 <LayoutManager>
-  <SplitterPane Guid="26bd13f6-682b-4945-8d78-9468e881f0e1" Orientation="Vertical" Width="1813" Height="1078">
-    <ToolPaneGroup Guid="b3acdf6f-c3db-4b08-b6b3-d1274fc5f2b1" Width="401" Height="1078">
-      <Tool Title="Tool 1" ContentId="_toolOneView" />
-    </ToolPaneGroup>
-    <DocumentPanel Guid="b9f92d48-6677-4daa-b9ef-9aa4f3b47e33" Width="1406" Height="1078">
-      <DocumentPaneGroup Guid="e1dd7739-b494-4803-bb29-cfbeda0c5e81" Width="1406" Height="1078">
+  <SplitterPane Guid="700f56a9-c34b-49f3-b0a6-60faec0a2851" Orientation="Horizontal" Width="1619" Height="684">
+    <DocumentPanel Guid="2851e675-4161-4750-838a-d2ef0e5ccb53" Width="1619" Height="339">
+      <DocumentPaneGroup Guid="0c6592a9-c81a-45ad-a4eb-33b2ddaeca5a" Width="1619" Height="339">
         <Document Title="Window 1" ContentId="_window1View" Url="Window1" />
       </DocumentPaneGroup>
     </DocumentPanel>
+    <SplitterPane Guid="633855e0-3860-4a0b-9728-747fb8190e2f" Orientation="Vertical" Width="1619" Height="339">
+      <ToolPaneGroup Guid="659154a5-987d-4ad8-9529-78f312c6c5dc" Width="807" Height="339">
+        <Tool Title="Tool 1" ContentId="_toolOneView" />
+      </ToolPaneGroup>
+      <ToolPaneGroup Guid="fd8a3eee-b974-49c9-a6b6-451e9024d33a" Width="806" Height="339">
+        <Tool Title="Tool 2" ContentId="_toolOneView" />
+      </ToolPaneGroup>
+    </SplitterPane>
   </SplitterPane>
   <LeftSide />
   <TopSide />

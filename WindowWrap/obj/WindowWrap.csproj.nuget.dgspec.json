@@ -55,6 +55,60 @@
         "net472": {}
       }
     },
+    "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\Utilities\\Utilities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\Utilities\\Utilities.csproj",
+        "projectName": "Utilities",
+        "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\Utilities\\Utilities.csproj",
+        "packagesPath": "C:\\Users\\Vanny\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\Utilities\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Vanny\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\WindowWrap.DockManager.Themes.Dafault\\WindowWrap.DockManager.Themes.Dafault.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -203,6 +257,9 @@
               "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManager\\OpenControls.Wpf.DockManager.csproj": {
                 "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManager\\OpenControls.Wpf.DockManager.csproj"
               },
+              "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\Utilities\\Utilities.csproj"
+              },
               "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\WindowWrap.DockManager.Themes.Dafault\\WindowWrap.DockManager.Themes.Dafault.csproj": {
                 "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\WindowWrap.DockManager.Themes.Dafault\\WindowWrap.DockManager.Themes.Dafault.csproj"
               },
@@ -225,6 +282,10 @@
             "HandyControl": {
               "target": "Package",
               "version": "[3.2.0, )"
+            },
+            "Microsoft.Xaml.Behaviors.Wpf": {
+              "target": "Package",
+              "version": "[1.1.31, )"
             }
           },
           "imports": [

@@ -1,10 +1,16 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Linq;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using OpenControls.Wpf.DockManager;
 using WindowWrap.Infrastructure.Commands;
 using WindowWrap.ViewModel.Base;
+using System.Diagnostics;
+using OpenControls.Wpf.Utilities;
+using Utilities;
+using System.IO;
 
 namespace WindowWrap.ViewModel
 {
@@ -67,10 +73,12 @@ namespace WindowWrap.ViewModel
 
         #region Tools
         public readonly IViewModel ToolOne = new ToolViewModel { Title = "Tool 1" };
+        public readonly IViewModel ToolTwo = new ToolViewModel { Title = "Tool 2" };
         #endregion
 
         #region Documents
         public readonly IViewModel Window1 = new WindowViewModel() { URL = "Window1", Title = "Window 1" };
+        public readonly IViewModel Window2 = new WindowViewModel() { URL = "Window2", Title = "Window 2" };
         #endregion
         #endregion
 
@@ -84,43 +92,27 @@ namespace WindowWrap.ViewModel
         }
         #endregion
 
-        #region WindowLoaded
-        public ICommand WindowLoaded { get; }
-        private bool CanWindowLoadedExecute(object p) => true;
-        private void OnWindowLoadedExecuted(object p)
+        #region Test1Command
+        public ICommand Test1Command { get; }
+        private bool CanTest1CommandExecute(object p) => true;
+        private void OnTest1CommandExecuted(object p)
         {
-            #region Save something in rregestry
-            //RegistryKey key = Registry.CurrentUser.OpenSubKey(_keyPath);
-            //if (key == null)
+            //OpenControls.Wpf.Utilities.User32.EnumWindows((wnd, param) =>
             //{
-            //    key = Registry.CurrentUser.CreateSubKey(_keyPath);
-            //}
-            //else
-            //{
-            //    Object obj = key.GetValue("Height");
-            //    if (obj != null)
-            //    {
-            //        Height = Convert.ToDouble(obj);
-            //    }
-            //    obj = key.GetValue("Width");
-            //    if (obj != null)
-            //    {
-            //        Width = Convert.ToDouble(obj);
-            //    }
-            //    obj = key.GetValue("Top");
-            //    if (obj != null)
-            //    {
-            //        Top = Convert.ToDouble(obj);
-            //    }
-            //    obj = key.GetValue("Left");
-            //    if (obj != null)
-            //    {
-            //        Left = Convert.ToDouble(obj);
-            //    }
-            //} 
-            #endregion
+            //    string window = User32Utilities.GetWindowModuleFileName(wnd);
 
-            //_layoutManager.Initialise();
+            //    Trace.WriteLine(Path.GetFileName(window));
+
+            //    return true;
+            //}, IntPtr.Zero);
+
+            Trace.WriteLine("\n============================");
+
+            foreach (var w in Win32Utilities.GetOpenWindows().OrderBy(c => c.Key))
+            {
+                Trace.WriteLine(w.Key + "       Ptr: " + w.Value);
+            }
+            Trace.WriteLine("============================\n");
 
         }
         #endregion
@@ -134,6 +126,8 @@ namespace WindowWrap.ViewModel
             #region Commands
             AppCloseCommand = new ActionCommand(
                 OnAppCloseCommandExecuted, CanAppCloseCommandExecute);
+            Test1Command = new ActionCommand(
+                OnTest1CommandExecuted, CanTest1CommandExecute);
             #endregion
 
             #region DockManager layout
@@ -141,10 +135,17 @@ namespace WindowWrap.ViewModel
 
             Tools = new ObservableCollection<IViewModel>();
             Tools.Add(ToolOne);
+            Tools.Add(ToolTwo);
 
             Documents = new ObservableCollection<IViewModel>();
-            Documents.Add(Window1); 
+            Documents.Add(Window1);
+            Documents.Add(Window2);
             #endregion
+
+            //Trace.WriteLine("ddd");
+
+            //App.Current.Windows...
+            //Tools.Where(n => n.GetType() == typeof(ExampleDockManagerViews.ViewModel.ToolOneViewModel)).Count() > 0
 
 
 

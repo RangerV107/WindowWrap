@@ -40,6 +40,18 @@
           }
         }
       },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.31": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.Xaml.Behaviors.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Xaml.Behaviors.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "OpenControls.Wpf.DockManager/1.0.0": {
         "type": "project",
         "dependencies": {
@@ -72,6 +84,16 @@
         },
         "runtime": {
           "bin/placeholder/OpenControls.Wpf.Utilities.dll": {}
+        }
+      },
+      "Utilities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Utilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Utilities.dll": {}
         }
       },
       "WindowWrap.DockManager.Themes.Dafault/1.0.0": {
@@ -280,6 +302,31 @@
         "tools/VisualStudioToolsManifest.xml"
       ]
     },
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.31": {
+      "sha512": "LZpuf82ACZWldmfMuv3CTUMDh3o0xo0uHUaybR5HgqVLDBJJ9RZLykplQ/bTJd0/VDt3EhD4iDgUgbdIUAM+Kg==",
+      "type": "package",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.31",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Design/Microsoft.Xaml.Behaviors.Design.dll",
+        "lib/net45/Microsoft.Xaml.Behaviors.dll",
+        "lib/net45/Microsoft.Xaml.Behaviors.pdb",
+        "lib/net45/Microsoft.Xaml.Behaviors.xml",
+        "lib/net5.0-windows7.0/Design/Microsoft.Xaml.Behaviors.DesignTools.dll",
+        "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.dll",
+        "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.pdb",
+        "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.xml",
+        "lib/netcoreapp3.1/Design/Microsoft.Xaml.Behaviors.DesignTools.dll",
+        "lib/netcoreapp3.1/Microsoft.Xaml.Behaviors.dll",
+        "lib/netcoreapp3.1/Microsoft.Xaml.Behaviors.pdb",
+        "lib/netcoreapp3.1/Microsoft.Xaml.Behaviors.xml",
+        "microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512",
+        "microsoft.xaml.behaviors.wpf.nuspec",
+        "tools/Install.ps1"
+      ]
+    },
     "OpenControls.Wpf.DockManager/1.0.0": {
       "type": "project",
       "path": "../OpenControls.Wpf.DockManager/OpenControls.Wpf.DockManager.csproj",
@@ -295,6 +342,11 @@
       "path": "../OpenControls.Wpf.Utilities/OpenControls.Wpf.Utilities.csproj",
       "msbuildProject": "../OpenControls.Wpf.Utilities/OpenControls.Wpf.Utilities.csproj"
     },
+    "Utilities/1.0.0": {
+      "type": "project",
+      "path": "../Utilities/Utilities.csproj",
+      "msbuildProject": "../Utilities/Utilities.csproj"
+    },
     "WindowWrap.DockManager.Themes.Dafault/1.0.0": {
       "type": "project",
       "path": "../WindowWrap.DockManager.Themes.Dafault/WindowWrap.DockManager.Themes.Dafault.csproj",
@@ -309,7 +361,9 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "HandyControl >= 3.2.0",
+      "Microsoft.Xaml.Behaviors.Wpf >= 1.1.31",
       "OpenControls.Wpf.DockManager >= 1.0.0",
+      "Utilities >= 1.0.0",
       "WindowWrap.DockManager.Themes.Dafault >= 1.0.0",
       "WindowWrap.DockManager.Views >= 1.0.0"
     ]
@@ -344,6 +398,9 @@
             "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManager\\OpenControls.Wpf.DockManager.csproj": {
               "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\OpenControls.Wpf.DockManager\\OpenControls.Wpf.DockManager.csproj"
             },
+            "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\Utilities\\Utilities.csproj": {
+              "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\Utilities\\Utilities.csproj"
+            },
             "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\WindowWrap.DockManager.Themes.Dafault\\WindowWrap.DockManager.Themes.Dafault.csproj": {
               "projectPath": "C:\\Users\\Vanny\\source\\repos\\WindowWrap\\WindowWrap.DockManager.Themes.Dafault\\WindowWrap.DockManager.Themes.Dafault.csproj"
             },
@@ -366,6 +423,10 @@
           "HandyControl": {
             "target": "Package",
             "version": "[3.2.0, )"
+          },
+          "Microsoft.Xaml.Behaviors.Wpf": {
+            "target": "Package",
+            "version": "[1.1.31, )"
           }
         },
         "imports": [

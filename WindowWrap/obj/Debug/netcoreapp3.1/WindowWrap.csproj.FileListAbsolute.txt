@@ -44,3 +44,8 @@ C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\W
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\ToolView.g.cs
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\ToolView.baml
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\Utilities.dll
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\Utilities.pdb
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\Microsoft.Xaml.Behaviors.dll
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\WindowBox.g.cs
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\WindowBox.baml

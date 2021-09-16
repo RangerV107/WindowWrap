@@ -5,14 +5,13 @@
                     xmlns:DockManagerControls="clr-namespace:OpenControls.Wpf.DockManager.Controls;assembly=OpenControls.Wpf.DockManager"
                     xmlns:TabHeaderControl="clr-namespace:OpenControls.Wpf.TabHeaderControl;assembly=OpenControls.Wpf.TabHeaderControl">
 
-    <!-- Common styles -->
-
+    <!--#region Common styles -->
     <Style x:Key="ViewListButtonStyle" TargetType="Button">
         <Setter Property="Width" Value="20"/>
         <Setter Property="Height" Value="20"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -46,7 +45,7 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -86,7 +85,7 @@
         <Setter Property="Height" Value="20"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -121,7 +120,7 @@
         <Setter Property="Width" Value="20"/>
         <Setter Property="Height" Value="20"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
@@ -217,6 +216,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--#endregion-->
 
     <!-- Miscellaneous -->
 
@@ -224,11 +224,11 @@
 
     <!-- Splitters -->
 
-    <Brush x:Key="SplitterBrush">#5d6b99</Brush>
-    <System:Double x:Key="SplitterWidth">6</System:Double>
+    <Brush x:Key="SplitterBrush">#FF334180</Brush>
+    <System:Double x:Key="SplitterWidth">10</System:Double>
 
     <!-- Tool Pane Styles -->
-    
+
     <CornerRadius x:Key="ToolPaneCornerRadius">0</CornerRadius>
     <Brush x:Key="ToolPaneBorderBrush">Transparent</Brush>
     <Thickness x:Key="ToolPaneBorderThickness">0</Thickness>
@@ -303,10 +303,10 @@
 
     <Brush x:Key="ActiveDocumentBrush">Blue</Brush>
 
-    <CornerRadius x:Key="DocumentPaneCornerRadius">0</CornerRadius>
+    <CornerRadius x:Key="DocumentPaneCornerRadius">10</CornerRadius>
     <Brush x:Key="DocumentPaneBorderBrush">Transparent</Brush>
     <Thickness x:Key="DocumentPaneBorderThickness">0</Thickness>
-    <Brush x:Key="DocumentPaneBackground">#5d6b99</Brush>
+    <Brush x:Key="DocumentPaneBackground">Transparent</Brush>
     <System:Double x:Key="DocumentPaneTabHeaderHeight">21</System:Double>
     <Brush x:Key="DocumentPaneContentBarBrush">#f5cc84</Brush>
     <System:Double x:Key="DocumentPaneContentBarHeight">2</System:Double>

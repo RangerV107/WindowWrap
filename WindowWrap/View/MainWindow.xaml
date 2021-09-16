@@ -16,7 +16,7 @@
         mc:Ignorable="d"
         Loaded="Window_Loaded"
         Closing="Window_Closing"
-        Title="{Binding Title}" Height="450" Width="800">
+        Title="{Binding Title}" Height="700" Width="1000">
     <Window.Resources>
         <!--<ResourceDictionary>
             <Style x:Key="styleGridSplitter" TargetType="GridSplitter">
@@ -61,21 +61,22 @@
     </Window.Resources>
 
     
-    <DockPanel Background="#EEEEEE">
+    <DockPanel Background="#FF334180">
 
 
-        <Menu DockPanel.Dock="Top" >
+        <Menu DockPanel.Dock="Top" Background="#FFCED5F2">
             <MenuItem Header="File">
                 <MenuItem Header="Exit" Command="{Binding AppCloseCommand}"/>
             </MenuItem>
             <!--<MenuItem Header="Documents" Click="_buttonDocuments_Click"/>-->
             <!--<MenuItem Header="Tools" Click="_buttonTools_Click"/>-->
-            <MenuItem Header="Layout" Click="_buttonWindow_Click"/> 
+            <MenuItem Header="Layout" Click="_buttonWindow_Click"/>
+            <MenuItem Header="Test 1" Command="{Binding Test1Command}"/>
         </Menu>
 
         <Grid x:Name="parentContainer">
 
-            <dm_dockManager:LayoutManager
+            <dm_dockManager:LayoutManager Margin="10,10,10,10"
                 x:Name="_layoutManager" Grid.Row="0" Grid.Column="0" 
                 DocumentsSource="{Binding Documents}"
                 ToolsSource="{Binding Tools}" 
