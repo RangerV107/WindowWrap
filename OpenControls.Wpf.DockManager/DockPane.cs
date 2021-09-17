@@ -18,7 +18,6 @@ namespace OpenControls.Wpf.DockManager
             Border = new Border();
             Border.Background = Brushes.Transparent;
             Border.IsHitTestVisible = false;
-            Background = Brushes.Transparent;
             Grid.SetRow(Border, 0);
             Grid.SetRowSpan(Border, 99);
             Grid.SetColumn(Border, 0);

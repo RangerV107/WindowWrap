@@ -41,27 +41,103 @@ namespace WindowWrap.View
             InitializeComponent();
         }
 
-        private void WindowPtrChange(IntPtr new_ptr, IntPtr old_ptr)
-        {
-            //window_name.Content = "Ptr: " + WindowPtr;
-
-            User32.SetParent(old_ptr, IntPtr.Zero);
-            User32.SetParent(new_ptr, new WindowInteropHelper(App.Current.MainWindow).Handle);
-
-            User32.MoveWindow(new_ptr, 20, 20, (int)this.ActualWidth, (int)this.ActualHeight, true);
-            //Trace.WriteLine("WindowPtr: " + WindowPtr);
-        }
-
         private static void OnWindowPtrChangee(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             WindowBox instance = (WindowBox)d;
             instance.WindowPtrChange((IntPtr)e.NewValue, (IntPtr)e.OldValue);
         }
 
+        private void WindowPtrChange(IntPtr new_ptr, IntPtr old_ptr)
+        {
+            UndockWindow(old_ptr);
+            if (new_ptr == IntPtr.Zero)
+                return;
+            DockWindow(new_ptr);
+
+
+            #region ddd
+            //IntPtr mainW = new WindowInteropHelper(App.Current.MainWindow).Handle;
+
+            //User32.RECT rect = new User32.RECT();
+            //User32.GetWindowRect(mainW, out rect);
+            //Trace.WriteLine(
+            //    "left: " + rect.left +
+            //    " top: " + rect.top +
+            //    " right: " + rect.right +
+            //    " bottom: " + rect.bottom);
+
+            //Point p = App.Current.MainWindow.PointToScreen(new Point(0, 0));
+            //Trace.WriteLine(
+            //    "X: " + p.X +
+            //    "Y: " + p.Y); 
+            #endregion
+
+            #region aaa
+
+            //TestWindow testWindow = new TestWindow();
+            //testWindow.Show();
+            //testWindow.Owner = App.Current.MainWindow;
+            //Window.
+            //new WindowInteropHelper(testWindow).Owner = new_ptr;
+
+            //User32.SetWindowLongPtr(
+            //    new_ptr,
+            //    User32.WindowLongFlags.GWLP_HWNDPARENT,
+            //    new WindowInteropHelper(App.Current.MainWindow).Handle);
+            #endregion
+        }
+
+
+
+        private void DockWindow(IntPtr window)
+        {
+            User32.SetParent(window, new WindowInteropHelper(App.Current.MainWindow).Handle);
+            User32.SetWindowLongPtrA(window, User32.WindowLongFlags.GWL_STYLE,User32.WindowLongFlagsExtend.WS_VISIBLE);
+
+            //User32.SetWindowLongPtr(
+            //    window,
+            //    User32.WindowLongFlags.GWLP_HWNDPARENT,
+            //    new WindowInteropHelper(App.Current.MainWindow).Handle);
+
+            MoveWindow(window);
+            //User32.SetActiveWindow(Process.GetCurrentProcess().MainWindowHandle);
+        }
+
+        private void UndockWindow(IntPtr window)
+        {
+            User32.SetParent(window, IntPtr.Zero);
+            int style = User32.GetWindowLong(window, User32.WindowLongFlags.GWL_STYLE);
+            User32.SetWindowLongPtrA(window, User32.WindowLongFlags.GWL_STYLE, style | User32.WindowLongFlagsExtend.WS_OVERLAPPEDWINDOW);
+            //User32.SetActiveWindow(Process.GetCurrentProcess().MainWindowHandle);
+
+            //User32.SetWindowLongPtr(
+            //    window,
+            //    User32.WindowLongFlags.GWLP_HWNDPARENT,
+            //    IntPtr.Zero);
+        }
+
+        private void MoveWindow(IntPtr window)
+        {
+            try
+            {
+                GeneralTransform generalTransform1 = this.TransformToAncestor(App.Current.MainWindow);
+                Point point_local = generalTransform1.Transform(new Point(0, 0));
+                Point point_global = App.Current.MainWindow.PointToScreen(new Point(0, 0));
+                point_global.Offset(point_local.X, point_local.Y);
+                //Vector vector = VisualTreeHelper.GetOffset(this);
+
+                User32.MoveWindow(window, (int)point_local.X, (int)point_local.Y, (int)this.ActualWidth, (int)this.ActualHeight, true);
+                //User32.MoveWindow(window, (int)point_global.X, (int)point_global.Y, 1000, 1000, true);
+                //User32.SetWindowPos(window, User32.HWND.NoTopMost, (int)point_local.X, (int)point_local.Y, (int)this.ActualWidth, (int)this.ActualHeight, (uint)User32.SWP.SHOWWINDOW);
+            }
+            catch(Exception ex) { }
+        }
+
+
 
         private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            User32.MoveWindow(WindowPtr, 20, 20, (int)this.ActualWidth, (int)this.ActualHeight, true);
+            MoveWindow(WindowPtr);
         }
     }
 }

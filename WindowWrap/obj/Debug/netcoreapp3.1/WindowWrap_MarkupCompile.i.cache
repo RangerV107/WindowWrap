@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\App.xaml
-426764144
+5796277628
 
-14-780742888
+15-1048647380
 2071113029018
-View\MainWindow.xaml;View\ToolView.xaml;View\WindowBox.xaml;View\WindowView.xaml;
+View\MainWindow.xaml;View\TestWindow.xaml;View\ToolView.xaml;View\WindowBox.xaml;View\WindowView.xaml;
 
-False
+True
 

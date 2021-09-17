@@ -42,6 +42,51 @@ namespace Utilities.Win
             DEFERERASE = 0x2000,
             ASYNCWINDOWPOS = 0x4000;
         }
+
+
+        public static class WindowLongFlags
+        {
+            public static int
+            GWL_EXSTYLE = -20,
+            GWLP_HINSTANCE = -6,
+            GWLP_HWNDPARENT = -8,
+            GWL_ID = -12,
+            GWL_STYLE = -16,
+            GWL_USERDATA = -21,
+            GWL_WNDPROC = -4,
+            DWLP_USER = 0x8,
+            DWLP_MSGRESULT = 0x0,
+            DWLP_DLGPROC = 0x4;
+        }
+
+        public static class WindowLongFlagsExtend
+        {
+            //https://docs.microsoft.com/en-us/windows/win32/winmsg/window-styles
+            public static int
+            GWL_STYLE = -16,
+            WS_VISIBLE = 0x10000000,        //The window is initially visible.
+            WS_EX_NOACTIVATE = 0x08000000,
+            WS_CAPTION = 0x00C00000,        //The window has a title bar (includes the WS_BORDER style).
+            WS_MAXIMIZE = 0x01000000,
+            WS_OVERLAPPED = 0x00C00000,     //The window is an overlapped window. An overlapped window has a title bar and a border. Same as the WS_TILED style.
+            WS_SYSMENU = 0x00080000,        //The window has a window menu on its title bar. The WS_CAPTION style must also be specified.
+            WS_THICKFRAME = 0x00040000,
+            WS_MINIMIZEBOX = 0x00020000,    //The window has a minimize button.Cannot be combined with the WS_EX_CONTEXTHELP style. The WS_SYSMENU style must also be specified.
+            WS_MAXIMIZEBOX = 0x00010000,
+
+            WS_CLIPCHILDREN = 0x02000000,   //Excludes the area occupied by child windows when drawing occurs within the parent window. This style is used when creating the parent window.
+
+            WS_OVERLAPPEDWINDOW = (WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX);
+        }
+
+
+        public struct RECT
+        {
+            public int left;       // это нужная X координата 
+            public int top;        // это нужная Y координата
+            public int right;       // x position of lower-right corner
+            public int bottom;      // y position of lower-right corner
+        }
         #endregion
 
 
@@ -258,9 +303,21 @@ namespace Utilities.Win
         [DllImport("user32.dll", SetLastError = true, CallingConvention = CallingConvention.StdCall)]
         public static extern bool MoveWindow(IntPtr hwnd, int x, int y, int cx, int cy, bool repaint);
 
+        [DllImport("user32.DLL")]
+        public static extern int SetWindowLongPtrA(IntPtr hWnd, int nIndex, int dwNewLong);
+        [DllImport("user32.DLL")]
+        public static extern int SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
 
+        [DllImport("user32.DLL")]
+        public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
 
+        [DllImport("user32.dll", EntryPoint = "SetActiveWindow", CharSet = CharSet.Auto)]
+        public static extern IntPtr SetActiveWindow(IntPtr hWnd);
 
+        [DllImport("user32.DLL")]
+        public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+
+        
 
     }
 }

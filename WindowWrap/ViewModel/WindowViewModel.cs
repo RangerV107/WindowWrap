@@ -120,6 +120,16 @@ namespace WindowWrap.ViewModel
         }
         #endregion
 
+        #region WindowUndockCommand
+        public ICommand WindowUndockCommand { get; }
+        private bool CanWindowUndockCommandExecute(object p) => true;
+        private void OnWindowUndockCommandExecuted(object p)
+        {
+            WindowPtr = IntPtr.Zero;
+            SelectedWindow = "None::None";
+        }
+        #endregion
+
         #region WindowsUpdateCommand
         public ICommand WindowsUpdateCommand { get; }
         private bool CanWindowsUpdateCommandExecute(object p) => true;
@@ -141,17 +151,22 @@ namespace WindowWrap.ViewModel
             #region Commands
             WindowSelectCommand = new ActionCommand(
                 OnWindowSelectCommandExecuted, CanWindowSelectCommandExecute);
+            WindowUndockCommand = new ActionCommand(
+                OnWindowUndockCommandExecuted, CanWindowUndockCommandExecute);
             WindowsUpdateCommand = new ActionCommand(
-                OnWindowsUpdateCommandExecuted, CanWindowsUpdateCommandExecute);
+               OnWindowsUpdateCommandExecuted, CanWindowsUpdateCommandExecute);
             #endregion
 
-            
+
         }
 
         private void UpdateWindows()
         {
-            Windows = Win32Utilities.GetOpenWindows();
+            Windows = Win32Utilities.GetOpenWindows();          
             WindowList = new ObservableCollection<string>(Windows.Keys.OrderBy(c => c).AsEnumerable());
+            Windows.Add("None::None", IntPtr.Zero);
+            //WindowList.Add("None::None");
+            WindowList.Insert(0, "None::None");
         }
 
         private void OnWindowSelected(string window)

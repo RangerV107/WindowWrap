@@ -49,3 +49,5 @@ C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\Utilit
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\bin\Debug\netcoreapp3.1\Microsoft.Xaml.Behaviors.dll
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\WindowBox.g.cs
 C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\WindowBox.baml
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\TestWindow.g.cs
+C:\Users\Vanny\source\repos\WindowWrap\WindowWrap\obj\Debug\netcoreapp3.1\View\TestWindow.baml

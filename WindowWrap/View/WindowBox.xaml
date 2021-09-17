@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WindowWrap.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="CadetBlue" SizeChanged="Grid_SizeChanged">
+    <Grid x:Name="Grid" Background="CadetBlue" SizeChanged="Grid_SizeChanged">
         <Label Name="window_name" Content="{Binding WindowPtr}"/>
     </Grid>
 </UserControl>

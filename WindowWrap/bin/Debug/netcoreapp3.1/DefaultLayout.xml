@@ -1,15 +1,20 @@
 <LayoutManager>
-  <SplitterPane Guid="700f56a9-c34b-49f3-b0a6-60faec0a2851" Orientation="Horizontal" Width="1619" Height="684">
-    <DocumentPanel Guid="2851e675-4161-4750-838a-d2ef0e5ccb53" Width="1619" Height="339">
-      <DocumentPaneGroup Guid="0c6592a9-c81a-45ad-a4eb-33b2ddaeca5a" Width="1619" Height="339">
-        <Document Title="Window 1" ContentId="_window1View" Url="Window1" />
-      </DocumentPaneGroup>
+  <SplitterPane Guid="aebe80e5-a405-4e23-adda-5acb06069343" Orientation="Horizontal" Width="1164" Height="1112">
+    <DocumentPanel Guid="17ea4d6d-19fa-43ae-8bd6-6792781a55d2" Width="1164" Height="551">
+      <SplitterPane Guid="3abb7697-5d80-4b09-ba6c-3fbed622ce43" Orientation="Vertical" Width="1164" Height="551">
+        <DocumentPaneGroup Guid="455bdde2-3431-4f2c-8638-72ebc4a73ac6" Width="577" Height="551">
+          <Document Title="Window 1" ContentId="_window1View" Url="Window1" />
+        </DocumentPaneGroup>
+        <DocumentPaneGroup Guid="094bca55-57cc-4110-b06f-2cd0f221cadc" Width="577" Height="551">
+          <Document Title="Window 2" ContentId="_window1View" Url="Window2" />
+        </DocumentPaneGroup>
+      </SplitterPane>
     </DocumentPanel>
-    <SplitterPane Guid="633855e0-3860-4a0b-9728-747fb8190e2f" Orientation="Vertical" Width="1619" Height="339">
-      <ToolPaneGroup Guid="659154a5-987d-4ad8-9529-78f312c6c5dc" Width="807" Height="339">
+    <SplitterPane Guid="792e7e16-13a7-4063-9d89-4c8eb698e91a" Orientation="Vertical" Width="1164" Height="551">
+      <ToolPaneGroup Guid="579c8470-2bc3-4657-9589-7927edef6b05" Width="577" Height="551">
         <Tool Title="Tool 1" ContentId="_toolOneView" />
       </ToolPaneGroup>
-      <ToolPaneGroup Guid="fd8a3eee-b974-49c9-a6b6-451e9024d33a" Width="806" Height="339">
+      <ToolPaneGroup Guid="d32a44e2-2e9c-424f-9f18-d3c1f8069305" Width="577" Height="551">
         <Tool Title="Tool 2" ContentId="_toolOneView" />
       </ToolPaneGroup>
     </SplitterPane>
