@@ -54,7 +54,7 @@ namespace WindowWrap.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WindowWrap;V1.0.0.0;component/view/testwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WindowWrap;component/view/testwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\TestWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

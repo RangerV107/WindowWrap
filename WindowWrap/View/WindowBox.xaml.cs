@@ -1,17 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Utilities.Win;
 
 namespace WindowWrap.View
@@ -39,7 +33,45 @@ namespace WindowWrap.View
         public WindowBox()
         {
             InitializeComponent();
+
+            WindowInteropHelper helper = new WindowInteropHelper(App.Current.MainWindow);
+            HwndSource.FromHwnd(helper.Handle).AddHook(HwndMessageHook);
+
+            //InitialWindowLocation = new Point(this.Left, this.Top);
+
         }
+
+        //private Point InitialWindowLocation;
+        //[StructLayout(LayoutKind.Sequential)]
+        //public struct WIN32Rectangle
+        //{
+        //    public int Left;
+        //    public int Top;
+        //    public int Right;
+        //    public int Bottom;
+        //}
+        const int WM_SIZING = 0x0214;
+        const int WM_MOVING = 0x0216;
+        //https://docs.microsoft.com/en-us/windows/win32/winmsg/wm-move
+        //https://stackoverflow.com/questions/12376141/intercept-a-move-event-in-a-wpf-window-before-the-move-happens-on-the-screen
+        private IntPtr HwndMessageHook(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam, ref bool bHandled)
+        {
+            switch (msg)
+            {
+                case WM_SIZING:
+                case WM_MOVING:
+                    {
+                        //Trace.WriteLine("MOVING");
+                        MoveWindow(WindowPtr);
+                    }
+                    break;
+
+            }
+            return IntPtr.Zero;
+        }
+
+        
+
 
         private static void OnWindowPtrChangee(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -49,10 +81,16 @@ namespace WindowWrap.View
 
         private void WindowPtrChange(IntPtr new_ptr, IntPtr old_ptr)
         {
-            UndockWindow(old_ptr);
+            //UndockWindow(old_ptr);
+            //if (new_ptr == IntPtr.Zero)
+            //    return;
+            //DockWindow(new_ptr);
+
+            UndockWindow2(old_ptr);
             if (new_ptr == IntPtr.Zero)
                 return;
-            DockWindow(new_ptr);
+            DockWindow2(new_ptr);
+
 
 
             #region ddd
@@ -92,7 +130,7 @@ namespace WindowWrap.View
         private void DockWindow(IntPtr window)
         {
             User32.SetParent(window, new WindowInteropHelper(App.Current.MainWindow).Handle);
-            User32.SetWindowLongPtrA(window, User32.WindowLongFlags.GWL_STYLE,User32.WindowLongFlagsExtend.WS_VISIBLE);
+            User32.SetWindowLongPtr(window, User32.WindowLongFlags.GWL_STYLE,User32.WindowLongFlagsExtend.WS_VISIBLE);
 
             //User32.SetWindowLongPtr(
             //    window,
@@ -102,18 +140,62 @@ namespace WindowWrap.View
             MoveWindow(window);
             //User32.SetActiveWindow(Process.GetCurrentProcess().MainWindowHandle);
         }
+        private void DockWindow2(IntPtr window)
+        {
+            //User32.SetParent(window, new WindowInteropHelper(App.Current.MainWindow).Handle);
+            User32.SetWindowLongPtr(window, User32.WindowLongFlags.GWL_STYLE, User32.WindowLongFlagsExtend.WS_VISIBLE);
+
+            //int lStyle = User32.GetWindowLongPtr(window, User32.WindowLongFlags.GWL_STYLE);
+            ////lStyle |= User32.WindowLongFlagsExtend.WS_THICKFRAME | User32.WindowLongFlagsExtend.WS_VISIBLE;
+            //lStyle = lStyle & 
+            //    ~(User32.WindowLongFlagsExtend.WS_CAPTION |
+            //    User32.WindowLongFlagsExtend.WS_THICKFRAME |
+            //    User32.WindowLongFlagsExtend.WS_MINIMIZEBOX |
+            //    User32.WindowLongFlagsExtend.WS_MAXIMIZEBOX |
+            //    User32.WindowLongFlagsExtend.WS_SYSMENU);
+            //User32.SetWindowLongPtr(window, User32.WindowLongFlags.GWL_STYLE, lStyle);
+            //User32.SetWindowPos(window, IntPtr.Zero, 0, 0, 0, 0,
+                //(uint)(User32.SWP.FRAMECHANGED | User32.SWP.NOMOVE | User32.SWP.NOSIZE | User32.SWP.NOZORDER | User32.SWP.NOOWNERZORDER | User32.SWP.SHOWWINDOW));
+                //(uint)User32.SWP.SHOWWINDOW);
+
+
+            User32.SetWindowLongPtr(
+                window,
+                User32.WindowLongFlags.GWLP_HWNDPARENT,
+                new WindowInteropHelper(App.Current.MainWindow).Handle);
+
+            User32.SetActiveWindow(window);
+            User32.ShowWindow(window, User32.WindowShowFlags.SW_MINIMIZE);
+            User32.ShowWindow(window, User32.WindowShowFlags.SW_NORMAL);
+            //User32.UpdateWindow(window);
+
+            MoveWindow(window);   
+        }
 
         private void UndockWindow(IntPtr window)
         {
             User32.SetParent(window, IntPtr.Zero);
-            int style = User32.GetWindowLong(window, User32.WindowLongFlags.GWL_STYLE);
-            User32.SetWindowLongPtrA(window, User32.WindowLongFlags.GWL_STYLE, style | User32.WindowLongFlagsExtend.WS_OVERLAPPEDWINDOW);
+            int style = User32.GetWindowLongPtr(window, User32.WindowLongFlags.GWL_STYLE);
+            User32.SetWindowLongPtr(window, User32.WindowLongFlags.GWL_STYLE, style | User32.WindowLongFlagsExtend.WS_OVERLAPPEDWINDOW);
             //User32.SetActiveWindow(Process.GetCurrentProcess().MainWindowHandle);
 
             //User32.SetWindowLongPtr(
             //    window,
             //    User32.WindowLongFlags.GWLP_HWNDPARENT,
             //    IntPtr.Zero);
+        }
+        private void UndockWindow2(IntPtr window)
+        {
+            //User32.SetParent(window, IntPtr.Zero);
+            int style = User32.GetWindowLongPtr(window, User32.WindowLongFlags.GWL_STYLE);
+            User32.SetWindowLongPtr(window, User32.WindowLongFlags.GWL_STYLE, style | User32.WindowLongFlagsExtend.WS_OVERLAPPEDWINDOW);
+
+            User32.SetWindowLongPtr(
+                window,
+                User32.WindowLongFlags.GWLP_HWNDPARENT,
+                IntPtr.Zero);
+
+            //User32.SetActiveWindow(Process.GetCurrentProcess().MainWindowHandle);
         }
 
         private void MoveWindow(IntPtr window)
@@ -126,11 +208,11 @@ namespace WindowWrap.View
                 point_global.Offset(point_local.X, point_local.Y);
                 //Vector vector = VisualTreeHelper.GetOffset(this);
 
-                User32.MoveWindow(window, (int)point_local.X, (int)point_local.Y, (int)this.ActualWidth, (int)this.ActualHeight, true);
+                User32.MoveWindow(window, (int)point_global.X, (int)point_global.Y, (int)this.ActualWidth, (int)this.ActualHeight, true);
                 //User32.MoveWindow(window, (int)point_global.X, (int)point_global.Y, 1000, 1000, true);
                 //User32.SetWindowPos(window, User32.HWND.NoTopMost, (int)point_local.X, (int)point_local.Y, (int)this.ActualWidth, (int)this.ActualHeight, (uint)User32.SWP.SHOWWINDOW);
             }
-            catch(Exception ex) { }
+            catch(Exception ex) { Trace.WriteLine(ex.Message); }
         }
 
 

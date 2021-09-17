@@ -75,10 +75,21 @@ namespace Utilities.Win
             WS_MAXIMIZEBOX = 0x00010000,
 
             WS_CLIPCHILDREN = 0x02000000,   //Excludes the area occupied by child windows when drawing occurs within the parent window. This style is used when creating the parent window.
+            WS_DLGFRAME = 0x00400000,
+            //WS_POPUP = 0x80000000,
 
             WS_OVERLAPPEDWINDOW = (WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX);
         }
 
+        
+        public static class WindowShowFlags
+        {
+            //https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-showwindow
+            public static int
+            SW_NORMAL = 1,
+            SW_SHOW = 5,
+            SW_MINIMIZE = 6;
+        }
 
         public struct RECT
         {
@@ -304,12 +315,12 @@ namespace Utilities.Win
         public static extern bool MoveWindow(IntPtr hwnd, int x, int y, int cx, int cy, bool repaint);
 
         [DllImport("user32.DLL")]
-        public static extern int SetWindowLongPtrA(IntPtr hWnd, int nIndex, int dwNewLong);
+        public static extern int SetWindowLongPtr(IntPtr hWnd, int nIndex, int dwNewLong);
         [DllImport("user32.DLL")]
         public static extern int SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
 
         [DllImport("user32.DLL")]
-        public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+        public static extern int GetWindowLongPtr(IntPtr hWnd, int nIndex);
 
         [DllImport("user32.dll", EntryPoint = "SetActiveWindow", CharSet = CharSet.Auto)]
         public static extern IntPtr SetActiveWindow(IntPtr hWnd);
@@ -317,7 +328,15 @@ namespace Utilities.Win
         [DllImport("user32.DLL")]
         public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
 
-        
+        [DllImport("user32.DLL")]
+        public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+        [DllImport("user32.DLL")]
+        public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
+        [DllImport("user32.DLL")]
+        public static extern bool UpdateWindow(IntPtr hWnd);
+
+
 
     }
 }

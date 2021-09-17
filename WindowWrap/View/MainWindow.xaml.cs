@@ -51,8 +51,8 @@ namespace WindowWrap
             //}
 
             _layoutManager.Initialise();
-            //LoadLayout("DefaultLayout.xml");
-            LoadDefaultLayout();
+            LoadLayout("DefaultLayout.xml");
+            //LoadDefaultLayout();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

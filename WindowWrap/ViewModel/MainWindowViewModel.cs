@@ -73,7 +73,7 @@ namespace WindowWrap.ViewModel
 
         #region Tools
         public readonly IViewModel ToolOne = new ToolViewModel { Title = "Tool 1" };
-        public readonly IViewModel ToolTwo = new ToolViewModel { Title = "Tool 2" };
+        //public readonly IViewModel ToolTwo = new ToolViewModel { Title = "Tool 2" };
         #endregion
 
         #region Documents
@@ -135,7 +135,7 @@ namespace WindowWrap.ViewModel
 
             Tools = new ObservableCollection<IViewModel>();
             Tools.Add(ToolOne);
-            Tools.Add(ToolTwo);
+            //Tools.Add(ToolTwo);
 
             Documents = new ObservableCollection<IViewModel>();
             Documents.Add(Window1);
