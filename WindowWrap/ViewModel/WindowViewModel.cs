@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -11,10 +12,12 @@ using System.Windows.Interop;
 using Utilities;
 using Utilities.Win;
 using WindowWrap.Infrastructure.Commands;
+using WindowWrap.Infrastructure.Properties;
 using WindowWrap.ViewModel.Base;
 
 namespace WindowWrap.ViewModel
 {
+
     internal class WindowViewModel : ViewModelBase, IViewModel
     {
 
@@ -37,43 +40,68 @@ namespace WindowWrap.ViewModel
         }
         #endregion
 
-        #region WindowList
-        private ObservableCollection<string> _windowList;
-        public ObservableCollection<string> WindowList
+        #region isSelected
+        private bool _isSelected;
+        public bool isSelected
         {
-            get => _windowList;
-            set => Set(ref _windowList, value);
-        }
-        #endregion
-
-        #region SelectedWindow
-        private string _selectedWindow;
-        public string SelectedWindow
-        {
-            get => _selectedWindow;
-            set 
+            get => _isSelected;
+            set
             {
-                Set(ref _selectedWindow, value);
-                OnWindowSelected(value);
+                if (value)
+                    OnSelect();
+                else
+                    OnDeselect();
+                Set(ref _isSelected, value);
             }
         }
         #endregion
 
-        #region Windows
-        private IDictionary<string, IntPtr> _windows;
-        private IDictionary<string, IntPtr> Windows
+        #region WindowsList
+        private IDictionary<string, IntPtr> _windowsList;
+        private IDictionary<string, IntPtr> WindowsList
         {
-            get => _windows;
-            set => Set(ref _windows, value);
+            get => _windowsList;
+            set => Set(ref _windowsList, value);
         }
         #endregion
 
-        #region WindowPtr
-        private IntPtr _windowPtr;
-        public IntPtr WindowPtr
+        #region WindowNamesList
+        private ObservableCollection<string> _windowNamesList;
+        public ObservableCollection<string> WindowNamesList
         {
-            get => _windowPtr;
-            set => Set(ref _windowPtr, value);
+            get => _windowNamesList;
+            set => Set(ref _windowNamesList, value);
+        }
+        #endregion
+
+        #region SelectedWindowName
+        private string _selectedWindowName;
+        public string SelectedWindowName
+        {
+            get => _selectedWindowName;
+            set 
+            {
+                Set(ref _selectedWindowName, value);
+                OnWindowSelect(value);
+            }
+        }
+        #endregion
+
+        #region SelectedWindowPtr
+        private IntPtr _selectedWindowPtr;
+        public IntPtr SelectedWindowPtr
+        {
+            get => _selectedWindowPtr;
+            set => Set(ref _selectedWindowPtr, value);
+        }
+        #endregion
+
+        #region SelectedWindowState
+        private WindowState _selectedWindowState;
+        public WindowState SelectedWindowState
+        {
+            get => _selectedWindowState;
+            set => Set(ref _selectedWindowState, value);
         }
         #endregion
 
@@ -101,12 +129,11 @@ namespace WindowWrap.ViewModel
         {
             get
             {
-                return true;
+                return false;
             }
         } 
         #endregion
         #endregion
-
 
         #region Commands
         #region WindowSelectCommand
@@ -125,8 +152,8 @@ namespace WindowWrap.ViewModel
         private bool CanWindowUndockCommandExecute(object p) => true;
         private void OnWindowUndockCommandExecuted(object p)
         {
-            WindowPtr = IntPtr.Zero;
-            SelectedWindow = "None::None";
+            SelectedWindowPtr = IntPtr.Zero;
+            SelectedWindowName = "None::None";
         }
         #endregion
 
@@ -157,35 +184,45 @@ namespace WindowWrap.ViewModel
                OnWindowsUpdateCommandExecuted, CanWindowsUpdateCommandExecute);
             #endregion
 
-
+            
         }
 
         private void UpdateWindows()
         {
-            Windows = Win32Utilities.GetOpenWindows();          
-            WindowList = new ObservableCollection<string>(Windows.Keys.OrderBy(c => c).AsEnumerable());
-            Windows.Add("None::None", IntPtr.Zero);
-            //WindowList.Add("None::None");
-            WindowList.Insert(0, "None::None");
+            WindowsList = Win32Utilities.GetOpenWindows();          
+            WindowNamesList = new ObservableCollection<string>(WindowsList.Keys.OrderBy(c => c).AsEnumerable());
+            WindowsList.Add("None::None", IntPtr.Zero);
+            WindowNamesList.Insert(0, "None::None");
         }
 
-        private void OnWindowSelected(string window)
+        private void OnWindowSelect(string window)
         {
             if (window == null)
                 return;
 
             IntPtr window_ptr;
-            Windows.TryGetValue(window, out window_ptr);
+            WindowsList.TryGetValue(window, out window_ptr);
 
             string[] words = window.Split("::");
             URL = words[0] + " : " + window_ptr;
             Title = words[1];
 
-            WindowPtr = window_ptr;
-            //User32.SetParent(window_ptr, new WindowInteropHelper(App.Current.MainWindow).Handle);
-            //User32.MoveWindow(window_ptr, 0, 0, )
+            SelectedWindowPtr = window_ptr;
+            SelectedWindowState = WindowState.Normal;
+        }
+    
+
+        private void OnSelect()
+        {
+            //Trace.WriteLine(Title + " selected");
+            SelectedWindowState = WindowState.Normal;
         }
 
+        private void OnDeselect()
+        {
+            //Trace.WriteLine(Title + " deselected");
+            SelectedWindowState = WindowState.Minimized;
+        }
 
 
 
@@ -197,8 +234,8 @@ namespace WindowWrap.ViewModel
 
         public void Close()
         {
-            // Do nowt!
-        } 
+            SelectedWindowPtr = IntPtr.Zero;
+        }
         #endregion
 
     }

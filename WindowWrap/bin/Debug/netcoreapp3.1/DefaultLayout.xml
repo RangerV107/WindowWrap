@@ -1,17 +1,18 @@
 <LayoutManager>
-  <SplitterPane Guid="afa65270-351a-421d-b768-4680c52ac0ff" Orientation="Vertical" Width="3063" Height="1168">
-    <ToolPaneGroup Guid="a58b95b9-66d4-41bc-a85f-ceec97305e3a" Width="296" Height="1168">
-      <Tool Title="Tool 1" ContentId="_toolOneView" />
-    </ToolPaneGroup>
-    <DocumentPanel Guid="e5563717-7874-48a4-bb61-2ce81a1cecb0" Width="2757" Height="1168">
-      <SplitterPane Guid="b70d93ec-5c68-405f-bb2a-6921935f1783" Orientation="Vertical" Width="2757" Height="1168">
-        <DocumentPaneGroup Guid="7de94a2e-e06b-4650-a8b4-66b26c9f1b8f" Width="1435" Height="1168">
-          <Document Title="None" ContentId="_window1View" Url="None : 0" />
-        </DocumentPaneGroup>
-        <DocumentPaneGroup Guid="5257eb38-66ce-422c-b913-0140e12b401f" Width="1312" Height="1168">
-          <Document Title="None" ContentId="_window1View" Url="None : 0" />
-        </DocumentPaneGroup>
-      </SplitterPane>
+  <SplitterPane Guid="de509e90-fe8c-4fba-bbfb-edfc22759e0d" Orientation="Vertical" Width="1174" Height="1122">
+    <SplitterPane Guid="8ba4b8c7-2d6c-43fe-9754-a7e7c2f03b75" Orientation="Horizontal" Width="123" Height="1122">
+      <ToolPaneGroup Guid="4831d1e9-3bf4-46d3-92af-75d7eda29736" Width="123" Height="556">
+        <Tool Title="Tool" ContentId="_toolOneView" />
+      </ToolPaneGroup>
+      <ToolPaneGroup Guid="5155fc40-c256-4eec-862e-f447d35cb4f9" Width="129" Height="556">
+        <Tool Title="Other Tool" ContentId="_otherToolOneView" />
+      </ToolPaneGroup>
+    </SplitterPane>
+    <DocumentPanel Guid="ed4a7995-30b6-4c45-87ad-9f724d5d25b0" Width="1041" Height="1122">
+      <DocumentPaneGroup Guid="f23ea84c-2b61-4ec0-896f-953730cf4091" Width="1041" Height="1122">
+        <Document Title="Window" ContentId="_window1View" Url="327428c8-54d6-469e-986a-32140079e0ca" />
+        <Document Title="Window" ContentId="_window1View" Url="5e9a7c12-b356-4d2c-ac41-4ed77e9efc7d" />
+      </DocumentPaneGroup>
     </DocumentPanel>
   </SplitterPane>
   <LeftSide />

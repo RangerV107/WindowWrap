@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Microsoft.Win32;
 using WindowWrap.ViewModel;
 
@@ -21,35 +22,6 @@ namespace WindowWrap
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //RegistryKey key = Registry.CurrentUser.OpenSubKey(_keyPath);
-            //if (key == null)
-            //{
-            //    key = Registry.CurrentUser.CreateSubKey(_keyPath);
-            //}
-            //else
-            //{
-            //    Object obj = key.GetValue("Height");
-            //    if (obj != null)
-            //    {
-            //        Height = Convert.ToDouble(obj);
-            //    }
-            //    obj = key.GetValue("Width");
-            //    if (obj != null)
-            //    {
-            //        Width = Convert.ToDouble(obj);
-            //    }
-            //    obj = key.GetValue("Top");
-            //    if (obj != null)
-            //    {
-            //        Top = Convert.ToDouble(obj);
-            //    }
-            //    obj = key.GetValue("Left");
-            //    if (obj != null)
-            //    {
-            //        Left = Convert.ToDouble(obj);
-            //    }
-            //}
-
             _layoutManager.Initialise();
             LoadLayout("DefaultLayout.xml");
             //LoadDefaultLayout();
@@ -57,17 +29,6 @@ namespace WindowWrap
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //RegistryKey key = Registry.CurrentUser.OpenSubKey(_keyPath, true);
-            //if (key == null)
-            //{
-            //    key = Registry.CurrentUser.CreateSubKey(_keyPath, true);
-            //}
-
-            //key.SetValue("Height", ActualHeight);
-            //key.SetValue("Width", ActualWidth);
-            //key.SetValue("Top", Top);
-            //key.SetValue("Left", Left);
-
             if (_layoutManager != null)
             {
                 SaveDefaultLayout();
@@ -187,6 +148,12 @@ namespace WindowWrap
             contextMenu.Items.Add(menuItem);
 
             contextMenu.IsOpen = true;
+        }
+
+        private void DockPanel_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if(Mouse.LeftButton == MouseButtonState.Pressed)
+                this.DragMove();
         }
 
         //private void _buttonTools_Click(object sender, RoutedEventArgs e)

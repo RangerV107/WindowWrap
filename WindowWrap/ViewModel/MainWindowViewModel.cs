@@ -72,13 +72,13 @@ namespace WindowWrap.ViewModel
         #endregion
 
         #region Tools
-        public readonly IViewModel ToolOne = new ToolViewModel { Title = "Tool 1" };
-        //public readonly IViewModel ToolTwo = new ToolViewModel { Title = "Tool 2" };
+        public readonly IViewModel ToolOne = new ToolViewModel { Title = "Tool" };
+        public readonly IViewModel ToolTwo = new OtherToolViewModel { Title = "Other Tool" };
         #endregion
 
         #region Documents
-        public readonly IViewModel Window1 = new WindowViewModel() { URL = "Window1", Title = "Window 1" };
-        public readonly IViewModel Window2 = new WindowViewModel() { URL = "Window2", Title = "Window 2" };
+        public readonly IViewModel Window1 = new WindowViewModel() { URL = Guid.NewGuid().ToString(), Title = "Window" };
+        public readonly IViewModel Window2 = new WindowViewModel() { URL = Guid.NewGuid().ToString(), Title = "Window" };
         #endregion
         #endregion
 
@@ -117,6 +117,14 @@ namespace WindowWrap.ViewModel
         }
         #endregion
 
+        #region AddWindowCommand
+        public ICommand AddWindowCommand { get; }
+        private bool CanAddWindowCommandExecute(object p) => true;
+        private void OnAddWindowCommandExecuted(object p)
+        {
+            Documents.Add(new WindowViewModel() { URL = Guid.NewGuid().ToString(), Title = "Window" });
+        }
+        #endregion
         #endregion
 
 
@@ -128,6 +136,8 @@ namespace WindowWrap.ViewModel
                 OnAppCloseCommandExecuted, CanAppCloseCommandExecute);
             Test1Command = new ActionCommand(
                 OnTest1CommandExecuted, CanTest1CommandExecute);
+            AddWindowCommand = new ActionCommand(
+                OnAddWindowCommandExecuted, CanAddWindowCommandExecute);
             #endregion
 
             #region DockManager layout
@@ -135,19 +145,12 @@ namespace WindowWrap.ViewModel
 
             Tools = new ObservableCollection<IViewModel>();
             Tools.Add(ToolOne);
-            //Tools.Add(ToolTwo);
+            Tools.Add(ToolTwo);
 
             Documents = new ObservableCollection<IViewModel>();
             Documents.Add(Window1);
             Documents.Add(Window2);
             #endregion
-
-            //Trace.WriteLine("ddd");
-
-            //App.Current.Windows...
-            //Tools.Where(n => n.GetType() == typeof(ExampleDockManagerViews.ViewModel.ToolOneViewModel)).Count() > 0
-
-
 
         }
 

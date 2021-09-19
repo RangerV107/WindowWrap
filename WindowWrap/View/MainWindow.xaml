@@ -16,6 +16,7 @@
         mc:Ignorable="d"
         Loaded="Window_Loaded"
         Closing="Window_Closing"
+        Background="#FF334180"
         Title="{Binding Title}" Height="1200" Width="1200">
     <Window.Resources>
         <!--<ResourceDictionary>
@@ -61,27 +62,39 @@
     </Window.Resources>
 
     
-    <DockPanel Background="#FF334180">
+    <DockPanel>
+
+        <DockPanel DockPanel.Dock="Top" >
+            <Menu DockPanel.Dock="Left" Background="Transparent">
+                <MenuItem Header="File" Foreground="White">
+                    <MenuItem Header="Exit" Command="{Binding AppCloseCommand}"/>
+                </MenuItem>
+                <!--<MenuItem Header="Documents" Click="_buttonDocuments_Click"/>-->
+                <!--<MenuItem Header="Tools" Click="_buttonTools_Click"/>-->
+                <MenuItem Header="Layout" Foreground="White" Click="_buttonWindow_Click"/>
+                <MenuItem Header="Test 1" Foreground="White" Command="{Binding Test1Command}"/>
+                <MenuItem Header="Add" Foreground="White" Command="{Binding AddWindowCommand}"/>
+            </Menu>
+
+            <!--<StackPanel Orientation="Horizontal" DockPanel.Dock="Right" Background="Transparent">
+                <Button Background="Green" BorderThickness="0" Width="20" Height="15" Margin="0, 0, 5, 0" Command="{Binding AppCloseCommand}"/>
+                <Button Background="Yellow" BorderThickness="0" Width="20" Height="15" Margin="0, 0, 5, 0" Command="{Binding AppCloseCommand}"/>
+                <Button Background="Red" BorderThickness="0" Width="20" Height="15" Margin="0, 0, 5, 0" Command="{Binding AppCloseCommand}"/>
+            </StackPanel>-->
+
+            <StackPanel Orientation="Horizontal" MouseDown="DockPanel_MouseDown"></StackPanel>
+        </DockPanel>
 
 
-        <Menu DockPanel.Dock="Top" Background="#FFCED5F2">
-            <MenuItem Header="File">
-                <MenuItem Header="Exit" Command="{Binding AppCloseCommand}"/>
-            </MenuItem>
-            <!--<MenuItem Header="Documents" Click="_buttonDocuments_Click"/>-->
-            <!--<MenuItem Header="Tools" Click="_buttonTools_Click"/>-->
-            <MenuItem Header="Layout" Click="_buttonWindow_Click"/>
-            <MenuItem Header="Test 1" Command="{Binding Test1Command}"/>
-        </Menu>
 
         <Grid x:Name="parentContainer">
 
-            <dm_dockManager:LayoutManager Margin="10,10,10,10"
+            <dm_dockManager:LayoutManager Margin="5"
                 x:Name="_layoutManager" Grid.Row="0" Grid.Column="0" 
                 DocumentsSource="{Binding Documents}"
                 ToolsSource="{Binding Tools}" 
                 VerticalAlignment="Stretch" 
-                HorizontalAlignment="Stretch" Background="#EEEEEE" >
+                HorizontalAlignment="Stretch">
 
                 <dm_dockManager:LayoutManager.Theme>
                     <dm_themes:DefaultTheme/>
@@ -95,8 +108,12 @@
                     <DataTemplate DataType="{x:Type viewModel:ToolViewModel}">
                         <view:ToolView x:Name="_toolOneView"/>
                     </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:OtherToolViewModel}">
+                        <view:ToolView x:Name="_otherToolOneView"/>
+                    </DataTemplate>
                 </dm_dockManager:LayoutManager.ToolTemplates>
             </dm_dockManager:LayoutManager>
+            
         </Grid>
 
 

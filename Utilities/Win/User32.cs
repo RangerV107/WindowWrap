@@ -87,6 +87,7 @@ namespace Utilities.Win
             //https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-showwindow
             public static int
             SW_NORMAL = 1,
+            SW_MAXIMIZE = 3,
             SW_SHOW = 5,
             SW_MINIMIZE = 6;
         }

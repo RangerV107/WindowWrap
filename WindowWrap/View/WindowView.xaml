@@ -9,24 +9,23 @@
              mc:Ignorable="d"
              Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
-
     <DockPanel>
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="#3b4f81">
             <Button Content="Undock" Command="{Binding WindowUndockCommand}" Margin="10,5,10,5"/>
             <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="400" Margin="0,5,10,5" 
-                      ItemsSource="{Binding WindowList}"
-                      SelectedValue="{Binding SelectedWindow}">
+                      ItemsSource="{Binding WindowNamesList}"
+                      SelectedValue="{Binding SelectedWindowName}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="DropDownOpened">
                         <i:InvokeCommandAction Command="{Binding WindowsUpdateCommand}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </ComboBox>
-            <Label Content="{Binding Title}" Margin="10,5,10,5" Foreground="White" Background="#FFFF5100"/>
-            <Label Content="{Binding URL}" Margin="0,5,10,5" Foreground="White" Background="#FFFF5100"/>
+            <Label Content="{Binding Title}" Margin="10,5,10,5"/>
+            <Label Content="{Binding URL}" Margin="0,5,10,5"/>
         </StackPanel>
         <Grid>
-            <local:WindowBox WindowPtr="{Binding WindowPtr}" Margin="0"/>
+            <local:WindowBox WindowPtr="{Binding SelectedWindowPtr}" WindowState="{Binding SelectedWindowState}" Margin="0"/>
         </Grid>
     </DockPanel>
 </UserControl>

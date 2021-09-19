@@ -16,5 +16,5 @@ DEBUG;TRACE
 15-959793834
 Controls\ToolListBox.xaml;Dictionary.xaml;FloatingPane.xaml;SideLocationPane.xaml;UnpinnedToolPane.xaml;WindowLocationPane.xaml;
 
-False
+True
 

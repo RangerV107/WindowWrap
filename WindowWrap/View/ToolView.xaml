@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:WindowWrap.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="White">
+             Background="#FF243359">
     <Grid>
-        <Label Content="Tool" Background="Orange"/>
+        <Label Content="Tool" Background="Orange" BorderThickness="0"/>
     </Grid>
 </UserControl>
