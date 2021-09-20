@@ -74,7 +74,7 @@ namespace WindowWrap.View
         {
             switch (msg)
             {
-                case WM_SIZING:
+                //case WM_SIZING:
                 case WM_MOVING:
                     {
                         MoveWindow(WindowPtr);
@@ -89,7 +89,7 @@ namespace WindowWrap.View
             MoveWindow(WindowPtr);
         }
 
-
+        
 
 
         private static void OnWindowPtrChangee(DependencyObject d, DependencyPropertyChangedEventArgs e) =>
@@ -107,15 +107,15 @@ namespace WindowWrap.View
             ((WindowBox)d).WindowStateChangee((WindowState)e.NewValue, (WindowState)e.OldValue);
         private void WindowStateChangee(WindowState new_state, WindowState old_state)
         {
-            //switch (new_state)
-            //{
-            //    case WindowState.Normal:
-            //        User32.ShowWindow(WindowPtr, User32.WindowShowFlags.SW_NORMAL); break;
-            //    case WindowState.Maximized:
-            //        User32.ShowWindow(WindowPtr, User32.WindowShowFlags.SW_MAXIMIZE); break;
-            //    case WindowState.Minimized:
-            //        User32.ShowWindow(WindowPtr, User32.WindowShowFlags.SW_MINIMIZE); break;
-            //}
+            switch (new_state)
+            {
+                case WindowState.Normal:
+                    User32.ShowWindow(WindowPtr, User32.WindowShowFlags.SW_NORMAL); break;
+                case WindowState.Maximized:
+                    User32.ShowWindow(WindowPtr, User32.WindowShowFlags.SW_MAXIMIZE); break;
+                case WindowState.Minimized:
+                    User32.ShowWindow(WindowPtr, User32.WindowShowFlags.SW_MINIMIZE); break;
+            }
         }
 
 
@@ -154,7 +154,7 @@ namespace WindowWrap.View
                 point_global.Offset(point_local.X, point_local.Y);
                 User32.MoveWindow(window, (int)point_global.X, (int)point_global.Y, (int)this.ActualWidth, (int)this.ActualHeight, true);
             }
-            catch (Exception ex) { Trace.WriteLine(ex.Source + " : " + ex.Message); }
+            catch (Exception ex) { /*Trace.WriteLine(ex.Source + " : " + ex.Message);*/ }
 
             //if (ParentWindow != null)
             //{

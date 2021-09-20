@@ -107,13 +107,32 @@ namespace WindowWrap.ViewModel
             //}, IntPtr.Zero);
 
             Trace.WriteLine("\n============================");
+            #region ddd_old
+            //foreach (var w in Win32Utilities.GetOpenWindows().OrderBy(c => c.Key))
+            //{
+            //    Trace.WriteLine(w.Key + "       Ptr: " + w.Value);
+            //} 
+            #endregion
 
-            foreach (var w in Win32Utilities.GetOpenWindows().OrderBy(c => c.Key))
+            #region ddd
+            //foreach(var doc in Documents)
+            //{
+            //    Trace.WriteLine(doc.Title + " : " + doc.URL);
+            //} 
+            #endregion
+
+            #region mega_ddd
+            for (int i = 0; i < System.Windows.Media.VisualTreeHelper.GetChildrenCount(App.Current.MainWindow); i++)
             {
-                Trace.WriteLine(w.Key + "       Ptr: " + w.Value);
-            }
+                DependencyObject wch = System.Windows.Media.VisualTreeHelper.GetChild(App.Current.MainWindow, i);
+                Trace.WriteLine(wch);
+            } 
+            #endregion
             Trace.WriteLine("============================\n");
 
+            //App.Current.MainWindow.
+            
+            
         }
         #endregion
 

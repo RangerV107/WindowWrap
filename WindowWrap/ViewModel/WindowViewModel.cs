@@ -56,6 +56,22 @@ namespace WindowWrap.ViewModel
         }
         #endregion
 
+        #region isActive
+        private bool _isActive;
+        public bool isActive
+        {
+            get => _isActive;
+            set
+            {
+                if (value)
+                    OnActive();
+                else
+                    OnDeactive();
+                Set(ref _isActive, value);
+            }
+        }
+        #endregion
+
         #region WindowsList
         private IDictionary<string, IntPtr> _windowsList;
         private IDictionary<string, IntPtr> WindowsList
@@ -214,14 +230,24 @@ namespace WindowWrap.ViewModel
 
         private void OnSelect()
         {
-            //Trace.WriteLine(Title + " selected");
+            //Trace.WriteLine(URL + " selected");
             SelectedWindowState = WindowState.Normal;
         }
 
         private void OnDeselect()
         {
-            //Trace.WriteLine(Title + " deselected");
+            //Trace.WriteLine(URL + " deselected");
             SelectedWindowState = WindowState.Minimized;
+        }
+
+        private void OnActive()
+        {
+            //Trace.WriteLine(URL + " active");
+        }
+
+        private void OnDeactive()
+        {
+            //Trace.WriteLine(URL + " deactive");
         }
 
 
@@ -234,6 +260,7 @@ namespace WindowWrap.ViewModel
 
         public void Close()
         {
+            SelectedWindowState = WindowState.Normal;
             SelectedWindowPtr = IntPtr.Zero;
         }
         #endregion

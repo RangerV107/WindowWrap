@@ -10,8 +10,14 @@ namespace WindowWrap.View
         public WindowView()
         {
             InitializeComponent();
+            //System.Diagnostics.Trace.WriteLine(this + " : " + this.Name);
         }
 
         public OpenControls.Wpf.DockManager.IViewModel IViewModel { get; set; }
+
+        private void UserControl_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            //System.Diagnostics.Trace.WriteLine(this + " : " + this.Name);
+        }
     }
 }

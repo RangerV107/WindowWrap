@@ -78,9 +78,22 @@ namespace OpenControls.Wpf.DockManager
             }
         }
 
+        private IViewModel PrevSelectedDocument;
         private void DocumentContainer_SelectionChanged(object sender, EventArgs e)
         {
-            // Nothing to do!
+            int i = IViewContainer.SelectedIndex;
+            if (i >= 0)
+            {
+                IViewModel SelectedDocument = IViewContainer.GetIViewModel(i);
+
+                SelectedDocument.isSelected = true;
+                if (PrevSelectedDocument != null)
+                    PrevSelectedDocument.isSelected = false;
+                PrevSelectedDocument = SelectedDocument;
+            }
+
+            //System.Diagnostics.Trace.WriteLine("Document Pane Group: " + IViewContainer.GetIViewModel(i).URL);
+
         }
     }
 }

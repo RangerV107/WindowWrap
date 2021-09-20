@@ -1,21 +1,32 @@
 <LayoutManager>
-  <SplitterPane Guid="de509e90-fe8c-4fba-bbfb-edfc22759e0d" Orientation="Vertical" Width="1174" Height="1122">
-    <SplitterPane Guid="8ba4b8c7-2d6c-43fe-9754-a7e7c2f03b75" Orientation="Horizontal" Width="123" Height="1122">
-      <ToolPaneGroup Guid="4831d1e9-3bf4-46d3-92af-75d7eda29736" Width="123" Height="556">
+  <DocumentPanel Guid="37813e8a-3b73-460e-9de3-71ae565e5adc" Width="3404" Height="1338">
+    <SplitterPane Guid="226a57ff-f7e9-4315-97f1-97445bd97be7" Orientation="Vertical" Width="3404" Height="1338">
+      <DocumentPaneGroup Guid="4c1265ba-c4bc-49aa-9453-c736decafa13" Width="1411" Height="1338">
+        <Document Title="NMSMods" ContentId="_window1View" Url="explorer.exe : 329314" />
+      </DocumentPaneGroup>
+      <SplitterPane Guid="cbdf817e-37cf-4ddf-923b-16d546a7fb84" Orientation="Horizontal" Width="1983" Height="1338">
+        <DocumentPaneGroup Guid="5873ec8b-403c-4bb1-888f-a1ae73727fbf" Width="1983" Height="617">
+          <Document Title="Torrent" ContentId="_window1View" Url="explorer.exe : 5441694" />
+          <Document Title="µTorrent 2.2.1" ContentId="_window1View" Url="uTorrent.exe : 590734" />
+        </DocumentPaneGroup>
+        <DocumentPaneGroup Guid="5f870a1c-01c4-4e7e-9c6c-2cbb934baae6" Width="1983" Height="711">
+          <Document Title="Kino (E:)" ContentId="_window1View" Url="explorer.exe : 2885608" />
+        </DocumentPaneGroup>
+      </SplitterPane>
+    </SplitterPane>
+  </DocumentPanel>
+  <LeftSide>
+    <UnpinnedToolData Sibling="5155fc40-c256-4eec-862e-f447d35cb4f9" IsHorizontal="True" IsFirst="True">
+      <ToolPaneGroup Guid="4d3fe513-1f2b-4b69-bdb3-74f5ed07ce48" Width="0" Height="0">
         <Tool Title="Tool" ContentId="_toolOneView" />
       </ToolPaneGroup>
-      <ToolPaneGroup Guid="5155fc40-c256-4eec-862e-f447d35cb4f9" Width="129" Height="556">
+    </UnpinnedToolData>
+    <UnpinnedToolData Sibling="5d282e5d-c50b-49cf-a148-3e23fb56b87d" IsHorizontal="False" IsFirst="True">
+      <ToolPaneGroup Guid="08a99014-79f0-446e-9d59-ec9751a16e72" Width="0" Height="0">
         <Tool Title="Other Tool" ContentId="_otherToolOneView" />
       </ToolPaneGroup>
-    </SplitterPane>
-    <DocumentPanel Guid="ed4a7995-30b6-4c45-87ad-9f724d5d25b0" Width="1041" Height="1122">
-      <DocumentPaneGroup Guid="f23ea84c-2b61-4ec0-896f-953730cf4091" Width="1041" Height="1122">
-        <Document Title="Window" ContentId="_window1View" Url="327428c8-54d6-469e-986a-32140079e0ca" />
-        <Document Title="Window" ContentId="_window1View" Url="5e9a7c12-b356-4d2c-ac41-4ed77e9efc7d" />
-      </DocumentPaneGroup>
-    </DocumentPanel>
-  </SplitterPane>
-  <LeftSide />
+    </UnpinnedToolData>
+  </LeftSide>
   <TopSide />
   <RightSide />
   <BottomSide />

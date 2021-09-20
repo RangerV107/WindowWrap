@@ -37,6 +37,7 @@ namespace WindowWrap.ViewModel
         }
 
         public bool isSelected { get; set; }
+        public bool isActive { get; set; }
 
         public void Save()
         {

@@ -14,7 +14,6 @@ namespace OpenControls.Wpf.DockManager
         {
             ILayoutFactory = iLayoutFactory;
             IDockPaneHost = iDockPaneHost;
-
         }
 
         private readonly IDockPaneHost IDockPaneHost;
