@@ -1,10 +1,16 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Linq;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using OpenControls.Wpf.DockManager;
 using WindowWrap.Infrastructure.Commands;
 using WindowWrap.ViewModel.Base;
+using System.Diagnostics;
+using OpenControls.Wpf.Utilities;
+using Utilities;
+using System.IO;
 
 namespace WindowWrap.ViewModel
 {
@@ -66,11 +72,13 @@ namespace WindowWrap.ViewModel
         #endregion
 
         #region Tools
-        public readonly IViewModel ToolOne = new ToolViewModel { Title = "Tool 1" };
+        public readonly IViewModel ToolOne = new ToolViewModel { Title = "Tool" };
+        public readonly IViewModel ToolTwo = new OtherToolViewModel { Title = "Other Tool" };
         #endregion
 
         #region Documents
-        public readonly IViewModel Window1 = new WindowViewModel() { URL = "Window1", Title = "Window 1" };
+        public readonly IViewModel Window1 = new WindowViewModel() { URL = Guid.NewGuid().ToString(), Title = "Window" };
+        public readonly IViewModel Window2 = new WindowViewModel() { URL = Guid.NewGuid().ToString(), Title = "Window" };
         #endregion
         #endregion
 
@@ -84,47 +92,58 @@ namespace WindowWrap.ViewModel
         }
         #endregion
 
-        #region WindowLoaded
-        public ICommand WindowLoaded { get; }
-        private bool CanWindowLoadedExecute(object p) => true;
-        private void OnWindowLoadedExecuted(object p)
+        #region Test1Command
+        public ICommand Test1Command { get; }
+        private bool CanTest1CommandExecute(object p) => true;
+        private void OnTest1CommandExecuted(object p)
         {
-            #region Save something in rregestry
-            //RegistryKey key = Registry.CurrentUser.OpenSubKey(_keyPath);
-            //if (key == null)
+            //OpenControls.Wpf.Utilities.User32.EnumWindows((wnd, param) =>
             //{
-            //    key = Registry.CurrentUser.CreateSubKey(_keyPath);
-            //}
-            //else
+            //    string window = User32Utilities.GetWindowModuleFileName(wnd);
+
+            //    Trace.WriteLine(Path.GetFileName(window));
+
+            //    return true;
+            //}, IntPtr.Zero);
+
+            Trace.WriteLine("\n============================");
+            #region ddd_old
+            //foreach (var w in Win32Utilities.GetOpenWindows().OrderBy(c => c.Key))
             //{
-            //    Object obj = key.GetValue("Height");
-            //    if (obj != null)
-            //    {
-            //        Height = Convert.ToDouble(obj);
-            //    }
-            //    obj = key.GetValue("Width");
-            //    if (obj != null)
-            //    {
-            //        Width = Convert.ToDouble(obj);
-            //    }
-            //    obj = key.GetValue("Top");
-            //    if (obj != null)
-            //    {
-            //        Top = Convert.ToDouble(obj);
-            //    }
-            //    obj = key.GetValue("Left");
-            //    if (obj != null)
-            //    {
-            //        Left = Convert.ToDouble(obj);
-            //    }
+            //    Trace.WriteLine(w.Key + "       Ptr: " + w.Value);
             //} 
             #endregion
 
-            //_layoutManager.Initialise();
+            #region ddd
+            //foreach(var doc in Documents)
+            //{
+            //    Trace.WriteLine(doc.Title + " : " + doc.URL);
+            //} 
+            #endregion
 
+            #region mega_ddd
+            for (int i = 0; i < System.Windows.Media.VisualTreeHelper.GetChildrenCount(App.Current.MainWindow); i++)
+            {
+                DependencyObject wch = System.Windows.Media.VisualTreeHelper.GetChild(App.Current.MainWindow, i);
+                Trace.WriteLine(wch);
+            } 
+            #endregion
+            Trace.WriteLine("============================\n");
+
+            //App.Current.MainWindow.
+            
+            
         }
         #endregion
 
+        #region AddWindowCommand
+        public ICommand AddWindowCommand { get; }
+        private bool CanAddWindowCommandExecute(object p) => true;
+        private void OnAddWindowCommandExecuted(object p)
+        {
+            Documents.Add(new WindowViewModel() { URL = Guid.NewGuid().ToString(), Title = "Window" });
+        }
+        #endregion
         #endregion
 
 
@@ -134,6 +153,10 @@ namespace WindowWrap.ViewModel
             #region Commands
             AppCloseCommand = new ActionCommand(
                 OnAppCloseCommandExecuted, CanAppCloseCommandExecute);
+            Test1Command = new ActionCommand(
+                OnTest1CommandExecuted, CanTest1CommandExecute);
+            AddWindowCommand = new ActionCommand(
+                OnAddWindowCommandExecuted, CanAddWindowCommandExecute);
             #endregion
 
             #region DockManager layout
@@ -141,12 +164,12 @@ namespace WindowWrap.ViewModel
 
             Tools = new ObservableCollection<IViewModel>();
             Tools.Add(ToolOne);
+            Tools.Add(ToolTwo);
 
             Documents = new ObservableCollection<IViewModel>();
-            Documents.Add(Window1); 
+            Documents.Add(Window1);
+            Documents.Add(Window2);
             #endregion
-
-
 
         }
 

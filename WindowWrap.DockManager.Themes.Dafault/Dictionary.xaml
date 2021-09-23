@@ -5,8 +5,7 @@
                     xmlns:DockManagerControls="clr-namespace:OpenControls.Wpf.DockManager.Controls;assembly=OpenControls.Wpf.DockManager"
                     xmlns:TabHeaderControl="clr-namespace:OpenControls.Wpf.TabHeaderControl;assembly=OpenControls.Wpf.TabHeaderControl">
 
-    <!-- Common styles -->
-
+    <!--#region Common styles -->
     <Style x:Key="ViewListButtonStyle" TargetType="Button">
         <Setter Property="Width" Value="20"/>
         <Setter Property="Height" Value="20"/>
@@ -217,24 +216,25 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--#endregion-->
 
     <!-- Miscellaneous -->
 
-    <Brush x:Key="SelectedPaneBrush">DarkRed</Brush>
+    <Brush x:Key="SelectedPaneBrush">Orange</Brush>
 
     <!-- Splitters -->
 
-    <Brush x:Key="SplitterBrush">#5d6b99</Brush>
-    <System:Double x:Key="SplitterWidth">6</System:Double>
+    <Brush x:Key="SplitterBrush">#FF334180</Brush>
+    <System:Double x:Key="SplitterWidth">10</System:Double>
 
     <!-- Tool Pane Styles -->
-    
+
     <CornerRadius x:Key="ToolPaneCornerRadius">0</CornerRadius>
     <Brush x:Key="ToolPaneBorderBrush">Transparent</Brush>
     <Thickness x:Key="ToolPaneBorderThickness">0</Thickness>
     <System:Double x:Key="ToolPaneHeaderFontSize">12</System:Double>
     <FontFamily x:Key="ToolPaneHeaderFontFamily">Arial</FontFamily>
-    <Brush x:Key="ToolPaneBackground">#5d6b99</Brush>
+    <Brush x:Key="ToolPaneBackground">#3b4f81</Brush>
     <System:Double x:Key="ToolPaneTabHeaderHeight">21</System:Double>
 
     <CornerRadius x:Key="ToolPaneHeaderCornerRadius">0</CornerRadius>
@@ -259,7 +259,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
-                    <Border Name="_border" SnapsToDevicePixels="true" BorderThickness="0" CornerRadius="0,0,4,4">
+                    <Border Name="_border" SnapsToDevicePixels="true" BorderThickness="0" CornerRadius="0,0,0,0">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="4"/>
@@ -268,7 +268,7 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="1"/>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="1" x:Name="_label" FontSize="12" FontFamily="Arial" Foreground="Black" Width="Auto" Padding="2,0,2,0" Margin="0" VerticalAlignment="Center">
+                            <Label Grid.Column="1" x:Name="_label" FontSize="12" FontFamily="Arial" Foreground="Black" Width="Auto" Padding="2,0,2,0" Margin="0" VerticalAlignment="Center" Background="Transparent" BorderThickness="0">
                                 <ContentPresenter />
                             </Label>
                             <Button Grid.Column="3" x:Name="_buttonCloseTab" Command="{Binding CloseTabCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=TabHeaderControl:TabHeaderControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Foreground="Gray" BorderThickness="0" Background="Transparent" Style="{StaticResource CloseButtonStyle}" />
@@ -306,9 +306,9 @@
     <CornerRadius x:Key="DocumentPaneCornerRadius">0</CornerRadius>
     <Brush x:Key="DocumentPaneBorderBrush">Transparent</Brush>
     <Thickness x:Key="DocumentPaneBorderThickness">0</Thickness>
-    <Brush x:Key="DocumentPaneBackground">#5d6b99</Brush>
+    <Brush x:Key="DocumentPaneBackground">#3b4f81</Brush>
     <System:Double x:Key="DocumentPaneTabHeaderHeight">21</System:Double>
-    <Brush x:Key="DocumentPaneContentBarBrush">#f5cc84</Brush>
+    <Brush x:Key="DocumentPaneContentBarBrush">AliceBlue</Brush>
     <System:Double x:Key="DocumentPaneContentBarHeight">2</System:Double>
 
     <Brush x:Key="DocumentPaneActiveScrollIndicatorBrush">White</Brush>
@@ -322,7 +322,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
-                    <Border Name="_border" SnapsToDevicePixels="true" BorderThickness="0" CornerRadius="4,4,0,0">
+                    <Border Name="_border" SnapsToDevicePixels="true" BorderThickness="0" CornerRadius="0,0,0,0">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="4"/>
@@ -331,7 +331,7 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="1"/>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="1" x:Name="_label" FontSize="12" FontFamily="Arial" Foreground="Black" Width="Auto" Padding="2,0,2,0" Margin="0" VerticalAlignment="Center">
+                            <Label Grid.Column="1" x:Name="_label" FontSize="12" FontFamily="Arial" Foreground="Black" Width="Auto" Padding="2,0,2,0" Margin="0" VerticalAlignment="Center" Background="Transparent" BorderThickness="0">
                                 <ContentPresenter />
                             </Label>
                             <Button Grid.Column="3" x:Name="_buttonCloseTab" Command="{Binding CloseTabCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=TabHeaderControl:TabHeaderControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Foreground="Gray" BorderThickness="0" Background="Transparent" Style="{StaticResource CloseButtonStyle}" />
@@ -345,7 +345,7 @@
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="_buttonCloseTab" Property="Background" Value="Transparent"/>
                             <Setter TargetName="_label" Property="Foreground" Value="Black"/>
-                            <Setter TargetName="_border" Property="Background" Value="#f5cc84"/>
+                            <Setter TargetName="_border" Property="Background" Value="AliceBlue"/>
                             <Setter TargetName="_border" Property="BorderThickness" Value="0"/>
                             <Setter TargetName="_border" Property="BorderBrush" Value="Transparent"/>
                             <Setter TargetName="_label" Property="Padding" Value="2,0,2,0"/>
@@ -357,8 +357,8 @@
                                 <Condition Binding="{Binding Path=IsActive, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=TabHeaderControl:TabHeaderControl}}" Value="false" />
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="_buttonCloseTab" Property="Background" Value="Transparent"/>
-                            <Setter TargetName="_label" Property="Foreground" Value="Black"/>
-                            <Setter TargetName="_border" Property="Background" Value="AliceBlue"/>
+                            <Setter TargetName="_label" Property="Foreground" Value="White"/>
+                            <Setter TargetName="_border" Property="Background" Value="#3b4f81"/>
                             <Setter TargetName="_border" Property="BorderThickness" Value="0"/>
                             <Setter TargetName="_border" Property="BorderBrush" Value="Transparent"/>
                             <Setter TargetName="_label" Property="Padding" Value="2,0,2,0"/>
@@ -388,7 +388,7 @@
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="FontFamily" Value="Arial"/>
     </Style>
-    <Brush x:Key="FloatingPaneTitleBarBackground">#ccd5f0</Brush>
+    <Brush x:Key="FloatingPaneTitleBarBackground">#3b4f81</Brush>
     <Brush x:Key="FloatingPaneBackground">#5d6b99</Brush>
     <Thickness x:Key="FloatingPanePadding">1</Thickness>
 
@@ -425,13 +425,13 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="4"/>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Row="1" Grid.Column="1" FontSize="12" FontFamily="Arial" Foreground="White" Width="Auto" Padding="2,0,2,0" Margin="0" VerticalAlignment="Center">
+                            <Label Grid.Row="1" Grid.Column="1" FontSize="12" FontFamily="Arial" Foreground="White" Width="Auto" Padding="2,0,2,0" Margin="0" VerticalAlignment="Center" Background="Transparent" BorderThickness="0">
                                 <ContentPresenter />
                                 <Label.LayoutTransform>
                                     <RotateTransform Angle="{Binding TextAngle, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DockManagerControls:ToolListBox}}" CenterX="0.5" CenterY="0.5"/>
                                 </Label.LayoutTransform>
                             </Label>
-                            <Rectangle Grid.Row="3" Grid.Column="1" x:Name="_rectangle" Fill="#3b4f81" Height="6" HorizontalAlignment="Stretch"/>
+                            <Rectangle Grid.Row="3" Grid.Column="1" x:Name="_rectangle" Fill="#FF243359" Height="6" HorizontalAlignment="Stretch"/>
                         </Grid>
                         <Border.LayoutTransform>
                             <RotateTransform Angle="{Binding TextAngle, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DockManagerControls:ToolListBox}}" CenterX="0.5" CenterY="0.5"/>

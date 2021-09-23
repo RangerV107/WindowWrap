@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="HandyControl" Version="3.2.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +21,7 @@
       <Private>true</Private>
       <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
     </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj" />
     <ProjectReference Include="..\WindowWrap.DockManager.Themes.Dafault\WindowWrap.DockManager.Themes.Dafault.csproj" />
     <ProjectReference Include="..\WindowWrap.DockManager.Views\WindowWrap.DockManager.Views.csproj" />
   </ItemGroup>

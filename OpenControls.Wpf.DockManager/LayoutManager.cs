@@ -94,6 +94,10 @@ namespace OpenControls.Wpf.DockManager
 
         public void Shutdown()
         {
+            foreach(var ivm in DocumentsSource)
+                ivm.Close();
+            foreach (var ivm in ToolsSource)
+                ivm.Close();
             IFloatingPaneManager.Shutdown();
         }
 
@@ -430,10 +434,14 @@ namespace OpenControls.Wpf.DockManager
                 return;
             }
 
+            //System.Diagnostics.Trace.WriteLine("iViewContainer : " + iViewContainer.Title);
+
             if (iViewContainer is DocumentContainer)
             {
                 if (ActiveDocumentView != userControl)
                 {
+                    if (ActiveDocumentView != null)
+                        ((ActiveDocumentView as UserControl).DataContext as IViewModel).isActive = false;
                     if (_iActiveDocument != null)
                     {
                         _iActiveDocument.IsActive = false;
@@ -442,7 +450,8 @@ namespace OpenControls.Wpf.DockManager
                     _iActiveDocument.IsActive = true;
                     DocumentGotFocus?.Invoke(userControl, null);
                     ActiveDocumentView = userControl;
-                    System.Diagnostics.Debug.WriteLine("Active document view: " + userControl.ToString());
+                    //System.Diagnostics.Debug.WriteLine("Active document view: " + userControl.ToString() + " : " + index);
+                    (userControl.DataContext as IViewModel).isActive = true;
                 }
             }
         }
@@ -469,10 +478,12 @@ namespace OpenControls.Wpf.DockManager
         {
             if (DocumentsSource.Contains(iViewModel))
             {
+                iViewModel.Close();
                 DocumentsSource.Remove(iViewModel);
             }
             else if (ToolsSource.Contains(iViewModel))
             {
+                iViewModel.Close();
                 ToolsSource.Remove(iViewModel);
             }
         }

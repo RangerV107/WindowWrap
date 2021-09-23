@@ -53,6 +53,8 @@ namespace OpenControls.Wpf.DockManager
 
             SelectionChanged?.Invoke(sender, e);
             TabMouseDown?.Invoke(this, null);
+
+            //System.Diagnostics.Trace.WriteLine("_tabHeaderControl_SelectionChanged : " + _selectedUserControl);
         }
 
         protected void _tabHeaderControl_ItemsChanged(object sender, System.EventArgs e)

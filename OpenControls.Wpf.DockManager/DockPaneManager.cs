@@ -14,7 +14,6 @@ namespace OpenControls.Wpf.DockManager
         {
             ILayoutFactory = iLayoutFactory;
             IDockPaneHost = iDockPaneHost;
-
         }
 
         private readonly IDockPaneHost IDockPaneHost;
@@ -82,6 +81,7 @@ namespace OpenControls.Wpf.DockManager
         private void DockPane_TabClosed(object sender, Events.TabClosedEventArgs e)
         {
             System.Diagnostics.Trace.Assert(e.UserControl.DataContext is IViewModel);
+            //(e.UserControl.DataContext as IViewModel).Close();
             IDockPaneHost.RemoveViewModel(e.UserControl.DataContext as IViewModel);
         }
 

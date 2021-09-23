@@ -21,6 +21,9 @@
          * Not used by Tool view model
          */
         bool HasChanged { get; }
+        bool isSelected { get; set; }
+        bool isActive { get; set; }
         void Save();
+        void Close();
     }
 }

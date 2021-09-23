@@ -3,11 +3,11 @@ using WindowWrap.ViewModel.Base;
 
 namespace WindowWrap.ViewModel
 {
-    class ToolViewModel : ViewModelBase, IViewModel
+    class OtherToolViewModel : ViewModelBase, IViewModel
     {
-        public ToolViewModel()
+        public OtherToolViewModel()
         {
-            Title = "Tool View Model";
+            Title = "Other Tool View Model";
         }
 
         public string URL { get; set; }
@@ -32,7 +32,7 @@ namespace WindowWrap.ViewModel
         {
             get
             {
-                return false;
+                return true;
             }
         }
 

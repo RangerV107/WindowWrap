@@ -1,21 +1,31 @@
-﻿<UserControl x:Class="WindowWrap.View.WindowView"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WindowWrap.View"
+             xmlns:hc="https://handyorg.github.io/handycontrol" x:Class="WindowWrap.View.WindowView"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d"
              Background="White"
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-
-        <Label Grid.Row="0" Grid.Column="0" Content="{Binding LabelText}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" Panel.ZIndex="2"/>
-        <Rectangle Grid.Row="0" Grid.Column="0" Width="200" Height="100" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="Red" Panel.ZIndex="1"/>
-    </Grid>
+             d:DesignHeight="450" d:DesignWidth="800" Unloaded="UserControl_Unloaded">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="#3b4f81">
+            <Button Content="Undock" Command="{Binding WindowUndockCommand}" Margin="10,5,10,5"/>
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="400" Margin="0,5,10,5" 
+                      ItemsSource="{Binding WindowNamesList}"
+                      SelectedValue="{Binding SelectedWindowName}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="DropDownOpened">
+                        <i:InvokeCommandAction Command="{Binding WindowsUpdateCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
+            <Label Content="{Binding Title}" Margin="10,5,10,5"/>
+            <Label Content="{Binding URL}" Margin="0,5,10,5"/>
+        </StackPanel>
+        <Grid>
+            <local:WindowBox WindowPtr="{Binding SelectedWindowPtr}" WindowState="{Binding SelectedWindowState}" Margin="0"/>
+        </Grid>
+    </DockPanel>
 </UserControl>

@@ -11,12 +11,25 @@ namespace OpenControls.Wpf.DockManager
             (IViewContainer as DocumentContainer).HideCommandsButton();
         }
 
+        private IViewModel PrevSelectedDocument;
         private void IViewContainer_SelectionChanged(object sender, EventArgs e)
         {
             FloatingViewModel floatingViewModel = DataContext as FloatingViewModel;
             System.Diagnostics.Trace.Assert(floatingViewModel != null);
 
             floatingViewModel.Title = Application.Current.MainWindow.Title + " - " + IViewContainer.URL;
+
+
+            int i = IViewContainer.SelectedIndex;
+            if (i >= 0)
+            {
+                IViewModel SelectedDocument = IViewContainer.GetIViewModel(i);
+
+                SelectedDocument.isSelected = true;
+                if (PrevSelectedDocument != null)
+                    PrevSelectedDocument.isSelected = false;
+                PrevSelectedDocument = SelectedDocument;
+            }
         }
 
         bool IActiveDocument.IsActive
