@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OpenControls.Wpf.DockManager\OpenControls.Wpf.DockManager.csproj" />
+    <ProjectReference Include="..\OpenControls.Wpf.TabHeaderControl\OpenControls.Wpf.TabHeaderControl.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Dictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>

@@ -4,26 +4,117 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowWrap"
-        xmlns:viewmodel="clr-namespace:WindowWrap.ViewModel"
+        
+        xmlns:view="clr-namespace:WindowWrap.View"
+        xmlns:viewModel="clr-namespace:WindowWrap.ViewModel"
+        
+        xmlns:dm_dockManager="clr-namespace:OpenControls.Wpf.DockManager;assembly=OpenControls.Wpf.DockManager"
+        xmlns:dm_themes="clr-namespace:OpenControls.Wpf.DockManager.Themes;assembly=WindowWrap.DockManager.Themes.Dafault"
+        
         xmlns:cmds="clr-namespace:WindowWrap.Infrastructure.Commands"
         xmlns:hc="https://handyorg.github.io/handycontrol"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="450" Width="800"
-        hc:Theme.Skin="Dark">
-    <Window.DataContext>
-        <viewmodel:MainWindowViewModel/>
-    </Window.DataContext>
+        Loaded="Window_Loaded"
+        Closing="Window_Closing"
+        Background="#FF334180"
+        Title="{Binding Title}" Height="1200" Width="1200">
+    <Window.Resources>
+        <!--<ResourceDictionary>
+            <Style x:Key="styleGridSplitter" TargetType="GridSplitter">
+                <Setter Property="Background" Value="Gainsboro"/>
+                <Setter Property="BorderThickness" Value="1"/>
+            </Style>
+            <Style x:Key="styleHorizontalGridSplitter" TargetType="GridSplitter" BasedOn="{StaticResource styleGridSplitter}">
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="Height" Value="4"/>
+            </Style>
+            <Style x:Key="styleVerticalGridSplitter" TargetType="GridSplitter" BasedOn="{StaticResource styleGridSplitter}">
+                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                <Setter Property="Width" Value="4"/>
+            </Style>
+            <Style x:Key="StyleTitleBarButton" TargetType="Button">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid Margin="0,0,0,0">
+                                <Border Name="_border" Background="Transparent" Padding="6,0,6,2" BorderThickness="1" BorderBrush="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentPresenter/>
+                                </Border>
+                            </Grid>
 
-    <DockPanel LastChildFill="False" Background="#151515">
-        <Menu DockPanel.Dock="Top" >
-            <MenuItem Header="File">
-                <MenuItem Header="Exit" Command="{Binding AppCloseCommand}"/>
-            </MenuItem>
-            <MenuItem Header="About"/>
-        </Menu>
-        <Button Content="Button" Width="Auto"/>
-        <hc:Shield Content="Shield" Width="100"/>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="_border" Property="Background" Value="Gainsboro" />
+                                    <Setter TargetName="_border" Property="BorderBrush" Value="Gray" />
+                                    <Setter TargetName="_border" Property="BorderThickness" Value="1" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/OpenControls.Wpf.DockManager;component/Dictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>-->
+    </Window.Resources>
 
+    
+    <DockPanel>
+
+        <DockPanel DockPanel.Dock="Top" >
+            <Menu DockPanel.Dock="Left" Background="Transparent">
+                <MenuItem Header="File" Foreground="White">
+                    <MenuItem Header="Exit" Command="{Binding AppCloseCommand}"/>
+                </MenuItem>
+                <!--<MenuItem Header="Documents" Click="_buttonDocuments_Click"/>-->
+                <!--<MenuItem Header="Tools" Click="_buttonTools_Click"/>-->
+                <MenuItem Header="Layout" Foreground="White" Click="_buttonWindow_Click"/>
+                <MenuItem Header="Test 1" Foreground="White" Command="{Binding Test1Command}"/>
+                <MenuItem Header="Add" Foreground="White" Command="{Binding AddWindowCommand}"/>
+            </Menu>
+
+            <!--<StackPanel Orientation="Horizontal" DockPanel.Dock="Right" Background="Transparent">
+                <Button Background="Green" BorderThickness="0" Width="20" Height="15" Margin="0, 0, 5, 0" Command="{Binding AppCloseCommand}"/>
+                <Button Background="Yellow" BorderThickness="0" Width="20" Height="15" Margin="0, 0, 5, 0" Command="{Binding AppCloseCommand}"/>
+                <Button Background="Red" BorderThickness="0" Width="20" Height="15" Margin="0, 0, 5, 0" Command="{Binding AppCloseCommand}"/>
+            </StackPanel>-->
+
+            <StackPanel Orientation="Horizontal" MouseDown="DockPanel_MouseDown"></StackPanel>
+        </DockPanel>
+
+
+
+        <Grid x:Name="parentContainer">
+
+            <dm_dockManager:LayoutManager Margin="5"
+                x:Name="_layoutManager" Grid.Row="0" Grid.Column="0" 
+                DocumentsSource="{Binding Documents}"
+                ToolsSource="{Binding Tools}" 
+                VerticalAlignment="Stretch" 
+                HorizontalAlignment="Stretch">
+
+                <dm_dockManager:LayoutManager.Theme>
+                    <dm_themes:DefaultTheme/>
+                </dm_dockManager:LayoutManager.Theme>
+                <dm_dockManager:LayoutManager.DocumentTemplates>
+                    <DataTemplate DataType="{x:Type viewModel:WindowViewModel}">
+                        <view:WindowView x:Name="_window1View"/>
+                    </DataTemplate>
+                </dm_dockManager:LayoutManager.DocumentTemplates>
+                <dm_dockManager:LayoutManager.ToolTemplates>
+                    <DataTemplate DataType="{x:Type viewModel:ToolViewModel}">
+                        <view:ToolView x:Name="_toolOneView"/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:OtherToolViewModel}">
+                        <view:ToolView x:Name="_otherToolOneView"/>
+                    </DataTemplate>
+                </dm_dockManager:LayoutManager.ToolTemplates>
+            </dm_dockManager:LayoutManager>
+            
+        </Grid>
 
 
     </DockPanel>

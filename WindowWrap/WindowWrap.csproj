@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +13,17 @@
 
   <ItemGroup>
     <PackageReference Include="HandyControl" Version="3.2.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OpenControls.Wpf.DockManager\OpenControls.Wpf.DockManager.csproj">
+      <Private>true</Private>
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj" />
+    <ProjectReference Include="..\WindowWrap.DockManager.Themes.Dafault\WindowWrap.DockManager.Themes.Dafault.csproj" />
+    <ProjectReference Include="..\WindowWrap.DockManager.Views\WindowWrap.DockManager.Views.csproj" />
   </ItemGroup>
 
 </Project>
