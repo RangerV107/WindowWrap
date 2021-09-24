@@ -42,7 +42,7 @@ namespace OpenControls.Wpf.DockManager.Serialisation
 
             int count = toolPaneGroup.IViewContainer.GetUserControlCount();
 
-            System.Diagnostics.Trace.Assert(count > 0, "Tool pane group has no tools");
+            //System.Diagnostics.Trace.Assert(count > 0, "Tool pane group has no tools");
 
             for (int index = 0; index < count; ++index)
             {

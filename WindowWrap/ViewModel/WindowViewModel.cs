@@ -72,37 +72,6 @@ namespace WindowWrap.ViewModel
         }
         #endregion
 
-        #region WindowsList
-        private IDictionary<string, IntPtr> _windowsList;
-        private IDictionary<string, IntPtr> WindowsList
-        {
-            get => _windowsList;
-            set => Set(ref _windowsList, value);
-        }
-        #endregion
-
-        #region WindowNamesList
-        private ObservableCollection<string> _windowNamesList;
-        public ObservableCollection<string> WindowNamesList
-        {
-            get => _windowNamesList;
-            set => Set(ref _windowNamesList, value);
-        }
-        #endregion
-
-        #region SelectedWindowName
-        private string _selectedWindowName;
-        public string SelectedWindowName
-        {
-            get => _selectedWindowName;
-            set 
-            {
-                Set(ref _selectedWindowName, value);
-                OnWindowSelect(value);
-            }
-        }
-        #endregion
-
         #region SelectedWindowPtr
         private IntPtr _selectedWindowPtr;
         public IntPtr SelectedWindowPtr
@@ -124,8 +93,6 @@ namespace WindowWrap.ViewModel
         #endregion
 
         #region Fields
-
-
         #region IViewModel
         public string Tooltip
         {
@@ -149,38 +116,6 @@ namespace WindowWrap.ViewModel
             }
         } 
         #endregion
-        #endregion
-
-        #region Commands
-        #region WindowSelectCommand
-        public ICommand WindowSelectCommand { get; }
-        private bool CanWindowSelectCommandExecute(object p) => true;
-        private void OnWindowSelectCommandExecuted(object p)
-        {
-            ComboBox comboBox = (ComboBox)p;
-            ComboBoxItem selectedItem = (ComboBoxItem)comboBox.SelectedItem;
-            Title = selectedItem.Name;
-        }
-        #endregion
-
-        #region WindowUndockCommand
-        public ICommand WindowUndockCommand { get; }
-        private bool CanWindowUndockCommandExecute(object p) => true;
-        private void OnWindowUndockCommandExecuted(object p)
-        {
-            SelectedWindowPtr = IntPtr.Zero;
-            SelectedWindowName = "None::None";
-        }
-        #endregion
-
-        #region WindowsUpdateCommand
-        public ICommand WindowsUpdateCommand { get; }
-        private bool CanWindowsUpdateCommandExecute(object p) => true;
-        private void OnWindowsUpdateCommandExecuted(object p)
-        {
-            UpdateWindows();
-        }
-        #endregion
 
         #endregion
 
@@ -189,44 +124,11 @@ namespace WindowWrap.ViewModel
 
 
 
-        public WindowViewModel()
+        public WindowViewModel(IntPtr window)
         {
-            #region Commands
-            WindowSelectCommand = new ActionCommand(
-                OnWindowSelectCommandExecuted, CanWindowSelectCommandExecute);
-            WindowUndockCommand = new ActionCommand(
-                OnWindowUndockCommandExecuted, CanWindowUndockCommandExecute);
-            WindowsUpdateCommand = new ActionCommand(
-               OnWindowsUpdateCommandExecuted, CanWindowsUpdateCommandExecute);
-            #endregion
-
-            
-        }
-
-        private void UpdateWindows()
-        {
-            WindowsList = Win32Utilities.GetOpenWindows();          
-            WindowNamesList = new ObservableCollection<string>(WindowsList.Keys.OrderBy(c => c).AsEnumerable());
-            WindowsList.Add("None::None", IntPtr.Zero);
-            WindowNamesList.Insert(0, "None::None");
-        }
-
-        private void OnWindowSelect(string window)
-        {
-            if (window == null)
-                return;
-
-            IntPtr window_ptr;
-            WindowsList.TryGetValue(window, out window_ptr);
-
-            string[] words = window.Split("::");
-            URL = words[0] + " : " + window_ptr;
-            Title = words[1];
-
-            SelectedWindowPtr = window_ptr;
+            SelectedWindowPtr = window;
             SelectedWindowState = WindowState.Normal;
         }
-    
 
         private void OnSelect()
         {

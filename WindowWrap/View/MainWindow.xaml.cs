@@ -156,6 +156,7 @@ namespace WindowWrap
                 this.DragMove();
         }
 
+
         //private void _buttonTools_Click(object sender, RoutedEventArgs e)
         //{
         //    //ExampleDockManagerViews.ViewModel.MainViewModel mainViewModel = DataContext as ExampleDockManagerViews.ViewModel.MainViewModel;

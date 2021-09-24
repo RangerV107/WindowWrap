@@ -11,6 +11,7 @@ using System.Diagnostics;
 using OpenControls.Wpf.Utilities;
 using Utilities;
 using System.IO;
+using System.Collections.Generic;
 
 namespace WindowWrap.ViewModel
 {
@@ -63,24 +64,66 @@ namespace WindowWrap.ViewModel
             set => Set(ref _layoutLoaded, value);
         }
         #endregion
+
+        #region WindowsList
+        private Dictionary<string, IntPtr> _windowsList;
+        private Dictionary<string, IntPtr> WindowsList
+        {
+            get => _windowsList;
+            set => Set(ref _windowsList, value);
+        }
         #endregion
+
+        #region WindowNamesList
+        private ObservableCollection<string> _windowNamesList;
+        public ObservableCollection<string> WindowNamesList
+        {
+            get => _windowNamesList;
+            set => Set(ref _windowNamesList, value);
+        }
+        #endregion
+
+        #region SelectedWindowName
+        private string _selectedWindowName;
+        public string SelectedWindowName
+        {
+            get => _selectedWindowName;
+            set
+            {
+                Set(ref _selectedWindowName, value);
+                OnWindowSelect(value);
+            }
+        }
+        #endregion
+
+        #region SelectedWindowPtr
+        private IntPtr _selectedWindowPtr;
+        public IntPtr SelectedWindowPtr
+        {
+            get => _selectedWindowPtr;
+            set => Set(ref _selectedWindowPtr, value);
+        }
+        #endregion
+
+        #region SelectedWindowState
+        private WindowState _selectedWindowState;
+        public WindowState SelectedWindowState
+        {
+            get => _selectedWindowState;
+            set => Set(ref _selectedWindowState, value);
+        }
+        #endregion
+        #endregion
+
 
         #region Fields
-        #region _keyPath
-        //private string _keyPath = System.Environment.Is64BitOperatingSystem ?
-        //    @"SOFTWARE\Wow6432Node\OpenControls\WpfDockManagerDemo" : @"SOFTWARE\OpenControls\WpfDockManagerDemo"; 
-        #endregion
-
-        #region Tools
-        public readonly IViewModel ToolOne = new ToolViewModel { Title = "Tool" };
-        public readonly IViewModel ToolTwo = new OtherToolViewModel { Title = "Other Tool" };
-        #endregion
-
         #region Documents
-        public readonly IViewModel Window1 = new WindowViewModel() { URL = Guid.NewGuid().ToString(), Title = "Window" };
-        public readonly IViewModel Window2 = new WindowViewModel() { URL = Guid.NewGuid().ToString(), Title = "Window" };
+        //public readonly IViewModel Window1 = new WindowViewModel() { URL = Guid.NewGuid().ToString(), Title = "Window" };
+        //public readonly IViewModel Window2 = new WindowViewModel() { URL = Guid.NewGuid().ToString(), Title = "Window" };
         #endregion
+
         #endregion
+
 
         #region Commands
         #region CloseCommand
@@ -141,7 +184,16 @@ namespace WindowWrap.ViewModel
         private bool CanAddWindowCommandExecute(object p) => true;
         private void OnAddWindowCommandExecuted(object p)
         {
-            Documents.Add(new WindowViewModel() { URL = Guid.NewGuid().ToString(), Title = "Window" });
+            SelectedWindowName = ((p as RoutedEventArgs).OriginalSource as MenuItem).Header.ToString();
+        }
+        #endregion
+
+        #region WindowsUpdateCommand
+        public ICommand WindowsUpdateCommand { get; }
+        private bool CanWindowsUpdateCommandExecute(object p) => true;
+        private void OnWindowsUpdateCommandExecuted(object p)
+        {
+            UpdateWindows();
         }
         #endregion
         #endregion
@@ -151,35 +203,49 @@ namespace WindowWrap.ViewModel
         public MainWindowViewModel()
         {
             #region Commands
-            AppCloseCommand = new ActionCommand(
-                OnAppCloseCommandExecuted, CanAppCloseCommandExecute);
-            Test1Command = new ActionCommand(
-                OnTest1CommandExecuted, CanTest1CommandExecute);
-            AddWindowCommand = new ActionCommand(
-                OnAddWindowCommandExecuted, CanAddWindowCommandExecute);
+            AppCloseCommand = new ActionCommand(OnAppCloseCommandExecuted, CanAppCloseCommandExecute);
+            Test1Command = new ActionCommand(OnTest1CommandExecuted, CanTest1CommandExecute);
+            AddWindowCommand = new ActionCommand(OnAddWindowCommandExecuted, CanAddWindowCommandExecute);
+            WindowsUpdateCommand = new ActionCommand(OnWindowsUpdateCommandExecuted, CanWindowsUpdateCommandExecute);
             #endregion
 
             #region DockManager layout
             LayoutLoaded = false;
 
-            Tools = new ObservableCollection<IViewModel>();
-            Tools.Add(ToolOne);
-            Tools.Add(ToolTwo);
-
             Documents = new ObservableCollection<IViewModel>();
-            Documents.Add(Window1);
-            Documents.Add(Window2);
+            //Documents.Add(Window1);
+            //Documents.Add(Window2);
             #endregion
 
+            UpdateWindows();
         }
 
-        
 
-        
+        private void UpdateWindows()
+        {
+            WindowsList = Win32Utilities.GetOpenWindows();
+            WindowNamesList = new ObservableCollection<string>(WindowsList.Keys.OrderBy(c => c).AsEnumerable());
+        }
+
+        private void OnWindowSelect(string window)
+        {
+            if (window == null)
+                return;
+            
+            IntPtr window_ptr;
+            WindowsList.TryGetValue(window, out window_ptr);
+
+            string[] words = window.Split("::");
+            Documents.Add(new WindowViewModel(window_ptr) { 
+                URL = words[0] + " : " + window_ptr, 
+                Title = words[1] 
+            });
+        }
 
 
 
-        
+
+
 
 
 

@@ -20,7 +20,40 @@ namespace Utilities
             return (filename.ToString());
         }
 
-        public static IDictionary<string, IntPtr> GetOpenWindows()
+        //public static IDictionary<string, IntPtr> GetOpenWindows()
+        //{
+        //    IntPtr shellWindow = User32.GetShellWindow();
+        //    //IntPtr selfWindow = Process.GetCurrentProcess().MainWindowHandle;
+        //    Dictionary<string, IntPtr> windows = new Dictionary<string, IntPtr>();
+
+        //    User32.EnumWindows((hWnd, lParam) =>
+        //    {
+        //        if (hWnd == shellWindow) return true;
+        //        //if (hWnd == selfWindow) return true;
+        //        if (!User32.IsWindowVisible(hWnd)) return true;
+
+        //        int length = User32.GetWindowTextLength(hWnd);
+        //        if (length == 0) return true;
+
+        //        StringBuilder builder = new StringBuilder(length);
+        //        User32.GetWindowText(hWnd, builder, length + 1);
+
+        //        var procName = "";
+        //        try
+        //        {
+        //            var path = GetWindowModuleFileName(hWnd);
+        //            procName = Path.GetFileName(path) + "::";
+        //        }
+        //        catch { }
+
+        //        windows[procName + builder.ToString()] = hWnd;
+        //        return true;
+
+        //    }, IntPtr.Zero);
+
+        //    return windows;
+        //}
+        public static Dictionary<string, IntPtr> GetOpenWindows()
         {
             IntPtr shellWindow = User32.GetShellWindow();
             //IntPtr selfWindow = Process.GetCurrentProcess().MainWindowHandle;

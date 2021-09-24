@@ -19,5 +19,6 @@ namespace WindowWrap.View
         {
             //System.Diagnostics.Trace.WriteLine(this + " : " + this.Name);
         }
+
     }
 }

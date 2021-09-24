@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowWrap"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         
         xmlns:view="clr-namespace:WindowWrap.View"
         xmlns:viewModel="clr-namespace:WindowWrap.ViewModel"
@@ -64,25 +65,36 @@
     
     <DockPanel>
 
-        <DockPanel DockPanel.Dock="Top" >
-            <Menu DockPanel.Dock="Left" Background="Transparent">
+        <DockPanel DockPanel.Dock="Top">
+            <Menu DockPanel.Dock="Left" Background="Transparent" Margin="5">
                 <MenuItem Header="File" Foreground="White">
                     <MenuItem Header="Exit" Command="{Binding AppCloseCommand}"/>
                 </MenuItem>
                 <!--<MenuItem Header="Documents" Click="_buttonDocuments_Click"/>-->
                 <!--<MenuItem Header="Tools" Click="_buttonTools_Click"/>-->
                 <MenuItem Header="Layout" Foreground="White" Click="_buttonWindow_Click"/>
-                <MenuItem Header="Test 1" Foreground="White" Command="{Binding Test1Command}"/>
-                <MenuItem Header="Add" Foreground="White" Command="{Binding AddWindowCommand}"/>
+                <!--<MenuItem Header="Test 1" Foreground="White" Command="{Binding Test1Command}"/>-->
+                <MenuItem Header="Add" Foreground="White" ItemsSource="{Binding WindowNamesList}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SubmenuOpened">
+                            <i:InvokeCommandAction Command="{Binding WindowsUpdateCommand}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding AddWindowCommand}" PassEventArgsToCommand="True"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </MenuItem>
             </Menu>
-
+            
             <!--<StackPanel Orientation="Horizontal" DockPanel.Dock="Right" Background="Transparent">
                 <Button Background="Green" BorderThickness="0" Width="20" Height="15" Margin="0, 0, 5, 0" Command="{Binding AppCloseCommand}"/>
                 <Button Background="Yellow" BorderThickness="0" Width="20" Height="15" Margin="0, 0, 5, 0" Command="{Binding AppCloseCommand}"/>
                 <Button Background="Red" BorderThickness="0" Width="20" Height="15" Margin="0, 0, 5, 0" Command="{Binding AppCloseCommand}"/>
             </StackPanel>-->
 
-            <StackPanel Orientation="Horizontal" MouseDown="DockPanel_MouseDown"></StackPanel>
+            <StackPanel Orientation="Horizontal" MouseDown="DockPanel_MouseDown">
+                
+            </StackPanel>
         </DockPanel>
 
 
@@ -119,46 +131,4 @@
 
     </DockPanel>
 
-
-
-
-
-
-
-
-    <!--<DockPanel LastChildFill="True">
-        <Menu DockPanel.Dock="Top" Background="Gray">
-            <MenuItem Header="File">
-                <MenuItem Header="Exit" Command="{Binding AppCloseCommand}"/>
-            </MenuItem>
-            <MenuItem Header="About"/>
-        </Menu>
-
-        <StackPanel DockPanel.Dock="Left" Background="Gray">
-            <Label>ddddddddddd</Label>
-            <Label>ddd</Label>
-            <Label>ddd</Label>
-            <Label>ddd</Label>
-        </StackPanel>
-
-        <Grid Background="LightGray">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="117*"/>
-                <ColumnDefinition Width="239*"/>
-            </Grid.ColumnDefinitions>
-            
-
-            <StackPanel Grid.Column="0"
-                        Background="AliceBlue"></StackPanel>
-            <StackPanel Grid.Column="1" 
-                        Background="PaleGreen"></StackPanel>
-            
-            
-            <GridSplitter Grid.Column="0" 
-                          HorizontalAlignment="Right" 
-                          Width="5"
-                          Background="Black"/>
-        </Grid>
-
-    </DockPanel>-->
 </Window>
