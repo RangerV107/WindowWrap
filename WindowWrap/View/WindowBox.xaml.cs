@@ -32,6 +32,21 @@ namespace WindowWrap.View
         }
         #endregion
 
+        #region WindowParentPtr
+        public static readonly DependencyProperty WindowParentPtrProperty = DependencyProperty.Register(
+                "WindowParentPtr",
+                typeof(IntPtr),
+                typeof(WindowBox),
+                new FrameworkPropertyMetadata(
+                    IntPtr.Zero,
+                    new PropertyChangedCallback(OnWindowParentPtrChangee)));
+        public IntPtr WindowParentPtr
+        {
+            get { return (IntPtr)GetValue(WindowParentPtrProperty); }
+            set { SetValue(WindowParentPtrProperty, value); }
+        }
+        #endregion
+
         #region WindowState
         public static readonly DependencyProperty WindowStateProperty = DependencyProperty.Register(
                 "WindowState",
@@ -48,12 +63,12 @@ namespace WindowWrap.View
         #endregion
 
 
-        private Window _parentWindow;
-        public Window ParentWindow
-        {
-            get { return _parentWindow; }
-            set { _parentWindow = value; }
-        }
+        //private Window _parentWindow;
+        //public Window ParentWindow
+        //{
+        //    get { return _parentWindow; }
+        //    set { _parentWindow = value; }
+        //}
 
 
 
@@ -61,8 +76,8 @@ namespace WindowWrap.View
         {
             InitializeComponent();
 
-            WindowInteropHelper helper = new WindowInteropHelper(App.Current.MainWindow);
-            HwndSource.FromHwnd(helper.Handle).AddHook(HwndMessageHook);
+            //WindowInteropHelper helper = new WindowInteropHelper(App.Current.MainWindow);
+            //HwndSource.FromHwnd(helper.Handle).AddHook(HwndMessageHook);
         }
 
 
@@ -89,18 +104,27 @@ namespace WindowWrap.View
             MoveWindow(WindowPtr);
         }
 
-        
+
 
 
         private static void OnWindowPtrChangee(DependencyObject d, DependencyPropertyChangedEventArgs e) =>
             ((WindowBox)d).WindowPtrChange((IntPtr)e.NewValue, (IntPtr)e.OldValue);
         private void WindowPtrChange(IntPtr new_ptr, IntPtr old_ptr)
         {
-            //ParentWindow = FindParentWindow(this);
             UndockWindow(old_ptr);
             if (new_ptr == IntPtr.Zero)
                 return;
             DockWindow(new_ptr);
+        }
+
+        private static void OnWindowParentPtrChangee(DependencyObject d, DependencyPropertyChangedEventArgs e) =>
+            ((WindowBox)d).WindowParentPtrChange((IntPtr)e.NewValue, (IntPtr)e.OldValue);
+        private void WindowParentPtrChange(IntPtr new_ptr, IntPtr old_ptr)
+        {
+            if (new_ptr == IntPtr.Zero)
+                HwndSource.FromHwnd(WindowParentPtr).RemoveHook(HwndMessageHook);
+            else
+                HwndSource.FromHwnd(WindowParentPtr).AddHook(HwndMessageHook);
         }
 
         private static void OnWindowStateChangee(DependencyObject d, DependencyPropertyChangedEventArgs e) =>
@@ -110,7 +134,7 @@ namespace WindowWrap.View
             switch (new_state)
             {
                 case WindowState.Normal:
-                    User32.ShowWindow(WindowPtr, User32.WindowShowFlags.SW_NORMAL); break;
+                    User32.ShowWindow(WindowPtr, User32.WindowShowFlags.SW_NORMAL); MoveWindow(WindowPtr); break;
                 case WindowState.Maximized:
                     User32.ShowWindow(WindowPtr, User32.WindowShowFlags.SW_MAXIMIZE); break;
                 case WindowState.Minimized:
@@ -126,7 +150,7 @@ namespace WindowWrap.View
             User32.SetWindowLongPtr(
                 window,
                 User32.WindowLongFlags.GWLP_HWNDPARENT,
-                new WindowInteropHelper(App.Current.MainWindow).Handle);
+                WindowParentPtr);
 
             User32.SetActiveWindow(window);
             User32.ShowWindow(window, User32.WindowShowFlags.SW_MINIMIZE);
@@ -146,47 +170,38 @@ namespace WindowWrap.View
 
         private void MoveWindow(IntPtr window)
         {
-            try
+            if (WindowState == WindowState.Normal)
             {
-                GeneralTransform generalTransform1 = this.TransformToAncestor(App.Current.MainWindow);
-                Point point_local = generalTransform1.Transform(new Point(0, 0));
-                Point point_global = App.Current.MainWindow.PointToScreen(new Point(0, 0));
-                point_global.Offset(point_local.X, point_local.Y);
-                User32.MoveWindow(window, (int)point_global.X, (int)point_global.Y, (int)this.ActualWidth, (int)this.ActualHeight, true);
-            }
-            catch (Exception ex) { /*Trace.WriteLine(ex.Source + " : " + ex.Message);*/ }
-
-            //if (ParentWindow != null)
-            //{
-            //    GeneralTransform generalTransform1 = this.TransformToAncestor(App.Current.MainWindow);
-            //    Point point_local = generalTransform1.Transform(new Point(0, 0));
-            //    Point point_global = App.Current.MainWindow.PointToScreen(new Point(0, 0));
-            //    point_global.Offset(point_local.X, point_local.Y);
-            //    User32.MoveWindow(window, (int)point_global.X, (int)point_global.Y, (int)this.ActualWidth, (int)this.ActualHeight, true);
-            //}
-        }
-
-
-
-
-        public static Window FindParentWindow(DependencyObject child)
-        {
-            DependencyObject parent = VisualTreeHelper.GetParent(child);
-
-            //CHeck if this is the end of the tree
-            if (parent == null) return null;
-
-            Window parentWindow = parent as Window;
-            if (parentWindow != null)
-            {
-                return parentWindow;
-            }
-            else
-            {
-                //use recursion until it reaches a Window
-                return FindParentWindow(parent);
+                try
+                {
+                    Point point_global = PointToScreen(new Point(0, 0));
+                    User32.MoveWindow(window, (int)point_global.X, (int)point_global.Y, (int)this.ActualWidth, (int)this.ActualHeight, true);
+                }
+                catch { }//(Exception ex) { Trace.WriteLine(ex.Source + " : " + ex.Message); }
             }
         }
+
+
+
+
+        //public static Window FindParentWindow(DependencyObject child)
+        //{
+        //    DependencyObject parent = VisualTreeHelper.GetParent(child);
+
+        //    //CHeck if this is the end of the tree
+        //    if (parent == null) return null;
+
+        //    Window parentWindow = parent as Window;
+        //    if (parentWindow != null)
+        //    {
+        //        return parentWindow;
+        //    }
+        //    else
+        //    {
+        //        //use recursion until it reaches a Window
+        //        return FindParentWindow(parent);
+        //    }
+        //}
 
 
 

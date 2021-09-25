@@ -12,6 +12,7 @@ using OpenControls.Wpf.Utilities;
 using Utilities;
 using System.IO;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 
 namespace WindowWrap.ViewModel
 {
@@ -66,53 +67,62 @@ namespace WindowWrap.ViewModel
         #endregion
 
         #region WindowsList
-        private Dictionary<string, IntPtr> _windowsList;
-        private Dictionary<string, IntPtr> WindowsList
+        private ObservableCollection<WinInfo> _windowsList;
+        public ObservableCollection<WinInfo> WindowsList
         {
             get => _windowsList;
             set => Set(ref _windowsList, value);
         }
         #endregion
 
-        #region WindowNamesList
-        private ObservableCollection<string> _windowNamesList;
-        public ObservableCollection<string> WindowNamesList
+        #region DockedWindowsList
+        private Dictionary<IViewModel, WinInfo> _dockedWindowsList;
+        public Dictionary<IViewModel, WinInfo> DockedWindowsList
         {
-            get => _windowNamesList;
-            set => Set(ref _windowNamesList, value);
+            get => _dockedWindowsList;
+            set => Set(ref _dockedWindowsList, value);
         }
         #endregion
 
-        #region SelectedWindowName
-        private string _selectedWindowName;
-        public string SelectedWindowName
-        {
-            get => _selectedWindowName;
-            set
-            {
-                Set(ref _selectedWindowName, value);
-                OnWindowSelect(value);
-            }
-        }
-        #endregion
+        //#region WindowNamesList
+        //private ObservableCollection<string> _windowNamesList;
+        //public ObservableCollection<string> WindowNamesList
+        //{
+        //    get => _windowNamesList;
+        //    set => Set(ref _windowNamesList, value);
+        //}
+        //#endregion
 
-        #region SelectedWindowPtr
-        private IntPtr _selectedWindowPtr;
-        public IntPtr SelectedWindowPtr
-        {
-            get => _selectedWindowPtr;
-            set => Set(ref _selectedWindowPtr, value);
-        }
-        #endregion
+        //#region SelectedWindowName
+        //private string _selectedWindowName;
+        //public string SelectedWindowName
+        //{
+        //    get => _selectedWindowName;
+        //    set
+        //    {
+        //        Set(ref _selectedWindowName, value);
+        //        //OnWindowSelect(value);
+        //    }
+        //}
+        //#endregion
 
-        #region SelectedWindowState
-        private WindowState _selectedWindowState;
-        public WindowState SelectedWindowState
-        {
-            get => _selectedWindowState;
-            set => Set(ref _selectedWindowState, value);
-        }
-        #endregion
+        //#region SelectedWindowPtr
+        //private IntPtr _selectedWindowPtr;
+        //public IntPtr SelectedWindowPtr
+        //{
+        //    get => _selectedWindowPtr;
+        //    set => Set(ref _selectedWindowPtr, value);
+        //}
+        //#endregion
+
+        //#region SelectedWindowState
+        //private WindowState _selectedWindowState;
+        //public WindowState SelectedWindowState
+        //{
+        //    get => _selectedWindowState;
+        //    set => Set(ref _selectedWindowState, value);
+        //}
+        //#endregion
         #endregion
 
 
@@ -121,7 +131,10 @@ namespace WindowWrap.ViewModel
         //public readonly IViewModel Window1 = new WindowViewModel() { URL = Guid.NewGuid().ToString(), Title = "Window" };
         //public readonly IViewModel Window2 = new WindowViewModel() { URL = Guid.NewGuid().ToString(), Title = "Window" };
         #endregion
-
+        #region Tools
+        public readonly IViewModel ToolOne = new ToolViewModel { Title = "Tool" };
+        //public readonly IViewModel ToolTwo = new OtherToolViewModel { Title = "Other Tool" };
+        #endregion
         #endregion
 
 
@@ -165,11 +178,18 @@ namespace WindowWrap.ViewModel
             #endregion
 
             #region mega_ddd
-            for (int i = 0; i < System.Windows.Media.VisualTreeHelper.GetChildrenCount(App.Current.MainWindow); i++)
+            //for (int i = 0; i < System.Windows.Media.VisualTreeHelper.GetChildrenCount(App.Current.MainWindow); i++)
+            //{
+            //    DependencyObject wch = System.Windows.Media.VisualTreeHelper.GetChild(App.Current.MainWindow, i);
+            //    Trace.WriteLine(wch);
+            //}
+            #endregion
+
+            #region new_ddd
+            foreach (var item in DockedWindowsList.Values)
             {
-                DependencyObject wch = System.Windows.Media.VisualTreeHelper.GetChild(App.Current.MainWindow, i);
-                Trace.WriteLine(wch);
-            } 
+                Trace.WriteLine(item);
+            }
             #endregion
             Trace.WriteLine("============================\n");
 
@@ -184,7 +204,9 @@ namespace WindowWrap.ViewModel
         private bool CanAddWindowCommandExecute(object p) => true;
         private void OnAddWindowCommandExecuted(object p)
         {
-            SelectedWindowName = ((p as RoutedEventArgs).OriginalSource as MenuItem).Header.ToString();
+            WinInfo selected = (from w in WindowsList where w.ToString() == 
+                                ((p as RoutedEventArgs).OriginalSource as MenuItem).Header.ToString() select w).First();
+            OnWindowSelect(selected);
         }
         #endregion
 
@@ -212,34 +234,49 @@ namespace WindowWrap.ViewModel
             #region DockManager layout
             LayoutLoaded = false;
 
+            Tools = new ObservableCollection<IViewModel>();
+            Tools.Add(ToolOne);
+
             Documents = new ObservableCollection<IViewModel>();
+            Documents.CollectionChanged += Documents_CollectionChanged;
             //Documents.Add(Window1);
             //Documents.Add(Window2);
+            //Documents.Add(new WindowViewModel(IntPtr.Zero)
+            //{
+            //    URL = "None",
+            //    Title = "None"
+            //});
+            DockedWindowsList = new Dictionary<IViewModel, WinInfo>();
             #endregion
 
             UpdateWindows();
-        }
-
+        }       
 
         private void UpdateWindows()
         {
-            WindowsList = Win32Utilities.GetOpenWindows();
-            WindowNamesList = new ObservableCollection<string>(WindowsList.Keys.OrderBy(c => c).AsEnumerable());
+            WindowsList = new ObservableCollection<WinInfo>
+                ((from w in Win32Utilities.GetOpenWindows() orderby w.Title select w).Except(DockedWindowsList.Values));
         }
 
-        private void OnWindowSelect(string window)
+        private void OnWindowSelect(WinInfo window)
         {
-            if (window == null)
-                return;
-            
-            IntPtr window_ptr;
-            WindowsList.TryGetValue(window, out window_ptr);
-
-            string[] words = window.Split("::");
-            Documents.Add(new WindowViewModel(window_ptr) { 
-                URL = words[0] + " : " + window_ptr, 
-                Title = words[1] 
+            if (window == null)return;
+            Documents.Add(new WindowViewModel(window.Ptr)
+            {
+                URL = window.Process,
+                Title = window.Title
             });
+            DockedWindowsList.Add(Documents.Last() ,window);
+        }
+
+
+        private void Documents_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Remove:
+                    DockedWindowsList.Remove(e.OldItems[0] as IViewModel); break;
+            }
         }
 
 

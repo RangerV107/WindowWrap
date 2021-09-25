@@ -81,6 +81,15 @@ namespace WindowWrap.ViewModel
         }
         #endregion
 
+        #region SelectedWindowParentPtr
+        private IntPtr _selectedParentWindowPtr;
+        public IntPtr SelectedParentWindowPtr
+        {
+            get => _selectedParentWindowPtr;
+            set => Set(ref _selectedParentWindowPtr, value);
+        }
+        #endregion
+
         #region SelectedWindowState
         private WindowState _selectedWindowState;
         public WindowState SelectedWindowState
@@ -127,6 +136,7 @@ namespace WindowWrap.ViewModel
         public WindowViewModel(IntPtr window)
         {
             SelectedWindowPtr = window;
+            SelectedParentWindowPtr = new WindowInteropHelper(App.Current.MainWindow).Handle;
             SelectedWindowState = WindowState.Normal;
         }
 

@@ -19,62 +19,23 @@
         Closing="Window_Closing"
         Background="#FF334180"
         Title="{Binding Title}" Height="1200" Width="1200">
-    <Window.Resources>
-        <!--<ResourceDictionary>
-            <Style x:Key="styleGridSplitter" TargetType="GridSplitter">
-                <Setter Property="Background" Value="Gainsboro"/>
-                <Setter Property="BorderThickness" Value="1"/>
-            </Style>
-            <Style x:Key="styleHorizontalGridSplitter" TargetType="GridSplitter" BasedOn="{StaticResource styleGridSplitter}">
-                <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                <Setter Property="Height" Value="4"/>
-            </Style>
-            <Style x:Key="styleVerticalGridSplitter" TargetType="GridSplitter" BasedOn="{StaticResource styleGridSplitter}">
-                <Setter Property="VerticalAlignment" Value="Stretch"/>
-                <Setter Property="Width" Value="4"/>
-            </Style>
-            <Style x:Key="StyleTitleBarButton" TargetType="Button">
-                <Setter Property="Background" Value="Transparent"/>
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Grid Margin="0,0,0,0">
-                                <Border Name="_border" Background="Transparent" Padding="6,0,6,2" BorderThickness="1" BorderBrush="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <ContentPresenter/>
-                                </Border>
-                            </Grid>
-
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="_border" Property="Background" Value="Gainsboro" />
-                                    <Setter TargetName="_border" Property="BorderBrush" Value="Gray" />
-                                    <Setter TargetName="_border" Property="BorderThickness" Value="1" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/OpenControls.Wpf.DockManager;component/Dictionary.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>-->
-    </Window.Resources>
-
-    
     <DockPanel>
 
         <DockPanel DockPanel.Dock="Top">
             <Menu DockPanel.Dock="Left" Background="Transparent" Margin="5">
-                <MenuItem Header="File" Foreground="White">
+                <!--<MenuItem Header="File" Foreground="White">
                     <MenuItem Header="Exit" Command="{Binding AppCloseCommand}"/>
-                </MenuItem>
+                </MenuItem>-->
                 <!--<MenuItem Header="Documents" Click="_buttonDocuments_Click"/>-->
                 <!--<MenuItem Header="Tools" Click="_buttonTools_Click"/>-->
                 <MenuItem Header="Layout" Foreground="White" Click="_buttonWindow_Click"/>
-                <!--<MenuItem Header="Test 1" Foreground="White" Command="{Binding Test1Command}"/>-->
-                <MenuItem Header="Add" Foreground="White" ItemsSource="{Binding WindowNamesList}">
+                <MenuItem Header="Test 1" Foreground="White" Command="{Binding Test1Command}"/>
+                <MenuItem Header="Add" Foreground="White" ItemsSource="{Binding WindowsList}">
+                    <MenuItem.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Title}"/>
+                        </DataTemplate>
+                    </MenuItem.ItemTemplate>
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SubmenuOpened">
                             <i:InvokeCommandAction Command="{Binding WindowsUpdateCommand}"/>
@@ -98,9 +59,7 @@
         </DockPanel>
 
 
-
         <Grid x:Name="parentContainer">
-
             <dm_dockManager:LayoutManager Margin="5"
                 x:Name="_layoutManager" Grid.Row="0" Grid.Column="0" 
                 DocumentsSource="{Binding Documents}"
@@ -125,7 +84,6 @@
                     </DataTemplate>
                 </dm_dockManager:LayoutManager.ToolTemplates>
             </dm_dockManager:LayoutManager>
-            
         </Grid>
 
 
